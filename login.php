@@ -18,7 +18,7 @@
         include_once 'connect_db.php';
 
         // SQL query to check if user data are on the DB.
-        $result = mysqli_query($conn, "Select * from `register` where username = '$username' 
+        $result = mysqli_query($conn, "Select * from `register` where username = '$username'
         and password = '$password'") or die("failed to query database ".mysqli_error($conn));
         // Fetches result as aassociative array.
         $row = mysqli_fetch_array($result);
@@ -29,11 +29,11 @@
             $_SESSION['username'] = $username;
 
             header ('Location: Vlava/index.php');
-            exit();  
-            } 
+            exit();
+            }
         else{
             $_SESSION["msg"]='Wrong Data, try again!';
             header ('Location: registration.php');
         }
-    }    
+    }
 ?>

@@ -1,22 +1,22 @@
 <?php
-    
+
     // Begin session.
     session_start();
 
     // Check if button submit is set to give access to the DB.
-    if(isset($_POST['submit'])){    
+    if(isset($_POST['submit'])){
         //  Grab a Form data and store it in variables.
         $username = filter_input(INPUT_POST, 'username');
         $password = filter_input(INPUT_POST, 'password');
         $email = filter_input(INPUT_POST, 'email');
         $agree = filter_input(INPUT_POST, 'agree');
-        
+
         // Check if username or email field is empty.
         if (!isset($username) || trim($username) || !isset($email)){
             // Check if user has given the right value in the password field.
             if (preg_match("/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])[0-9A-Za-z!-\/]{8,}$/", $_POST['password'])){
                 // Check if terms field is checked.
-                if(!empty($_POST['agree']) || $_POST['agree'] == 'agree'){ 
+                if(!empty($_POST['agree']) || $_POST['agree'] == 'agree'){
                     include_once 'connect_db.php';
                     // Check if the connection to the DB is valid.
                     if (mysqli_connect_error()){
@@ -40,7 +40,7 @@
                         // Check connection to the DB.
                         if ($conn->query($sql)){
                             $_SESSION["msg"]='You are successully registered!
-                                              Now you Have to Loged in.';
+                                              Now you Have to Log in.';
                             // Force url change in address bar.
                             header("Location: registration.php");
                         }
@@ -54,7 +54,7 @@
                 else{
                     $_SESSION["msg"]='You have to agree with the terms!';
                     header("Location: registration.php");
-                }          
+                }
             }
             else{
                 $_SESSION["msg"]='Your password is invalid!';
@@ -62,7 +62,7 @@
             }
         }
         else{
-            $_SESSION["msg"]='Your username or email or both is invalid!'; 
+            $_SESSION["msg"]='Your username or email or both is invalid!';
             header("Location: registration.php");
         }
     }

@@ -29,7 +29,7 @@ $_SESSION['loggedin']=false;
             <i class="fa fa-users fa-5x" id="fa-users"></i>
             <ul class="entry-list">
                 <li>If you are already registered, please login to enter to our system.</li>
-                <li>If you are a new member, please press "Register" and enter your data. After that you have to logged in.</li>
+                <li>If you are a new member, please press "Register" and enter your data. After that you have to log in.</li>
             </ul>
         </div>
         <div class="form-box" id="box-1">
