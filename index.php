@@ -1,3 +1,3 @@
 <?php
-require( dirname( __FILE__ ) . '/registration.php' );
+require( dirname( __FILE__ ) . '/main/main.php' );
 ?>

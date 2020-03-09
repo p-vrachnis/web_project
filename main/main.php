@@ -7,20 +7,16 @@ $_SESSION['loggedin']=false;
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<img src="background.jpg"></img>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration</title>
+    <title>Crowdsourcing System</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-    <link href="Bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="registration.css">
-    <link rel="stylesheet" href="fontawesome/css/all.css">
-
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/main/main.css">
+    <link rel="stylesheet" href="/fontawesome/css/all.css">
 </head>
 
 <body>
-<img src="background.jpg"></img>
     <div class="hero">
         <div id="top-header">
             <p>Welcome to the crowdsourcing system!</p>
@@ -71,7 +67,7 @@ $_SESSION['loggedin']=false;
         </div>
     </div>
 
-    <script src="registration.js"></script>
+    <script src="/main/main.js"></script>
     <!--Show Error/Success Message (Register/Log In) | jQuery-->
     <script>
         $(document).ready(function(){

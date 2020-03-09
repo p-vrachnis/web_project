@@ -12,12 +12,6 @@
     background-size: cover;
 }
 
-body
-{
-    position: fixed;
-    overflow-y: scroll;
-    width: 100%;
-}
 
 #top-header{
     font-size: 40px;
