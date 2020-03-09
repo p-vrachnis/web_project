@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css?family=Alatsi&display=swap');
+
+.hero{
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(4.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#top-header{
+    font-size: 40px;
+    font-family: Alatsi, sans-serif;
+    text-align: center;
+    background-color: rgba(66, 124, 209, 0.2);
+    color: rgb(214, 214, 214);
+}
+
+#top-header p:hover {
+    color: rgb(25, 7, 102);
+}
+
+#fa-users{
+    margin-top: 30px;
+    margin-left: 40%;
+    color: rgb(29, 96, 173);
+}
+
+li{
+    padding: 16px;
+    text-align: justify;
+    font-size: 22px;
+}
+
+.entrty-list{
+    text-align: center;
+}
+
+.form-box {
+    font-family: Alatsi, sans-serif;
+    display: block;
+    margin-top: 8%;
+    width: 450px;
+    height: 450px;
+    background: rgba(148, 147, 147, 0.65);
+    overflow: hidden;
+    border-radius: 20px;
+    border: none;
+}
+
+
+#box-1{
+    float: left;
+    margin-left: 21.5%;
+}
+
+#box-2{
+    float: right;
+    margin-right: 21.5%;
+}
+
+.button-box{
+    left: 150px;
+    margin: 60px auto;
+    position: relative;
+    width: auto;
+}
+
+.btn-success{
+    transition: 0.35s ease-in-out;
+    border-radius: 30px;
+    margin-top: 80px;
+    position: absolute;
+    left: 160px;
+    top: 100px;
+    width: 130px;
+}
+
+.btn-success:hover{
+    background: rgb(28, 128, 45);
+}
+
+.input-group{
+    width: 100%;
+    padding: 2px 5px;
+    margin: 2px;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+    outline: none;
+    font-size: 18px;
+    top: -10px;
+}
+
+#login{
+    left: 0px;
+}
+
+#register{
+    left: 450px;
+    top: -100px;
+}
