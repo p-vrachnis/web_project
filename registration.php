@@ -7,7 +7,7 @@ $_SESSION['loggedin']=false;
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<img src="4.jpg"></img>
+<img src="background.jpg"></img>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration</title>
@@ -20,7 +20,7 @@ $_SESSION['loggedin']=false;
 </head>
 
 <body>
-<img src="4.jpg"></img>
+<img src="background.jpg"></img>
     <div class="hero">
         <div id="top-header">
             <p>Welcome to the crowdsourcing system!</p>

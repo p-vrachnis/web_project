@@ -6,10 +6,17 @@
     height: 100%;
     width: 100%;
     position: absolute;
-    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(4.jpg);
+    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(background.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+body
+{
+    position: fixed;
+    overflow-y: scroll;
+    width: 100%;
 }
 
 #top-header{
