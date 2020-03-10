@@ -42,7 +42,7 @@
                             $_SESSION["msg"]='You are successully registered!
                                               Now you Have to Log in.';
                             // Force url change in address bar.
-                            header("Location: registration.php");
+                            header("Location: main.php");
                         }
                         else{
                             echo "Error: ". $sql ."
@@ -53,17 +53,17 @@
                 }
                 else{
                     $_SESSION["msg"]='You have to agree with the terms!';
-                    header("Location: registration.php");
+                    header("Location: main.php");
                 }
             }
             else{
                 $_SESSION["msg"]='Your password is invalid!';
-                header("Location: registration.php");
+                header("Location: main.php");
             }
         }
         else{
             $_SESSION["msg"]='Your username or email or both is invalid!';
-            header("Location: registration.php");
+            header("Location: main.php");
         }
     }
 ?>

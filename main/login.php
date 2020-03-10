@@ -28,12 +28,12 @@
             $_SESSION['loggedin'] = true;
             $_SESSION['username'] = $username;
 
-            header ('Location: Vlava/index.php');
+            header ('Location: index.php');
             exit();
             }
         else{
             $_SESSION["msg"]='Wrong Data, try again!';
-            header ('Location: registration.php');
+            header ('Location: main.php');
         }
     }
 ?>
