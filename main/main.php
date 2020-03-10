@@ -17,53 +17,55 @@ $_SESSION['loggedin']=false;
 </head>
 
 <body>
-    <div class="hero">
+    <div class="design">
         <div id="top-header">
             <p>Welcome to the crowdsourcing system!</p>
         </div>
-        <div class="form-box" id="box-2">
-            <i class="fa fa-users fa-5x" id="fa-users"></i>
-            <ul class="entry-list">
-                <li>If you are already registered, please login to enter to our system.</li>
-                <li>If you are a new member, please press "Register" and enter your data. After that you have to log in.</li>
-            </ul>
-        </div>
-        <div class="form-box" id="box-1">
-            <div class="button-box">
-                <div class="btn-group btn-group-justified">
-                <button type="button" class="btn btn-primary" onclick="login()" >Log In</button>
-                <button type="button" class="btn btn-primary" onclick="register()">Register</button>
-                </div>
-            </div>
-            <form id="login" class="input-group" name="login_form" action="login.php" method="POST">
-                <div class="input-group">
-                    <i class="fa fa-user fa-2x"></i>
-                    <input id="username" type="text" class="form-control" name="username" placeholder="Username" >
-                </div>
-                <div class="input-group">
-                    <i class="fa fa-lock fa-2x"></i>
-                    <input id="password" type="password" class="form-control" name="password" placeholder="Password">
-                </div>
-                <button id="btnLogin" type="submit" name="submit" class="btn btn-success btn-lg">Log in</button>
-            </form>
-            <form id="register" class="input-group" name="register_form" action="register.php" method="POST">
-                <div class="input-group">
-                    <i class="fa fa-user fa-2x"></i>
-                    <input id="username" type="text" class="form-control" name="username" placeholder="Username">
-                </div>
-                <div class="input-group">
-                    <i class="fa fa-lock fa-2x"></i>
-                    <input id="password" type="password" class="form-control" name="password" placeholder="Password">
-                </div>
-                <div class="input-group">
-                    <i class="fa fa-envelope fa-lg"></i>
-                    <input id="email" type="email" class="form-control" name="email" placeholder="Email" >
-                </div>
-                <div>
-                    <input type="checkbox" name="agree" id="agree" value="agree" /> <label for='agree'>Do you agree to the terms?</label>
-                </div>
-                <button id="btnRegister" type="submit" name="submit" class="btn btn-success btn-lg">Register</button>
-            </form>
+        <div class="white-background">
+          <div class="form-box" id="box-1">
+              <i class="fa fa-users fa-5x" id="fa-users"></i>
+              <ul class="entry-list">
+                  <li>If you are already registered, please login to enter to our system.</li>
+                  <li>If you are a new member, please press "Register" and enter your data. After that you have to log in.</li>
+              </ul>
+          </div>
+          <div class="form-box" id="box-2">
+              <div class="button-box">
+                  <div class="btn-group btn-group-justified">
+                  <button type="button" class="btn btn-primary" onclick="login()" >Log In</button>
+                  <button type="button" class="btn btn-primary" onclick="register()">Register</button>
+                  </div>
+              </div>
+              <form id="login" class="input-group" name="login_form" action="login.php" method="POST">
+                  <div class="input-group">
+                      <i class="fa fa-user fa-2x"></i>
+                      <input id="username" type="text" class="form-control" name="username" placeholder="Username" >
+                  </div>
+                  <div class="input-group">
+                      <i class="fa fa-lock fa-2x"></i>
+                      <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+                  </div>
+                  <button id="btnLogin" type="submit" name="submit" class="btn btn-success btn-lg">Log in</button>
+              </form>
+              <form id="register" class="input-group" name="register_form" action="register.php" method="POST">
+                  <div class="input-group">
+                      <i class="fa fa-user fa-2x"></i>
+                      <input id="username" type="text" class="form-control" name="username" placeholder="Username">
+                  </div>
+                  <div class="input-group">
+                      <i class="fa fa-lock fa-2x"></i>
+                      <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+                  </div>
+                  <div class="input-group">
+                      <i class="fa fa-envelope fa-2x"></i>
+                      <input id="email" type="email" class="form-control" name="email" placeholder="Email" >
+                  </div>
+                  <div>
+                      <input type="checkbox" name="agree" id="agree" value="agree" /> <label for='agree'>Do you agree to the terms?</label>
+                  </div>
+                  <button id="btnRegister" type="submit" name="submit" class="btn btn-success btn-lg">Register</button>
+              </form>
+          </div>
         </div>
     </div>
 
