@@ -8,13 +8,13 @@
     background-repeat: repeat-y;
     background-position: center;
     background-size: cover;
-    overflow-x: scroll;
+    overflow-y: scroll;
 }
 
 
 #top-header{
     font-size: 40px;
-    font-size: 4vw;
+    font-size: 4vh;
     font-family: Alatsi, sans-serif;
     text-align: center;
     background-color: rgba(66, 124, 209, 0.2);
