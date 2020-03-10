@@ -1,7 +1,6 @@
 
 <?php
-session_start();
-$_SESSION['loggedin']=false;
+
 ?>
 
 <!DOCTYPE html>
@@ -12,8 +11,8 @@ $_SESSION['loggedin']=false;
     <title>Crowdsourcing System</title>
     <script src="/external/jquery-3.4.1.js"></script>
     <link href="/external/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="/main/main.css">
     <link rel="stylesheet" href="/external/fontawesome/css/all.css">
+    <link rel="stylesheet" href="/main/main.css">
 </head>
 
 <body>
@@ -36,7 +35,7 @@ $_SESSION['loggedin']=false;
                   <button type="button" class="btn btn-primary" onclick="register()">Register</button>
                   </div>
               </div>
-              <form id="login" class="input-group" name="login_form" action="login.php" method="POST">
+              <form id="login" class="input-group" name="login_form" action="/main/login.php" method="POST">
                   <div class="input-group">
                       <i class="fa fa-user fa-2x"></i>
                       <input id="username" type="text" class="form-control" name="username" placeholder="Username" >
@@ -47,7 +46,7 @@ $_SESSION['loggedin']=false;
                   </div>
                   <button id="btnLogin" type="submit" name="submit" class="btn btn-success btn-lg">Log in</button>
               </form>
-              <form id="register" class="input-group" name="register_form" action="register.php" method="POST">
+              <form id="register" class="input-group" name="register_form" action="/main/register.php" method="POST">
                   <div class="input-group">
                       <i class="fa fa-user fa-2x"></i>
                       <input id="username" type="text" class="form-control" name="username" placeholder="Username">
@@ -73,24 +72,11 @@ $_SESSION['loggedin']=false;
     <!--Show Error/Success Message (Register/Log In) | jQuery-->
     <script>
         $(document).ready(function(){
-            $("#btnRegister").click(function(){
-                alert("<?php
-                    if(isset($_SESSION["msg"])){
-                        $msg = $_SESSION["msg"];
-                        echo $msg;
-                    }
-                ?>");
+            $("#btnLogin").click(function(){
             });
         });
-
         $(document).ready(function(){
-            $("#btnLogin").click(function(){
-                alert("<?php
-                    if(isset($_SESSION["msg"])){
-                        $msg = $_SESSION["msg"];
-                        echo $msg;
-                    }
-                ?>");
+            $("#btnRegister").click(function(){
             });
         });
     </script>

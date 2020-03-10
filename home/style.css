@@ -1,0 +1,23 @@
+.design{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(background.jpg);
+    background-repeat: repeat-y;
+    background-position: center;
+    background-size: cover;
+    overflow-y: scroll;
+}
+
+
+#top-header{
+    font-size: 40px;
+    font-family: Alatsi, sans-serif;
+    text-align: center;
+    background-color: rgba(66, 124, 209, 0.2);
+    color: rgb(214, 214, 214);
+}
+
+#top-header p:hover {
+    color: #999999;
+}

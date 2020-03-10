@@ -4,7 +4,8 @@
     session_start();
 
     // Check if button submit is set to give access to the DB.
-    if(isset($_POST['submit'])){
+    if($_SERVER['REQUEST_METHOD'] == "POST") {
+      include_once '../connect_db.php';
         //  Grab a Form data and store it in variables.
         $username = filter_input(INPUT_POST, 'username');
         $password = filter_input(INPUT_POST, 'password');
@@ -17,7 +18,6 @@
             if (preg_match("/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])[0-9A-Za-z!-\/]{8,}$/", $_POST['password'])){
                 // Check if terms field is checked.
                 if(!empty($_POST['agree']) || $_POST['agree'] == 'agree'){
-                    include_once 'connect_db.php';
                     // Check if the connection to the DB is valid.
                     if (mysqli_connect_error()){
                         // Returns the error description of the connection error and close connection.
@@ -35,14 +35,14 @@
                         $id = openssl_encrypt($plaintext, $cipher, $key);
 
                         // SQL Insert Query of the data.
-                        $sql = "INSERT INTO register (userID, username, password, email)
+                        $sql = "INSERT INTO users (userID, username, password, email)
                         values ('$id','$username','$password','$email')";
                         // Check connection to the DB.
                         if ($conn->query($sql)){
                             $_SESSION["msg"]='You are successully registered!
                                               Now you Have to Log in.';
                             // Force url change in address bar.
-                            header("Location: main.php");
+                            header ('Location: ../index.php');
                         }
                         else{
                             echo "Error: ". $sql ."
@@ -53,17 +53,17 @@
                 }
                 else{
                     $_SESSION["msg"]='You have to agree with the terms!';
-                    header("Location: main.php");
+                    header ('Location: ../index.php');
                 }
             }
             else{
                 $_SESSION["msg"]='Your password is invalid!';
-                header("Location: main.php");
+                header ('Location: ../index.php');
             }
         }
         else{
             $_SESSION["msg"]='Your username or email or both is invalid!';
-            header("Location: main.php");
+            header ('Location: ../index.php');
         }
     }
 ?>
