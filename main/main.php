@@ -21,7 +21,7 @@ $_SESSION['loggedin']=false;
         <div id="top-header">
             <p>Welcome to the crowdsourcing system!</p>
         </div>
-        <div class="white-background">
+        <div class="transparent-background">
           <div class="form-box" id="box-1">
               <i class="fa fa-users fa-5x" id="fa-users"></i>
               <ul class="entry-list">
