@@ -1,5 +1,6 @@
 <?php
-
+  session_start();
+  $username = $_SESSION['login_user'];
 ?>
 
 <!DOCTYPE html>
@@ -15,12 +16,17 @@
 
 <body>
     <div class="design">
-        <div id="top-header">
-            <p>Welcome to the Home Page!</p>
+      <div class="header">
+        <a class="logo">Welcome user <?php echo $username ?></a>
+        <div class="header-right">
+          <a class="active"href="/home/page.php">Home</a>
+          <a href="#contact">Contact</a>
+          <a href="#about">About</a>
+          <a href='/home/logout.php'>Logout</a>
         </div>
-        <form id="logout" class="input-group" name="logout_form" action="/home/logout.php" method="POST">
-          <button id="btnLogout" type="submit" name="submit" class="btn btn-success btn-lg">Log out</button>
-        </form>
+      </div>
+      <div class="transparent-background">
+      </div>
     </div>
 </body>
 </html>
