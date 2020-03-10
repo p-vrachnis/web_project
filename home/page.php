@@ -19,13 +19,13 @@
       <div class="header">
         <a class="logo">Welcome user <?php echo $username ?></a>
         <div class="header-right">
-          <a class="active"href="/home/page.php">Home</a>
+          <a class="active" href="/home/page.php">Home</a>
           <a href="#contact">Contact</a>
           <a href="#about">About</a>
           <a href='/home/logout.php'>Logout</a>
         </div>
       </div>
-      <div class="transparent-background">
+      <div class="white-background">
       </div>
     </div>
 </body>

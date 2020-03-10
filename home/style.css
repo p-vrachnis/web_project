@@ -63,7 +63,7 @@
   }
 }
 
-.transparent-background{
+.white-background{
   position: relative;
   left: 0;
   right: 0;
@@ -71,8 +71,9 @@
   margin-right: auto;
   width: 90%;
   top: 20px;
+  bottom: 20px;
   min-height:86%;
   padding: 2%;
   border-radius: 20px;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(242, 242, 242, 0.9);
 }
