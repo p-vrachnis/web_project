@@ -11,7 +11,7 @@
     <title>Home Page</title>
     <script src="/external/jquery-3.4.1.js"></script>
     <link href="/external/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./css/about.css">
 </head>
 
 <body>
@@ -24,8 +24,13 @@
           <a href='./logout.php'>Logout</a>
         </div>
       </div>
-      <div class="white-background">
-
+      <div class="main_content">
+        <div class = "about">
+          <p id="uni_logo"><img src= "../images/uni_logo.png"> </p>
+          <div class="about-background">
+            <p id="about_box">test text test test test test</p>
+          </div>
+        </div>
       </div>
     </div>
 </body>

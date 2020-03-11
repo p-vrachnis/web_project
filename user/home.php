@@ -11,7 +11,7 @@
     <title>Home Page</title>
     <script src="/external/jquery-3.4.1.js"></script>
     <link href="/external/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./css/home.css">
 </head>
 
 <body>
@@ -24,7 +24,7 @@
           <a href='./logout.php'>Logout</a>
         </div>
       </div>
-      <div class="white-background">
+      <div class="main_content">
 
       </div>
     </div>

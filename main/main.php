@@ -12,7 +12,7 @@
     <script src="/external/jquery-3.4.1.js"></script>
     <link href="/external/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="/external/fontawesome/css/all.css">
-    <link rel="stylesheet" href="/main/main.css">
+    <link rel="stylesheet" href="/main/css/main.css">
 </head>
 
 <body>
