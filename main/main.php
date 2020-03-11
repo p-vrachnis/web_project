@@ -72,7 +72,6 @@
     <!--Show Error/Success Message (Register/Log In) | jQuery-->
     <script>
     //when the webpage is loaded
-    //when the webpage is loaded
     jQuery(document).ready(function($){
       var $msg = "<?php echo $_SESSION['msg']?>";
       <?php unset($_SESSION['msg']);?>

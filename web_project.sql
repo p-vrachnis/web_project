@@ -4,7 +4,7 @@ use web_project;
 
 
 CREATE TABLE users(
-  userID VARCHAR(25) NOT NULL,
+  userID CHAR(128) NOT NULL,
   username VARCHAR(25) NOT NULL,
   password VARCHAR (50) NOT NULL,
   email VARCHAR(50) NOT NULL,

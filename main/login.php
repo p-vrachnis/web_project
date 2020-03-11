@@ -6,11 +6,11 @@
       // Set variables.
       $username = filter_input(INPUT_POST, 'username');
       $password = filter_input(INPUT_POST, 'password');
-      //$password=md5($password);
+      $password=md5($password);
 
       // To prevent mysql injection.
-      //$username = stripcslashes($username);
-      //$password = stripcslashes($password);
+      $username = stripcslashes($username);
+      $password = stripcslashes($password);
 
       // SQL query to check if user data are on the DB.
       $sql = "SELECT * FROM users WHERE username = '$username' and password = '$password'";
