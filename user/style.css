@@ -2,7 +2,7 @@
     height: 100%;
     width: 100%;
     position: absolute;
-    background-image: url(background.jpg);
+    background-image: url(../images/maps_background.jpg);
     background-repeat: repeat-y;
     background-position: center;
     background-size: cover;

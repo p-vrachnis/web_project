@@ -1,6 +1,6 @@
 
 <?php
-
+  echo "<link rel='shortcut icon' href='../images/favicon.ico' type='image/x-icon' />\n";
 ?>
 
 <!DOCTYPE html>
@@ -71,14 +71,13 @@
     <script src="/main/main.js"></script>
     <!--Show Error/Success Message (Register/Log In) | jQuery-->
     <script>
-        $(document).ready(function(){
-            $("#btnLogin").click(function(){
-            });
-        });
-        $(document).ready(function(){
-            $("#btnRegister").click(function(){
-            });
-        });
+    //when the webpage is loaded
+    //when the webpage is loaded
+    jQuery(document).ready(function($){
+      var $msg = "<?php echo $_SESSION['msg']?>";
+      <?php unset($_SESSION['msg']);?>
+      alert($msg);
+    });
     </script>
 </body>
 </html>
