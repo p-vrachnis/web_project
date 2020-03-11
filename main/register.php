@@ -15,7 +15,7 @@
         // Check if username or email field is empty.
         if (!isset($username) || trim($username) || !isset($email)){
             // Check if user has given the right value in the password field.
-            if (preg_match("/^(?=.*\d)(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,16}$$/", $_POST['password'])){
+            if (preg_match("/^(?=.*\d)(?=.*[A-Z])(?!.* )(?=.*[^a-zA-Z0-9]).{8,16}$/", $_POST['password'])){
                 // Check if terms field is checked.
                 if(!empty($_POST['agree']) || $_POST['agree'] == 'agree'){
                     // Check if the connection to the DB is valid.
