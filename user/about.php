@@ -28,10 +28,13 @@
         <div class = "about">
           <p id="uni_logo"><img src= "../images/uni_logo.png"> </p>
           <div class="about-background">
-            <p id="about_box">test text test test test test</p>
+            <p id="about_text">sdadas </p>
           </div>
         </div>
       </div>
     </div>
+
+<script src="/user/about_text.js"></script>
+
 </body>
 </html>
