@@ -1,6 +1,6 @@
 
 <?php
-  echo "<link rel='shortcut icon' href='../images/favicon.ico' type='image/x-icon' />\n";
+
 ?>
 
 <!DOCTYPE html>

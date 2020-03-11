@@ -19,8 +19,8 @@
       <div class="header">
         <a class="logo">Welcome user <?php echo $username ?></a>
         <div class="header-right">
-          <a class="active" href="./home.php">Home</a>
-          <a href="./about.php">About</a>
+          <a href="./home.php">Home</a>
+          <a class="active" href="./about.php">About</a>
           <a href='./logout.php'>Logout</a>
         </div>
       </div>
