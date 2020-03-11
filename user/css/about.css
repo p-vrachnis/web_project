@@ -34,6 +34,13 @@
   font-weight: bold;
 }
 
+.header a.logo img {
+  position: relative;
+  top: -3px;
+  height: 20px;
+  width: auto;
+}
+
 /* Change the background color on mouse-over */
 .header a:hover {
   background-color: #ddd;
