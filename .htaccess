@@ -1,3 +1,4 @@
+Options +FollowSymLinks -Indexes
 RewriteEngine On
 
 # To externally redirect (change URL in browser) /dir/file.php to /dir/file
@@ -12,3 +13,11 @@ RewriteRule ^(.+?)/?$ $1.php [L]
 
 # error 404
 ErrorDocument 404 /error/404.php/
+
+# Deny access to .htaccess
+<Files .htaccess>
+Order allow,deny
+Deny from all
+</Files>
+
+DirectoryIndex /error/404.php/
