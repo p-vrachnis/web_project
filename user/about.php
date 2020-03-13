@@ -1,6 +1,6 @@
 <?php
   include "../session.php";
-  include "./page.php";
+  include "./header.php";
 ?>
 
 <!DOCTYPE html>

@@ -1,7 +1,6 @@
 <?php
   include "../session.php";
-  include "./page.php";
-  $username = $_SESSION['login_user'];
+  include "./header.php";
 ?>
 
 <!DOCTYPE html>
