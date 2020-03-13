@@ -28,13 +28,17 @@
         <div class = "about">
           <p id="uni_logo"><img src= "../images/uni_logo.png"> </p>
           <div class="about-background">
-            <p id="about_text">sdadas </p>
+             <div class="about_text">
+              <p>Εργασία για το μάθημα Προγραμματισμός και Συστήματα στον Παγκόσμιο Ιστό των:</p>
+              <p>Σαραντάκης Δημήτριος AM:5641</p>
+              <p>Γεωργόπουλος Ζαχαρίας AM:</p>
+              <p>Βραχνής Παύλος AM:</p>
+           </div>
           </div>
         </div>
       </div>
     </div>
 
-<script src="/user/about_text.js"></script>
 
 </body>
 </html>
