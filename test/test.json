@@ -1,0 +1,21 @@
+{
+    "name": "JSON",
+    "locations" : [ 
+  {
+    "timestampMs" : "1553542923355",
+    "latitudeE7" : 382093172,
+    "longitudeE7" : 217131794,
+    "accuracy" : 16,
+    "altitude" : 27,
+    "verticalAccuracy" : 2
+  },
+  {
+    "timestampMs" : "1553542950128",
+    "latitudeE7" : 0,
+    "longitudeE7" : 0,
+    "accuracy" : 17,
+    "altitude" : 27,
+    "verticalAccuracy" : 2 
+  }
+  ]
+}

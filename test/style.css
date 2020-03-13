@@ -1,0 +1,12 @@
+#map{
+    width: inherit;
+    height: 100%;
+}
+
+body{
+    margin: 0;
+}
+
+#load{
+  float: right;
+}

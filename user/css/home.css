@@ -73,9 +73,80 @@
   padding: 2%;
   border-radius: 20px;
   background-color: rgba(242, 242, 242, 0.9);
+  overflow: hidden;
 }
 
-/* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
+.user_info{
+  display:inline-block;
+  font-family: Alatsi, sans-serif;
+  position: relative;
+  width: 540px;
+  height: 80%;
+  background: rgba(232, 232, 232, 0.9);
+  border-radius: 20px;
+  border: none;
+  overflow: hidden;
+}
+
+.user_analyse{
+  display:inline-block;
+  font-family: Alatsi, sans-serif;
+  position: relative;
+  width: 540px;
+  height: 80%;
+  background: rgba(232, 232, 232, 0.9);
+  border-radius: 20px;
+  border: none;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.data_load{
+  display:inline-block;
+  font-family: Alatsi, sans-serif;
+  position: relative;
+  width: 540px;
+  height: 80%;
+  background: rgba(232, 232, 232, 0.9);
+  border-radius: 20px;
+  border: none;
+  overflow: hidden;
+}
+
+/* Screen smaller thatn full size*/
+@media screen and (max-width: 1910px) {
+  .user_info{
+    float: left;
+    width: 49.5%;
+  }
+  .user_analyse{
+    float: right;
+    width: 49.5%;
+  }
+  .data_load{
+    top: 10px;
+    width: 100%;
+  }
+}
+
+/* Screen smaller that half size*/
+@media screen and (max-width: 1000px) {
+  .user_info{
+    float: none;
+    width: 100%;
+  }
+  .user_analyse{
+    float: none;
+    width: 100%;
+    top: 10px;
+  }
+  .data_load{
+    top: 20px;
+    width: 100%;
+  }
+}
+
+/* screen for mobile*/
 @media screen and (max-width: 545px) {
   .header a {
     float: none;

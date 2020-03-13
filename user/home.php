@@ -25,7 +25,16 @@
         </div>
       </div>
       <div class="main_content">
-
+        <div class="user_info">
+          <p style="text-align: center">Απεικόνιση στοιχείων χρήστη</p>
+        </div>
+        <div class="user_analyse">
+          <p style="text-align: center">Ανάλυση στοιχείων χρήστη</p>
+        </div>
+        <div class="data_load">
+          <p style="text-align: center">Upload δεδομένων</p>
+          <?php include "../test/final.php" ?>
+        </div>
       </div>
     </div>
 </body>
