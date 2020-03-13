@@ -20,7 +20,11 @@
       // If result matched $myusername and $mypassword, table row must be 1 row
       if($count == 1) {
         $_SESSION['login_user'] = $username;
-        header ('Location: ../user/home.php');
+        if($username == "admin"){
+          header ('Location: ../admin/home.php');
+        }else{
+          header ('Location: ../user/home.php');
+        }
       }else{
         $_SESSION["msg"]='Login Information Incorrect';
         header ('Location: ../index.php');
