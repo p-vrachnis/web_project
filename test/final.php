@@ -14,8 +14,9 @@
 
 </head>
 <body>
-  <div class="file_manage">
+  <div class="file_manager">
     <input type="file" id="selectFiles" value="Import" />
+    <button id="save">Save</button>
     <button id="load">Load</button>
   </div>
     <div id = "map"></div>

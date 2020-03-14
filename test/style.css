@@ -1,12 +1,9 @@
+
 #map{
     width: inherit;
     height: 100%;
 }
 
-body{
-    margin: 0;
-}
-
-#load{
+#load , #save{
   float: right;
 }

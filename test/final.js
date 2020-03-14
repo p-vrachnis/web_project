@@ -1,7 +1,7 @@
 //???????
 var markers = [];
 
-// JSON file to JAVASCRIPT 
+// JSON file to JAVASCRIPT
 document.getElementById('load').onclick = function(){
     var files = document.getElementById('selectFiles').files;
     console.log(files);
@@ -13,7 +13,7 @@ document.getElementById('load').onclick = function(){
     var fr = new FileReader();
 
     fr.onload = function(e){
-         
+
         var result = JSON.parse(e.target.result);
         console.log(result);
         const{name} = result;
@@ -33,15 +33,16 @@ document.getElementById('load').onclick = function(){
     fr.readAsText(files.item(0));
 };
 
+
 // Creating map options
 var mapOptions = {
     center: [38.230462,21.753150],
     zoom: 13
  }
- 
+
  // Creating a map object
  var map = new L.map('map', mapOptions);
- 
+
  // Creating a Layer object
  var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
  // Adding layer to the map
@@ -69,7 +70,7 @@ function showMarker(latitude, longitude, id){
     var popupContent =
         '<p>Do you want to delete this marker?</p>' +
         '<button onclick=deleteMarker(' + id + ')>Delete Marker</button>';
-    
+
     var markerPopup = mymarker.bindPopup(popupContent, {
         closeButton: false
     });
@@ -82,8 +83,13 @@ function deleteMarker(id){
     markers.forEach(function(mymarker){
         if (mymarker._id == id)
             map.removeLayer(mymarker);
-        else 
+        else
             new_markers.push(mymarker);
     });
     markers = new_markers;
 }
+
+//save button
+document.getElementById('save').onclick = function(){
+  alert("i will save to database");
+};
