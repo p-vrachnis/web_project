@@ -34,10 +34,11 @@
             </div>
         </div>
         <div class="user_analyse">
-          <p style="text-align: center">Ανάλυση στοιχείων χρήστη</p>
+          <div class="container">
+            <p style="text-align: center">Ανάλυση στοιχείων χρήστη</p>
+          </div>
         </div>
         <div class="data_load">
-          <p style="text-align: center">Upload δεδομένων</p>
           <?php include "../test/final.php" ?>
         </div>
       </div>
