@@ -4,6 +4,9 @@
   overflow: hidden;
   background-color: #303030;
   padding: 5px;
+  position:fixed;
+  width: 100%;
+  z-index: 1;
 }
 
 /* Style the header links */
