@@ -20,6 +20,13 @@
           <a href="./about.php">About</a>
           <a href='../main/logout.php'>Logout</a>
         </div>
+        <div id="mySidepanel" class="sidepanel">
+          <b href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</b>
+          <a href="./home.php">Home</a>
+          <a href="./about.php">About</a>
+          <a href='../main/logout.php'>Logout</a>
+        </div>
+        <button class="openbtn" onclick="openNav()">&#9776;</button>
       </div>
 
   <script>
@@ -30,7 +37,20 @@
           if($(this).attr("href") == "./"+pgurl+".php" )
           $(this).addClass("active");
      })
+     $("#mySidepanel a").each(function(){
+          if($(this).attr("href") == "./"+pgurl+".php" )
+          $(this).addClass("active");
+     })
    });
+
+   function openNav() {
+  document.getElementById("mySidepanel").style.width = "140px";
+}
+
+/* Set the width of the sidebar to 0 (hide it) */
+function closeNav() {
+  document.getElementById("mySidepanel").style.width = "0";
+}
   </script>
 </body>
 </html>
