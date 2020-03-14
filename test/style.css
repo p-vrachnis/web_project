@@ -4,6 +4,10 @@
     height: 100%;
 }
 
+#selectFiles{
+  width: 70%;
+}
+
 #load , #save{
   float: right;
 }

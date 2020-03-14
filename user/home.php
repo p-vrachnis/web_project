@@ -18,7 +18,20 @@
     <div class="design">
       <div class="main_content">
         <div class="user_info">
-          <p style="text-align: center">Απεικόνιση στοιχείων χρήστη</p>
+            <div class="container">
+              <div id="score">
+                <a>Score οικολογικης κίνησης</a>
+              </div>
+              <div id="date-range">
+                <a>Περίοδος εγγραφών χρήστη</a>
+              </div>
+              <div id="last-upload">
+                <a>Ημερομηνία τελευταίου upload</a>
+              </div>
+              <div id="leaderboard">
+                <a >Leaderboard 3 users</a>
+              </div>
+            </div>
         </div>
         <div class="user_analyse">
           <p style="text-align: center">Ανάλυση στοιχείων χρήστη</p>
