@@ -107,12 +107,15 @@ function resetSelectedState() {
 
 }
 function setSelectedLayers(markers) {
-    resetSelectedState();
     markers.forEach(marker => {
-      alert("marker found");
+      alert(marker.getLatLng());
       marker.setIcon(new L.Icon.Default({ className: 'selected '}));
     });
 }
+
+map.on('lasso.enabled', () => {
+  resetSelectedState();
+});
 
 map.on('lasso.finished', event => {
     setSelectedLayers(event.layers);
