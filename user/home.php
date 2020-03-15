@@ -8,8 +8,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="/external/jquery-3.4.1.js"></script>
-    <link href="/external/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <script src="../external/jquery-3.4.1.js"></script>
+    <link href="../external/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="./css/home.css">
     <title>Home Page</title>
 </head>
@@ -36,10 +36,11 @@
         <div class="user_analyse">
           <div class="container">
             <p style="text-align: center">Ανάλυση στοιχείων χρήστη</p>
+
           </div>
         </div>
         <div class="data_load">
-          <?php include "../test/final.php" ?>
+          <?php include "../map/leaflet.php" ?>
         </div>
       </div>
     </div>
