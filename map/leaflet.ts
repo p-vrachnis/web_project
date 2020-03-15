@@ -12,7 +12,7 @@ leaflasso.addEventListener('click', () => {
 // control
 type LassoControlOptions = LassoHandlerOptions & L.ControlOptions;
 
-L.control.lasso(options).addTo(map);
+L.control.lasso(mapOptions).addTo(map);
 
 // Finished event
 interface LassoHandlerFinishedEventData {
