@@ -26,7 +26,7 @@
     </div>
 
     <script src="../external/leaflet/leaflet.js"></script>
-    <script src="https://unpkg.com/leaflet-lasso@2.0.6/dist/leaflet-lasso.umd.min.js"></script>
+    <script src="../external/leaflet-lasso.umd.min.js"></script>
     <script src="../map/leaflet.js"></script>
 
 </body>

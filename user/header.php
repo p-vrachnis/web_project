@@ -17,7 +17,7 @@
         <a class="logo" href="./home.php"><img src= "../images/logo.png">Welcome user <?php echo $username ?></a>
         <div id="header-right">
           <a href="./home.php">Home</a>
-          <a href="../test.php">About</a>
+          <a href="./about.php">About</a>
           <a href='../main/logout.php'>Logout</a>
         </div>
         <div id="mySidepanel" class="sidepanel">

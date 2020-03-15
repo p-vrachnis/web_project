@@ -106,9 +106,9 @@ function resetSelectedState() {
     });
 
 }
+
 function setSelectedLayers(markers) {
     markers.forEach(marker => {
-      alert(marker.getLatLng());
       marker.setIcon(new L.Icon.Default({ className: 'selected '}));
     });
 }
