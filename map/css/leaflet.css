@@ -2,14 +2,15 @@
   margin-top: 10px;
 }
 
-#map{
-    width: inherit;
-    height: 100%;
-}
-
 #load , #save{
   float: right;
 }
+
+#map{
+    width: 100%;
+    height: 100%;
+}
+
 
 @media screen and (max-width: 480px) {
   #selectFiles{
