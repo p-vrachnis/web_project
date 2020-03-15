@@ -44,9 +44,9 @@ var mapOptions = {
  var map = new L.map('map', mapOptions);
 
  // Creating a Layer object
- var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+ var map_layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
  // Adding layer to the map
- map.addLayer(layer);
+ map.addLayer(map_layer);
 
  // Function which converts number to a string and inserting a decimal point in the third place of it.
  function insertDecimal(num) {
@@ -93,4 +93,27 @@ function deleteMarker(id){
 document.getElementById('save').onclick = function(){
   alert("i will save to database");
 };
-//---------------------------------------------------------------------
+
+//--------------------------------------------------------------------- lasso
+showMarker(38246397, 21735134, 1);
+const lassoControl = L.control.lasso().addTo(map);
+
+function resetSelectedState() {
+    map.eachLayer(layer => {
+      if (layer instanceof L.Marker) {
+        layer.setIcon(new L.Icon.Default());
+      }
+    });
+
+}
+function setSelectedLayers(markers) {
+    resetSelectedState();
+    markers.forEach(marker => {
+      alert("marker found");
+      marker.setIcon(new L.Icon.Default({ className: 'selected '}));
+    });
+}
+
+map.on('lasso.finished', event => {
+    setSelectedLayers(event.layers);
+});

@@ -28,9 +28,6 @@
     <script src="../external/leaflet/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet-lasso@2.0.6/dist/leaflet-lasso.umd.min.js"></script>
     <script src="../map/leaflet.js"></script>
-    <script type="text/typescript" src="../map/leaflet.ts"></script>
-
-    <script src="../external/typescript.min.js"></script>
-    <script src="../external/typescript.compile.min.js"></script>
+    
 </body>
 </html>
