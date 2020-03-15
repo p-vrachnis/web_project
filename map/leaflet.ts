@@ -1,25 +1,36 @@
-// Lasso
-// Handler
-interface LassoHandlerOptions {
-   polygon?: L.PolylineOptions,
-   intersect?: boolean;
+showMarker(382093172, 217131794, 1);
+const layers = [
+    markers,
+];
+const lassoControl = L.control.lasso().addTo(map);
+function resetSelectedState() {
+    map.eachLayer(layer => {
+        if (layer instanceof L.Marker) {
+            layer.setIcon(new L.Icon.Default());
+        } else if (layer instanceof L.Path) {
+            layer.setStyle({ color: '#3388ff' });
+        }
+    });
+
 }
-const lasso = L.lasso(map, mapOptions);
-leaflasso.addEventListener('click', () => {
-    lasso.enable();
+function setSelectedLayers(layers) {
+    resetSelectedState();
+
+    layers.forEach(layer => {
+        if (layer instanceof L.Marker) {
+            layer.setIcon(new L.Icon.Default({ className: 'selected '}));
+        } else if (layer instanceof L.Path) {
+            layer.setStyle({ color: '#ff4620' });
+        }
+    });
+}
+
+map.on('mousedown', () => {
+    resetSelectedState();
 });
-
-// control
-type LassoControlOptions = LassoHandlerOptions & L.ControlOptions;
-
-L.control.lasso(mapOptions).addTo(map);
-
-// Finished event
-interface LassoHandlerFinishedEventData {
-   latLngs: L.LatLng[];
-   layers: L.Layer[];
-}
-
-map.on('lasso.finished', (event: LassoHandlerFinishedEventData) => {
-   console.log(event.layers);
+map.on('lasso.finished', event => {
+    setSelectedLayers(event.layers);
+});
+map.on('lasso.enabled', () => {
+    resetSelectedState();
 });

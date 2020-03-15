@@ -20,7 +20,7 @@
     <div id = "map">
       <div class="leaflet-top leaflet-right">
         <div class="leaflet-bar leaflet-control">
-          <a class="leaflet-control-lasso" id="leaflasso" href="#" title="Toggle Lasso" role="button" aria-label="Toggle Lasso"></a>
+          <a class="leaflet-control-lasso" href="#" title="Toggle Lasso" role="button" aria-label="Toggle Lasso"></a>
         </div>
       </div>
     </div>
