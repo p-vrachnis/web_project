@@ -33,6 +33,7 @@
   //makes active button blue
   $(function() {
      var pgurl = window.location.href.substr(window.location.href.lastIndexOf("/")+1);
+     pgurl = pgurl.replace('#','');
      $("#header-right a").each(function(){
           if($(this).attr("href") == "./"+pgurl+".php" )
           $(this).addClass("active");
