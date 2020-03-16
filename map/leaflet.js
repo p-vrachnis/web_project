@@ -3,36 +3,40 @@ var markers = [];
 
 // JSON file to JAVASCRIPT
 document.getElementById('load').onclick = function(){
-    var files = document.getElementById('selectFiles').files;
-    console.log(files);
+    if (!Array.isArray(markers) || !markers.length) {
+      var files = document.getElementById('selectFiles').files;
+      console.log(files);
 
-    if(files.length <= 0){
-        return false;
-    }
+      if(files.length <= 0){
+          return false;
+      }
 
-    var fr = new FileReader();
+      var fr = new FileReader();
 
-    fr.onload = function(e){
+      fr.onload = function(e){
 
-        var result = JSON.parse(e.target.result);
-        console.log(result);
-        const{name} = result;
-        console.log(name);
-        console.log(result.locations[0].latitudeE7);
-        console.log(result.locations[0].longitudeE7);
-        console.log(result.locations[0].timestampMs);
+          var result = JSON.parse(e.target.result);
+          console.log(result);
+          const{name} = result;
+          console.log(name);
+          console.log(result.locations[0].latitudeE7);
+          console.log(result.locations[0].longitudeE7);
+          console.log(result.locations[0].timestampMs);
 
-        // Show all Coordinates from JSON file into the leaflet map.
-        for (i=0; i<result.locations.length; i++){
-            var lat = result.locations[i].latitudeE7;
-            var lon = result.locations[i].longitudeE7;
-            var id = result.locations[i].timestampMs;
-            if(arePointsNear([lat,lon],[38.230462,21.753150],10000)){
-              showMarker(lat, lon, id);
-            }
-        }
-    }
-    fr.readAsText(files.item(0));
+          // Show all Coordinates from JSON file into the leaflet map.
+          for (i=0; i<result.locations.length; i++){
+              var lat = result.locations[i].latitudeE7;
+              var lon = result.locations[i].longitudeE7;
+              var id = result.locations[i].timestampMs;
+              if(arePointsNear([lat,lon],[38.230462,21.753150],10000)){
+                showMarker(lat, lon, id);
+              }
+          }
+      }
+      fr.readAsText(files.item(0));
+  }else{
+    alert("Markers exist, load denied");
+  }
 };
 
 //check if within kilometers
@@ -70,8 +74,6 @@ function showMarker(latitude, longitude, id){
     lon = insertDecimal(longitude);
     var mymarker = L.marker([lat,lon]);
     mymarker._id = id;
-    //markers = $.grep(markers, function(el){return $.inArray(el, del_markers) == -1});
-    if(notContainsMarker(mymarker, markers)){
         mymarker.addTo(map);
         markers.push(mymarker);
         var popupContent =
@@ -81,7 +83,6 @@ function showMarker(latitude, longitude, id){
         var markerPopup = mymarker.bindPopup(popupContent, {
             closeButton: false
         });
-    }
 }
 
 function notContainsMarker(obj, list) {
