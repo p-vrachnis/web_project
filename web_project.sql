@@ -29,6 +29,6 @@ CREATE TABLE user_data(
 CREATE TABLE user_score(
 	username VARCHAR(25) NOT NULL,
 	score FLOAT(5) NOT NULL,
-	timestampMs VARCHAR(13) NOT NULL,
+	month INT(2) NOT NULL,
 	FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE = InnoDB CHARACTER SET greek COLLATE greek_general_ci;
