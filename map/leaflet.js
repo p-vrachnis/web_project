@@ -96,7 +96,6 @@ document.getElementById('save').onclick = function(){
 };
 
 //--------------------------------------------------------------------- lasso
-showMarker(38246397, 21735134, 1);
 const lassoControl = L.control.lasso().addTo(map);
 
 function resetSelectedState() {
