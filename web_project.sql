@@ -1,4 +1,4 @@
-drop database web_project;
+drop database if exists web_project;
 create database web_project;
 use web_project;
 
