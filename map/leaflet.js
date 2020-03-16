@@ -12,7 +12,7 @@ document.getElementById('load').onclick = function(){
       }
 
       var fr = new FileReader();
-
+      fr.readAsText(files.item(0));
       fr.onload = function(e){
 
           var result = JSON.parse(e.target.result);
@@ -32,8 +32,8 @@ document.getElementById('load').onclick = function(){
                 showMarker(lat, lon, id);
               }
           }
+          fr.abort();
       }
-      fr.readAsText(files.item(0));
   }else{
     alert("Markers exist, load denied");
   }
