@@ -27,15 +27,27 @@ document.getElementById('load').onclick = function(){
             var lat = result.locations[i].latitudeE7;
             var lon = result.locations[i].longitudeE7;
             var id = result.locations[i].timestampMs;
-            showMarker(lat, lon, id);
+            if(arePointsNear([lat,lon],[38.230462,21.753150],10000)){
+              showMarker(lat, lon, id);
+            }
+
         }
     }
     fr.readAsText(files.item(0));
 };
 
+//check if within kilometers
+function arePointsNear(checkPoint, centerPoint, km) {
+  var ky = 40000 / 360;
+  var kx = Math.cos(Math.PI * centerPoint[0] / 180.0) * ky;
+  var dx = Math.abs(centerPoint[1] - checkPoint[1]) * kx;
+  var dy = Math.abs(centerPoint[0] - checkPoint[0]) * ky;
+  return Math.sqrt(dx * dx + dy * dy) >= km;
+}
+
 // Creating map options
 var mapOptions = {
-    center: [38.246397,21.735134],
+    center: [38.230462,21.753150],
     zoom: 13.3
  }
 

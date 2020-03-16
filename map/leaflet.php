@@ -17,13 +17,7 @@
     <button id="save">Save</button>
     <button id="load">Load</button>
   </div>
-    <div id = "map">
-      <div class="leaflet-top leaflet-right">
-        <div class="leaflet-bar leaflet-control">
-          <a class="leaflet-control-lasso" href="#" title="Toggle Lasso" role="button" aria-label="Toggle Lasso"></a>
-        </div>
-      </div>
-    </div>
+    <div id = "map"> </div>
 
     <script src="../external/leaflet/leaflet.js"></script>
     <script src="../external/leaflet-lasso.umd.min.js"></script>
