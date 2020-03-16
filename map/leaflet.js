@@ -89,13 +89,14 @@ function deleteMarker(id){
     markers = new_markers;
 }
 
+
 //save button
 document.getElementById('save').onclick = function(){
   alert("i will save to database");
 };
 
 //--------------------------------------------------------------------- lasso
-showMarker(38246397, 21735134, "test_marker");
+showMarker(38246397, 21735134, 1);
 const lassoControl = L.control.lasso().addTo(map);
 
 function resetSelectedState() {
@@ -110,17 +111,56 @@ var test_icon = L.icon({
     iconUrl: '../images/marker-icon_red.png',
 });
 
-function setSelectedLayers(markers) {
-    markers.forEach(marker => {
+function setSelectedLayers(layers) {
+    layers.forEach(marker => {
       //marker.setIcon(new L.Icon.Default({ className: 'selected '}));
       marker.setIcon(test_icon);
     });
 }
 
+
 map.on('lasso.enabled', () => {
   resetSelectedState();
 });
 
+var del_markers=[];
 map.on('lasso.finished', event => {
-    setSelectedLayers(event.layers);
+    del_markers = event.layers;
+    setSelectedLayers(del_markers);
+    if (del_markers && del_markers.length) {
+      map.once("click", function(e) {
+        if (del_markers.length==1){
+          var popupContent =
+              '<p>Do you want to delete this marker?</p>' +
+              '<button onclick=deleteSelectedMarkers()>Delete Marker</button>';
+        }else{
+          var popupContent =
+              '<p>Do you want to delete these markers?</p>' +
+              '<button onclick=deleteSelectedMarkers()>Delete Markers</button>';
+        }
+        L.popup({closeButton: false}).setLatLng([e.latlng.lat, e.latlng.lng]).setContent(popupContent).openOn(map);
+      });
+    }
+});
+
+function deleteSelectedMarkers() {
+    markers = $.grep(markers, function(el){return $.inArray(el, del_markers) == -1});
+    del_markers.forEach(function(marker){
+      map.removeLayer(marker);
+    });
+    map.closePopup();
+}
+
+map.on("mousedown", function(e) {
+  resetSelectedState();
+});
+
+// mouseEventToLatLng
+
+toggleLasso.addEventListener('click', () => {
+    if (lassoControl.enabled()) {
+        lassoControl.disable();
+    } else {
+        lassoControl.enable();
+    }
 });
