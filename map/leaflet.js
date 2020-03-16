@@ -95,7 +95,7 @@ document.getElementById('save').onclick = function(){
 };
 
 //--------------------------------------------------------------------- lasso
-showMarker(38246397, 21735134, 1);
+showMarker(38246397, 21735134, "test_marker");
 const lassoControl = L.control.lasso().addTo(map);
 
 function resetSelectedState() {
@@ -106,10 +106,14 @@ function resetSelectedState() {
     });
 
 }
+var test_icon = L.icon({
+    iconUrl: '../images/marker-icon_red.png',
+});
 
 function setSelectedLayers(markers) {
     markers.forEach(marker => {
-      marker.setIcon(new L.Icon.Default({ className: 'selected '}));
+      //marker.setIcon(new L.Icon.Default({ className: 'selected '}));
+      marker.setIcon(test_icon);
     });
 }
 
