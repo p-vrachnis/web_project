@@ -5,7 +5,7 @@
 
     // Check if button submit is set to give access to the DB.
     if($_SERVER['REQUEST_METHOD'] == "POST") {
-      include_once '../connect_db.php';
+      include_once '../external/connect_db.php';
         //  Grab a Form data and store it in variables.
         $username = filter_input(INPUT_POST, 'username');
         $password = filter_input(INPUT_POST, 'password');

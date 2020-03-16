@@ -2,7 +2,7 @@
     // Begin a session.
     session_start();
     if($_SERVER['REQUEST_METHOD'] == "POST") {
-      include_once '../connect_db.php';
+      include_once '../external/connect_db.php';
       // Set variables.
       $username = filter_input(INPUT_POST, 'username');
       $password = filter_input(INPUT_POST, 'password');
