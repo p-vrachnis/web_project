@@ -33,7 +33,7 @@
   font-family: Alatsi, sans-serif;
   position: relative;
   width: 540px;
-  height: 80%;
+  height: 760px;
   background: rgba(232, 232, 232, 0.9);
   border-radius: 20px;
   border: none;
@@ -45,7 +45,7 @@
   font-family: Alatsi, sans-serif;
   position: relative;
   width: 540px;
-  height: 80%;
+  height: 760px;
   background: rgba(232, 232, 232, 0.9);
   border-radius: 20px;
   border: none;
@@ -58,7 +58,7 @@
   font-family: Alatsi, sans-serif;
   position: relative;
   width: 540px;
-  height: 80%;
+  height: 760px;
   background: rgba(232, 232, 232, 0.9);
   border-radius: 20px;
   border: none;
@@ -76,7 +76,7 @@
     width: 49.5%;
   }
   .data_load{
-    top: 10px;
+    margin-top: 15px;
     width: 100%;
   }
 }
@@ -84,16 +84,13 @@
 /* Screen smaller that half size*/
 @media screen and (max-width: 1000px) {
   .user_info{
-    float: none;
     width: 100%;
   }
   .user_analyse{
-    float: none;
     width: 100%;
-    top: 10px;
+    margin-top: 2%;
   }
   .data_load{
-    top: 20px;
-    width: 100%;
+    margin-top: 2%;
   }
 }
