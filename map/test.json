@@ -34,6 +34,22 @@
     "verticalAccuracy" : 2
   },
   {
+    "timestampMs" : "1553642960128",
+    "latitudeE7" : 382153172,
+    "longitudeE7" : 217531794,
+    "accuracy" : 17,
+    "altitude" : 27,
+    "verticalAccuracy" : 2
+  },
+  {
+    "timestampMs" : "1553545960128",
+    "latitudeE7" : 382163172,
+    "longitudeE7" : 217731794,
+    "accuracy" : 17,
+    "altitude" : 27,
+    "verticalAccuracy" : 2
+  },
+  {
     "timestampMs" : "1556542950128",
     "latitudeE7" : 0,
     "longitudeE7" : 0,
