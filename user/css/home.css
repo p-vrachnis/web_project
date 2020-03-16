@@ -51,7 +51,6 @@
   border: none;
   overflow: hidden;
   vertical-align: top;
-  margin-left: 5px;
 }
 
 .data_load{
@@ -64,7 +63,6 @@
   border-radius: 20px;
   border: none;
   overflow: hidden;
-  margin-left: 5px;
 }
 
 /* Screen smaller thatn full size*/
@@ -76,12 +74,10 @@
   .user_analyse{
     float: right;
     width: 49.5%;
-    margin-left: 0;
   }
   .data_load{
     margin-top: 15px;
     width: 100%;
-    margin-left: 0;
   }
 }
 
