@@ -30,7 +30,6 @@ document.getElementById('load').onclick = function(){
             if(arePointsNear([lat,lon],[38.230462,21.753150],10000)){
               showMarker(lat, lon, id);
             }
-
         }
     }
     fr.readAsText(files.item(0));
@@ -69,24 +68,30 @@ function showMarker(latitude, longitude, id){
 
     lat = insertDecimal(latitude);
     lon = insertDecimal(longitude);
-
     var mymarker = L.marker([lat,lon]);
-    mymarker.addTo(map);
-    //map.addLayer(mymarker);
-
-    markers.push(mymarker);
-
     mymarker._id = id;
+    //markers = $.grep(markers, function(el){return $.inArray(el, del_markers) == -1});
+    if(notContainsMarker(mymarker, markers)){
+        mymarker.addTo(map);
+        markers.push(mymarker);
+        var popupContent =
+            '<p>Do you want to delete this marker?</p>' +
+            '<button onclick=deleteMarker(' + id + ')>Delete Marker</button>';
 
-    var popupContent =
-        '<p>Do you want to delete this marker?</p>' +
-        '<button onclick=deleteMarker(' + id + ')>Delete Marker</button>';
-
-    var markerPopup = mymarker.bindPopup(popupContent, {
-        closeButton: false
-    });
+        var markerPopup = mymarker.bindPopup(popupContent, {
+            closeButton: false
+        });
+    }
 }
 
+function notContainsMarker(obj, list) {
+    for (var i = 0; i < list.length; i++) {
+        if (list[i]._id === obj._id) {
+          return false;
+        }
+    }
+    return true;
+}
 
 function deleteMarker(id){
     console.log(markers);
