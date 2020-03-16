@@ -33,11 +33,10 @@ document.getElementById('load').onclick = function(){
     fr.readAsText(files.item(0));
 };
 
-
 // Creating map options
 var mapOptions = {
-    center: [38.230462,21.753150],
-    zoom: 13
+    center: [38.246397,21.735134],
+    zoom: 13.3
  }
 
  // Creating a map object
@@ -96,6 +95,7 @@ document.getElementById('save').onclick = function(){
 };
 
 //--------------------------------------------------------------------- lasso
+
 const lassoControl = L.control.lasso().addTo(map);
 
 function resetSelectedState() {
