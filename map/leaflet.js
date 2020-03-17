@@ -5,7 +5,6 @@ var markers = [];
 document.getElementById('load').onclick = function(){
     if (!Array.isArray(markers) || !markers.length) {
       var files = document.getElementById('selectFiles').files;
-      console.log(files);
 
       if(files.length <= 0){
           return false;
@@ -103,21 +102,19 @@ function deleteMarker(id){
 //save button
 document.getElementById('save').onclick = function(){
 
-  console.log(markers[0]);
+  var dbArray = [];
+  var tempArray = [];
 
-  var dbArray = new Array();
-  var tempArray = new Array();
+  for( var i = 0; i<markers.length; i++){
+    timestamp = markers[i]._id;
+    lat = markers[i]._latlng.lat;
+    lng = markers[i]._latlng.lng;
+    activity = markers[i].activity;
 
-  for( index = 0; index<markers.length; index++){
-    v2 = markers[index]._id;
-    v3 = markers[index]._latlng['lat'];
-    v4 = markers[index]._latlng['lng'];
-    v5 = markers[index].activity;
-
-    tempArray.push(v2);
-    tempArray.push(v3);
-    tempArray.push(v4);
-    tempArray.push(v5);
+    tempArray.push(timestamp);
+    tempArray.push(lat);
+    tempArray.push(lng);
+    tempArray.push(activity);
 
     dbArray.push(tempArray);
 
