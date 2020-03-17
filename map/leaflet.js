@@ -102,7 +102,29 @@ function deleteMarker(id){
 
 //save button
 document.getElementById('save').onclick = function(){
-  alert("i will save to database");
+
+  console.log(markers[0]);
+
+  var dbArray = new Array();
+  var tempArray = new Array();
+  
+  for( index = 0; index<markers.length; index++){
+    v2 = markers[index]._id;
+    v3 = markers[index]._latlng['lat'];
+    v4 = markers[index]._latlng['lng'];
+    v5 = markers[index].activity;
+  
+    tempArray.push(v2);
+    tempArray.push(v3);
+    tempArray.push(v4);
+    tempArray.push(v5);
+
+    dbArray.push(tempArray);
+
+    tempArray = [];
+  }
+
+  console.log(dbArray);
 };
 
 //--------------------------------------------------------------------- lasso
