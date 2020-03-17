@@ -25,7 +25,7 @@ document.getElementById('load').onclick = function(){
               if(typeof result.locations[i].activity != "undefined") {
                 var activity = result.locations[i].activity[0].activity[0].type;
               }else{
-                var activity = "undefined";
+                var activity = null;
               }
               if(arePointsNear([lat,lon],[38.230462,21.753150],10000)){
                 showMarker(lat, lon, timestamp, activity);
