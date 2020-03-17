@@ -19,9 +19,10 @@ document.getElementById('load').onclick = function(){
 
           // Show all Coordinates from JSON file into the leaflet map.
           for (var i=0; i<result.locations.length; i++){
-              var lat = result.locations[i].latitudeE7;
-              var lon = result.locations[i].longitudeE7;
-              if(arePointsNear([lat,lon],[38230462,21753150],10000)){
+              var lat = insertDecimal(result.locations[i].latitudeE7);
+              var lon = insertDecimal(result.locations[i].longitudeE7);
+
+              if(distance([lat,lon],[38.230462,21.753150]) <= 10){
                 var timestamp = result.locations[i].timestampMs;
                 if(typeof result.locations[i].activity != "undefined") {
                   var activity = result.locations[i].activity[0].activity[0].type;
@@ -38,13 +39,15 @@ document.getElementById('load').onclick = function(){
   }
 };
 
-//check if within kilometers
-function arePointsNear(checkPoint, centerPoint, km) {
-  var ky = 40000 / 360;
-  var kx = Math.cos(Math.PI * centerPoint[0] / 180.0) * ky;
-  var dx = Math.abs(centerPoint[1] - checkPoint[1]) * kx;
-  var dy = Math.abs(centerPoint[0] - checkPoint[0]) * ky;
-  return Math.sqrt(dx * dx + dy * dy) >= km;
+// distance between point and center
+function distance(point, center) {
+  var p = 0.017453292519943295;    // Math.PI / 180
+  var c = Math.cos;
+  var a = 0.5 - c((center[0] - point[0]) * p)/2 +
+          c(point[0] * p) * c(center[0] * p) *
+          (1 - c((center[1] - point[1]) * p))/2;
+
+  return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
 }
 
 // Creating map options
@@ -69,9 +72,7 @@ var mapOptions = {
 // Function which show the position (Marker) of the user on the Map Layer.
 function showMarker(latitude, longitude, timestamp, activity){
 
-    lat = insertDecimal(latitude);
-    lon = insertDecimal(longitude);
-    var mymarker = L.marker([lat,lon]);
+    var mymarker = L.marker([latitude,longitude]);
     mymarker._id = timestamp;
     mymarker.activity = activity;
     mymarker.addTo(map);
