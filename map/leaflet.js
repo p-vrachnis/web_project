@@ -21,13 +21,13 @@ document.getElementById('load').onclick = function(){
           for (var i=0; i<result.locations.length; i++){
               var lat = result.locations[i].latitudeE7;
               var lon = result.locations[i].longitudeE7;
-              var timestamp = result.locations[i].timestampMs;
-              if(typeof result.locations[i].activity != "undefined") {
-                var activity = result.locations[i].activity[0].activity[0].type;
-              }else{
-                var activity = null;
-              }
               if(arePointsNear([lat,lon],[38.230462,21.753150],10000)){
+                var timestamp = result.locations[i].timestampMs;
+                if(typeof result.locations[i].activity != "undefined") {
+                  var activity = result.locations[i].activity[0].activity[0].type;
+                }else{
+                  var activity = null;
+                }
                 showMarker(lat, lon, timestamp, activity);
               }
           }
