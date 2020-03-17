@@ -1,3 +1,6 @@
+<?php
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +17,7 @@
 <body>
   <div class="buttons">
     <input type="file" id="selectFiles" value="Import" />
-    <button id="save" type="save" name="save" value="save">Save</button>
+    <button id="save">Save</button>
     <button id="load">Load</button>
   </div>
     <div id = "map"> </div>

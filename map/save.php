@@ -1,12 +1,11 @@
 <?php
+  session_start();
   $username = $_SESSION['login_user'];
+  $data = $_POST['data'];
 
-  $data = filter_input(INPUT_POST, 'dbArray', FILTER_SANITIZE_STRING);
-
-  console.log($data);
   // SQL Insert Query of the data.
-  for( $index = 0; $index < sizof($data); $index++ ){
-
+  include_once '../external/connect_db.php';
+  for( $index = 0; $index < sizeof($data); $index++ ){
     $timestampMs = $data[$index][0];
     $latitudeE7 = $data[$index][1];
     $longitudeE7 = $data[$index][2];

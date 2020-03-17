@@ -122,11 +122,13 @@ document.getElementById('save').onclick = function(){
   }
 
   $.ajax({
-    type: 'POST',
-    data: dbArray,
-    dataType: 'array',
-    url: '../map/save.php'
-  });
+    data: 'data=' + dbArray,
+    url: '../map/save.php',
+    method: 'POST', // or GET
+    success: function(msg) {
+        alert(msg+"Markers saved successfully");
+    }
+});
 
   }else{
     alert("No data to save");
