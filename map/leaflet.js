@@ -107,13 +107,13 @@ document.getElementById('save').onclick = function(){
 
   var dbArray = new Array();
   var tempArray = new Array();
-  
+
   for( index = 0; index<markers.length; index++){
     v2 = markers[index]._id;
     v3 = markers[index]._latlng['lat'];
     v4 = markers[index]._latlng['lng'];
     v5 = markers[index].activity;
-  
+
     tempArray.push(v2);
     tempArray.push(v3);
     tempArray.push(v4);
@@ -185,14 +185,4 @@ function deleteSelectedMarkers() {
 
 map.on("mousedown", function(e) {
   resetSelectedState();
-});
-
-// mouseEventToLatLng
-
-toggleLasso.addEventListener('click', () => {
-    if (lassoControl.enabled()) {
-        lassoControl.disable();
-    } else {
-        lassoControl.enable();
-    }
 });
