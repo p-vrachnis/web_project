@@ -1,8 +1,7 @@
 <?php
   session_start();
   $username = $_SESSION['login_user'];
-  $data = $_POST['data'];
-
+  $data = json_decode($_POST['data']);
   // SQL Insert Query of the data.
   include_once '../external/connect_db.php';
   for( $index = 0; $index < sizeof($data); $index++ ){
@@ -19,4 +18,5 @@
      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
   }
+
 ?>

@@ -121,12 +121,13 @@ document.getElementById('save').onclick = function(){
     tempArray = [];
   }
 
+  array = JSON.stringify(dbArray)
   $.ajax({
-    data: 'data=' + dbArray,
+    data: 'data=' + array,
     url: '../map/save.php',
     method: 'POST', // or GET
     success: function(msg) {
-        alert(msg+"Markers saved successfully");
+        alert(msg);
     }
 });
 
