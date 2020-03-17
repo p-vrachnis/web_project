@@ -86,14 +86,6 @@ function showMarker(latitude, longitude, timestamp, activity){
     });
 }
 
-function notContainsMarker(obj, list) {
-    for (var i = 0; i < list.length; i++) {
-        if (list[i]._id === obj._id) {
-          return false;
-        }
-    }
-    return true;
-}
 
 function deleteMarker(id){
     console.log(markers);
