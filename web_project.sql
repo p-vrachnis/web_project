@@ -19,10 +19,10 @@ INSERT INTO users VALUES
 CREATE TABLE user_data(
 	username VARCHAR(25) NOT NULL,
 	timestampMs VARCHAR(13) NOT NULL,
-	latitudeE7 INT(10) NOT NULL,
-	longitudeE7 INT(10) NOT NULL,
+	latitudeE7 INT NOT NULL,
+	longitudeE7 INT NOT NULL,
 	activity VARCHAR(10),
-    PRIMARY KEY(username),
+    PRIMARY KEY(username,timestampMs),
 	FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE = InnoDB CHARACTER SET greek COLLATE greek_general_ci;
 
@@ -30,7 +30,7 @@ CREATE TABLE user_data(
 CREATE TABLE user_score(
 	username VARCHAR(25) NOT NULL,
 	score FLOAT(5) NOT NULL,
-	month INT(2) NOT NULL,
-    PRIMARY KEY(username),
+	score_month INT NOT NULL,
+    PRIMARY KEY(username,score_month),
 	FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE = InnoDB CHARACTER SET greek COLLATE greek_general_ci;

@@ -70,7 +70,6 @@ var mapOptions = {
  }
 // Function which show the position (Marker) of the user on the Map Layer.
 function showMarker(latitude, longitude, timestamp, activity){
-
     var mymarker = L.marker([latitude,longitude]);
     mymarker._id = timestamp;
     mymarker.activity = activity;
@@ -104,11 +103,11 @@ document.getElementById('save').onclick = function(){
   if (markers.length != 0) {
   var dbArray = [];
   var tempArray = [];
-
   for( var i = 0; i<markers.length; i++){
     timestamp = markers[i]._id;
-    lat = markers[i]._latlng.lat;
-    lng = markers[i]._latlng.lng;
+
+    lat =  parseInt(markers[i]._latlng.lat.toFixed(7).toString().replace(".", ""),10);
+    lng =  parseInt(markers[i]._latlng.lng.toFixed(7).toString().replace(".", ""),10);
     activity = markers[i].activity;
 
     tempArray.push(timestamp);
@@ -135,6 +134,7 @@ document.getElementById('save').onclick = function(){
     alert("No data to save");
   }
 };
+
 
 //--------------------------------------------------------------------- lasso
 
