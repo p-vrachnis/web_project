@@ -21,14 +21,14 @@ document.getElementById('load').onclick = function(){
           for (var i=0; i<result.locations.length; i++){
               var lat = result.locations[i].latitudeE7;
               var lon = result.locations[i].longitudeE7;
-              var id = result.locations[i].timestampMs;
+              var timestamp = result.locations[i].timestampMs;
               if(typeof result.locations[i].activity != "undefined") {
                 var activity = result.locations[i].activity[0].activity[0].type;
               }else{
                 var activity = "undefined";
               }
               if(arePointsNear([lat,lon],[38.230462,21.753150],10000)){
-                showMarker(lat, lon, id, activity);
+                showMarker(lat, lon, timestamp, activity);
               }
           }
           fr.abort();
@@ -67,18 +67,18 @@ var mapOptions = {
     return snum.slice(0, 2) + "." + snum.slice(2);
  }
 // Function which show the position (Marker) of the user on the Map Layer.
-function showMarker(latitude, longitude, id, activity){
+function showMarker(latitude, longitude, timestamp, activity){
 
     lat = insertDecimal(latitude);
     lon = insertDecimal(longitude);
     var mymarker = L.marker([lat,lon]);
-    mymarker._id = id;
+    mymarker._id = timestamp;
     mymarker.activity = activity;
     mymarker.addTo(map);
     markers.push(mymarker);
     var popupContent =
         '<p>Do you want to delete this marker?</p>' +
-        '<button onclick=deleteMarker(' + id + ')>Delete Marker</button>';
+        '<button onclick=deleteMarker(' + mymarker._id + ')>Delete Marker</button>';
 
     var markerPopup = mymarker.bindPopup(popupContent, {
         closeButton: false
