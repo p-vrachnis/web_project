@@ -8,13 +8,17 @@ CREATE TABLE users(
 	username VARCHAR(25) NOT NULL,
 	password CHAR(32) NOT NULL,
 	email VARCHAR(50) NOT NULL,
+	last_upload datetime,
 	PRIMARY KEY(username)
 )ENGINE = InnoDB CHARACTER SET greek COLLATE greek_general_ci;
 
-INSERT INTO users VALUES
-('1','admin','81dc9bdb52d04dc20036dbd8313ed055','admin@hotmail.com'),
-('2','user','81dc9bdb52d04dc20036dbd8313ed055','user@hotmail.com'),
-('2','user2','81dc9bdb52d04dc20036dbd8313ed055','user2@hotmail.com');
+INSERT INTO users (userID,username,password,email) VALUES
+('0','admin','81dc9bdb52d04dc20036dbd8313ed055','admin@hotmail.com'),
+('1','user1','81dc9bdb52d04dc20036dbd8313ed055','user1@hotmail.com'),
+('2','user2','81dc9bdb52d04dc20036dbd8313ed055','user2@hotmail.com'),
+('3','user3','81dc9bdb52d04dc20036dbd8313ed055','user3@hotmail.com'),
+('4','user4','81dc9bdb52d04dc20036dbd8313ed055','user4@hotmail.com'),
+('5','user5','81dc9bdb52d04dc20036dbd8313ed055','user5@hotmail.com');
 
 CREATE TABLE user_data(
 	username VARCHAR(25) NOT NULL,
@@ -30,7 +34,10 @@ CREATE TABLE user_data(
 CREATE TABLE user_score(
 	username VARCHAR(25) NOT NULL,
 	score FLOAT(5) NOT NULL,
-	score_month INT NOT NULL,
-    PRIMARY KEY(username,score_month),
+	score_date DATE NOT NULL,
+	PRIMARY KEY(username,score_date),
 	FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE = InnoDB CHARACTER SET greek COLLATE greek_general_ci;
+
+INSERT INTO user_score VALUES
+('user1','50.5','2019-12-0');
