@@ -101,7 +101,7 @@ function deleteMarker(id){
 
 //save button
 document.getElementById('save').onclick = function(){
-
+  if (markers.length != 0) {
   var dbArray = [];
   var tempArray = [];
 
@@ -121,7 +121,16 @@ document.getElementById('save').onclick = function(){
     tempArray = [];
   }
 
-  console.log(dbArray);
+  $.ajax({
+    type: 'POST',
+    data: dbArray,
+    dataType: 'array',
+    url: '../map/save.php'
+  });
+
+  }else{
+    alert("No data to save");
+  }
 };
 
 //--------------------------------------------------------------------- lasso
