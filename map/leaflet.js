@@ -16,20 +16,19 @@ document.getElementById('load').onclick = function(){
       fr.onload = function(e){
 
           var result = JSON.parse(e.target.result);
-          console.log(result);
-          const{name} = result;
-          console.log(name);
-          console.log(result.locations[0].latitudeE7);
-          console.log(result.locations[0].longitudeE7);
-          console.log(result.locations[0].timestampMs);
 
           // Show all Coordinates from JSON file into the leaflet map.
-          for (i=0; i<result.locations.length; i++){
+          for (var i=0; i<result.locations.length; i++){
               var lat = result.locations[i].latitudeE7;
               var lon = result.locations[i].longitudeE7;
               var id = result.locations[i].timestampMs;
+              if(typeof result.locations[i].activity != "undefined") {
+                var activity = result.locations[i].activity[0].activity[0].type;
+              }else{
+                var activity = "undefined";
+              }
               if(arePointsNear([lat,lon],[38.230462,21.753150],10000)){
-                showMarker(lat, lon, id);
+                showMarker(lat, lon, id, activity);
               }
           }
           fr.abort();
@@ -68,21 +67,22 @@ var mapOptions = {
     return snum.slice(0, 2) + "." + snum.slice(2);
  }
 // Function which show the position (Marker) of the user on the Map Layer.
-function showMarker(latitude, longitude, id){
+function showMarker(latitude, longitude, id, activity){
 
     lat = insertDecimal(latitude);
     lon = insertDecimal(longitude);
     var mymarker = L.marker([lat,lon]);
     mymarker._id = id;
-        mymarker.addTo(map);
-        markers.push(mymarker);
-        var popupContent =
-            '<p>Do you want to delete this marker?</p>' +
-            '<button onclick=deleteMarker(' + id + ')>Delete Marker</button>';
+    mymarker.activity = activity;
+    mymarker.addTo(map);
+    markers.push(mymarker);
+    var popupContent =
+        '<p>Do you want to delete this marker?</p>' +
+        '<button onclick=deleteMarker(' + id + ')>Delete Marker</button>';
 
-        var markerPopup = mymarker.bindPopup(popupContent, {
-            closeButton: false
-        });
+    var markerPopup = mymarker.bindPopup(popupContent, {
+        closeButton: false
+    });
 }
 
 function notContainsMarker(obj, list) {
