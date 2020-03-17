@@ -13,7 +13,8 @@ CREATE TABLE users(
 
 INSERT INTO users VALUES
 ('1','admin','81dc9bdb52d04dc20036dbd8313ed055','admin@hotmail.com'),
-('2','user','81dc9bdb52d04dc20036dbd8313ed055','user@hotmail.com');
+('2','user','81dc9bdb52d04dc20036dbd8313ed055','user@hotmail.com'),
+('2','user2','81dc9bdb52d04dc20036dbd8313ed055','user2@hotmail.com');
 
 CREATE TABLE user_data(
 	username VARCHAR(25) NOT NULL,
@@ -21,15 +22,15 @@ CREATE TABLE user_data(
 	latitudeE7 INT(10) NOT NULL,
 	longitudeE7 INT(10) NOT NULL,
 	activity VARCHAR(10),
-    PRIMARY KEY(timestampMs),
+    PRIMARY KEY(username),
 	FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE = InnoDB CHARACTER SET greek COLLATE greek_general_ci;
-
 
 
 CREATE TABLE user_score(
 	username VARCHAR(25) NOT NULL,
 	score FLOAT(5) NOT NULL,
 	month INT(2) NOT NULL,
+    PRIMARY KEY(username),
 	FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE = InnoDB CHARACTER SET greek COLLATE greek_general_ci;
