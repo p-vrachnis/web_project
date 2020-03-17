@@ -120,9 +120,9 @@ document.getElementById('save').onclick = function(){
     tempArray = [];
   }
 
-  array = JSON.stringify(dbArray)
+  dbArray = JSON.stringify(dbArray)
   $.ajax({
-    data: 'data=' + array,
+    data: 'data=' + dbArray,
     url: '../map/save.php',
     method: 'POST', // or GET
     success: function(msg) {
