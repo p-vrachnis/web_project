@@ -5,14 +5,52 @@
   // SQL Insert Query of the data.
   include_once '../external/connect_db.php';
   $sql = "REPLACE INTO user_data (username, timestampMs, latitudeE7, longitudeE7, activity) values";
-  for( $index = 0; $index < sizeof($data); $index++ ){
+  $countf= 0;
+  $countv= 0;
+  $c = 1;
+$timestampMs = $data[0][0];
+$seconds = $timestampMs/ 1000;
+$tmp= date("Y-m-00", $seconds);
+  for( $index = 0; $index < sizeof($data) ; $index++ ){
     $timestampMs = $data[$index][0];
     $latitudeE7 = $data[$index][1];
     $longitudeE7 = $data[$index][2];
     $activity = $data[$index][3];
-
+    $seconds = $timestampMs/ 1000;
+    $dt= date("Y-m-00", $seconds);
+    if ($tmp != $dt){
+     $c = $c + 1; }
+    $tmp =$dt;
     $sql = $sql."('$username','$timestampMs',$latitudeE7,$longitudeE7,'$activity'),";
-  }
+}
+   $sql = "REPLACE INTO user_score (username,score,score_date) values";
+   $timestampMs = $data[0][0];
+   $seconds = $timestampMs/ 1000;
+   $tmp= date("Y-m-00", $seconds);
+   $time = new DateTime('now');
+   $date1 = $time->modify('-1 year')->format('Y-m-00');
+   $date2 = $time->format('Y-m-00');
+   for( $i = 0 ; $i < sizeof($data); $i++ ){
+     $activity = $data[$i][3];
+     $timestampMs = $data[$i][0];
+     $seconds = $timestampMs/ 1000;
+     $dt= date("Y-m-00", $seconds);
+     if ($tmp != $dt){
+       $countf = 0;
+       $countv = 0; }
+     if ($activity == 'ON_FOOT') {
+        $countf = $countf + 1; }
+      if ($activity == 'IN_VEHICLE') {
+        $countv = $countv+ 1; }
+         $tmp =$dt;
+    if ($countf==0 && $countv==0) {
+    $score = 0 ;   }
+    else {
+    $score=($countf/($countf+ $countv))*100; }
+    //if ($dt > $date1 && $dt < $date2) {
+     $sql = $sql."('$username','$score','$dt'),";  }  //}
+  //$date = date('Y-m-00');
+  //echo '<script type="text/javascript">alert("'.$date1.'");</script>';
   $sql = substr($sql, 0, -1);
   $sql = $sql.";";
   if (mysqli_query($conn, $sql)) {
