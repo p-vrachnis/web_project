@@ -27,6 +27,9 @@ $tmp= date("Y-m-00", $seconds);
    $timestampMs = $data[0][0];
    $seconds = $timestampMs/ 1000;
    $tmp= date("Y-m-00", $seconds);
+   $time = new DateTime('now');
+   $date1 = $time->modify('-1 year')->format('Y-m-00');
+   $date2 = $time->format('Y-m-00');
    for( $i = 0 ; $i < sizeof($data); $i++ ){
      $activity = $data[$i][3];
      $timestampMs = $data[$i][0];
@@ -34,19 +37,20 @@ $tmp= date("Y-m-00", $seconds);
      $dt= date("Y-m-00", $seconds);
      if ($tmp != $dt){
        $countf = 0;
-       $countv=0; }
+       $countv = 0; }
      if ($activity == 'ON_FOOT') {
         $countf = $countf + 1; }
       if ($activity == 'IN_VEHICLE') {
         $countv = $countv+ 1; }
          $tmp =$dt;
     if ($countf==0 && $countv==0) {
-    $score =0 ;   }
+    $score = 0 ;   }
     else {
     $score=($countf/($countf+ $countv))*100;
-    $sql = $sql."('$username','$score','$dt'),";  } }
-  $date = date('Y-m-00');
-  echo '<script type="text/javascript">alert("'.$date.'");</script>';
+    //if ($dt > $date1 && $dt < $date2) {
+     $sql = $sql."('$username','$score','$dt'),";  } } //}
+  //$date = date('Y-m-00');
+  //echo '<script type="text/javascript">alert("'.$date1.'");</script>';
   $sql = substr($sql, 0, -1);
   $sql = $sql.";";
   if (mysqli_query($conn, $sql)) {
