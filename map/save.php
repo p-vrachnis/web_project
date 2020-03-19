@@ -48,7 +48,7 @@ $tmp= date("Y-m-00", $seconds);
     else {
     $score=($countf/($countf+ $countv))*100; }
     //if ($dt > $date1 && $dt < $date2) {
-     $sql = $sql."('$username','$score','$dt'),";  }  //}
+     $sql = $sql."('$username','$score','$dt'),";   } //}
   //$date = date('Y-m-00');
   //echo '<script type="text/javascript">alert("'.$date1.'");</script>';
   $sql = substr($sql, 0, -1);
