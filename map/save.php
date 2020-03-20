@@ -17,11 +17,10 @@ $sql = substr($sql, 0, -1);
 $sql = $sql.";";
 if (mysqli_query($conn, $sql)) {
  echo "Markers saved successfully";
-
 } else {
  echo "Error: " . mysqli_error($conn);
 }
-  
+
    $countf= 0;
    $countv= 0;
    $sql = "REPLACE INTO user_score (username,score,score_date) values";
@@ -55,13 +54,19 @@ if (mysqli_query($conn, $sql)) {
       echo "Error: " . mysqli_error($conn);
      }
 
+     $query = "SELECT MIN(score_date) AS min , MAX(score_date) AS max FROM user_score";
+     $result = mysqli_query($conn, $query);
+     $result = mysqli_fetch_row($result);
+     $min = $result[0];
+     $max = $result[1];
+
      $upload_date = date('Y-m-d');
      $sql = "REPLACE INTO upload (username,upload_date) values";
      $sql = $sql."('$username','$upload_date'),";
      $sql = substr($sql, 0, -1);
      $sql = $sql.";";
      if (mysqli_query($conn, $sql)) {
-       echo "\nUpload date , $upload_date";
+       echo "\nUpload date: $upload_date ";
      } else {
       echo "Error: " . mysqli_error($conn);
      }
