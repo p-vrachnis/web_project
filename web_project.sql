@@ -39,5 +39,9 @@ CREATE TABLE user_score(
 	FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE = InnoDB CHARACTER SET greek COLLATE greek_general_ci;
 
-INSERT INTO user_score VALUES
-('user1','50.5','2019-12-0');
+CREATE TABLE upload(
+	username VARCHAR(25) NOT NULL,
+    upload_date DATE NOT NULL,
+	PRIMARY KEY(username),
+	FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE ON UPDATE CASCADE
+)ENGINE = InnoDB CHARACTER SET greek COLLATE greek_general_ci;
