@@ -54,10 +54,11 @@ if (mysqli_query($conn, $sql)) {
       echo "Error: " . mysqli_error($conn);
      }
 
-     $query = "SELECT MIN(score_date) AS min FROM user_score";
+     $query = "SELECT MIN(score_date) AS min , MAX(score_date) AS max FROM user_score";
      $result = mysqli_query($conn, $query);
      $result = mysqli_fetch_row($result);
      $min = $result[0];
+     $max = $result[1];
 
      $upload_date = date('Y-m-d');
      $sql = "REPLACE INTO upload (username,upload_date) values";
