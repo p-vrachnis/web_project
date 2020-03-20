@@ -100,7 +100,7 @@
   height:inherit;
 }
 
-#score, #date-range, #last-upload, #leaderboard {
+#score, #date-range, #last-upload, #leaderboard, #graph {
   text-align: center;
   margin-top: 10px;
   width: 100%;
@@ -114,4 +114,107 @@
 
 #leaderboard{
   height: 66%;
+}
+
+
+/**/
+#box{
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+/* SHOW BUTTON */
+#show_btn{
+  position: relative;
+  margin-top: 2%;
+  left: 25%;
+  align-items: center;
+  width: 50%;
+}
+
+/* CSS for Select tags */
+
+
+/* Reset Select */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0 !important;
+  background: #2c3e50;
+  background-image: none;
+}
+/* Remove IE arrow */
+select::-ms-expand {
+  display: none;
+}
+/* Custom Select */
+.select {
+  position: relative;
+  display: flex;
+
+  
+  line-height: 3;
+  background: #2c3e50;
+  overflow: hidden;
+  border-radius: .25em;
+}
+select {
+  flex: 1;
+  padding: 0;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+/* */
+#activity_chart{
+  margin-top: 3%;
+  width: 100%;
+  height: 100%;
+}
+
+.slct{
+  margin-top: 2%;
+  margin: 1px;
+}
+
+.label{
+  margin-right: 0.6%;
+  font-size: 19px;
+  font-weight: bold;
+  color: teal;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#until_year{
+  margin-right: 2%;
+}
+
+/* Table of activities */
+
+#activity_hour_day{
+  margin-top: 5%;
+}
+
+#activity_hour_day:hover:th{
+border-collapse: collapse;
+}
+
+#activity_hour_day tr:hover{
+  background-color: lightskyblue;
+  color: black;
+}
+
+#activity_hour_day thead{
+  border-bottom: white 3px solid;  
+  
+}
+
+#header_ahd tr:hover{
+  background-color: initial;
+  color: white;
 }
