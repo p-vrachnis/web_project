@@ -68,7 +68,7 @@
                 <option value="2018">2018</option>
                 <option value="2019">2019</option>
                 <option value="2020">2020</option>
-              </select> 
+              </select>   
               <label class="label" for="from_month" id="month_label">Choose month:</label>
                <select name="slct" class="slct" id="from_month">
                 <option selected disabled>from</option>
