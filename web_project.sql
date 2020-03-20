@@ -2,7 +2,6 @@ drop database if exists web_project;
 create database web_project;
 use web_project;
 
-
 CREATE TABLE users(
 	userID CHAR(32) NOT NULL,
 	username VARCHAR(25) NOT NULL,
@@ -42,6 +41,6 @@ CREATE TABLE user_score(
 CREATE TABLE upload(
 	username VARCHAR(25) NOT NULL,
     upload_date DATE NOT NULL,
-	PRIMARY KEY(username),
+	PRIMARY KEY(username,upload_date),
 	FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE = InnoDB CHARACTER SET greek COLLATE greek_general_ci;

@@ -60,7 +60,9 @@ if (mysqli_query($conn, $sql)) {
      $min = $result[0];
      $max = $result[1];
 
-     $upload_date = date('Y-m-d');
+     $upload_date = new DateTime("now", new DateTimeZone('Europe/Bucharest') );
+     $upload_date= $upload_date->format('Y-m-d H:i:s');
+  
      $sql = "REPLACE INTO upload (username,upload_date) values";
      $sql = $sql."('$username','$upload_date'),";
      $sql = substr($sql, 0, -1);
