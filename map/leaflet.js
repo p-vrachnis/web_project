@@ -29,7 +29,7 @@ document.getElementById('load').onclick = function(){
                   var activity = null;
                 }
                 showMarker(lat, lon, timestamp, activity);
-              }
+             }
           }
           fr.abort();
       }
