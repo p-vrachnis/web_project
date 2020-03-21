@@ -82,6 +82,7 @@ if (mysqli_query($conn, $sql)) {
 
 // ============================
 
+    /*
      // GET FIRST AND LAST REGISTER
      $query = "SELECT MIN(score_date) AS min , MAX(score_date) AS max FROM user_score WHERE username = '$username' ";
      $result = mysqli_query($conn, $query);
@@ -138,5 +139,6 @@ if (mysqli_query($conn, $sql)) {
             else {
               echo " - ";
             }
+            */
 
 ?>

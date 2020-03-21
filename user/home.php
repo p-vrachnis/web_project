@@ -1,6 +1,7 @@
 <?php
   include "./session.php";
   include "./header.php";
+  include "./querys.php";
 ?>
 
 <!DOCTYPE html>
@@ -23,16 +24,50 @@
         <div class="user_info">
             <div class="container">
               <div id="score">
-                <a>Score οικολογικης κίνησης</a>
+                <a>Score οικολογικης κίνησης </a>
+                <br />
+                <?php
+                if ( $month_score != 0 ){
+                 echo "Montlhy score $month_score"; }
+                 else {
+                   echo "Monthly score - ";
+                 }
+                ?>
               </div>
               <div id="date-range">
                 <a>Περίοδος εγγραφών χρήστη</a>
+                <br />
+                <?php
+                if  ($max != 0){
+                 echo "$min  /  $max"; }
+                 else {
+                   echo " - ";
+                 }
+                ?>
               </div>
               <div id="last-upload">
                 <a>Ημερομηνία τελευταίου upload</a>
+                <br />
+                <?php
+                if  ($upload_date != 0){
+                 echo "$upload_date"; }
+                 else {
+                   echo " - ";
+                 }
+                ?>
               </div>
               <div id="leaderboard">
-                <a >Leaderboard 3 users</a>
+                <a >Leaderboard TOP 3 users </a>
+                <br />
+               <?php
+                if ($count != 0 ){
+                $i=0;
+                for($i=0; $i < $count; $i++){
+                echo "$mscore[$i]  $user[$i] " ;  } }
+                else {
+                  echo " - ";
+                }
+                ?>
               </div>
             </div>
         </div>
@@ -54,7 +89,7 @@
                 <option value="2018">2018</option>
                 <option value="2019">2019</option>
                 <option value="2020">2020</option>
-              </select> 
+              </select>
               <select name="slct" class="slct" id="until_year">
                 <option selected disabled>until.</option>
                 <option value="2010">2010</option>
@@ -68,7 +103,7 @@
                 <option value="2018">2018</option>
                 <option value="2019">2019</option>
                 <option value="2020">2020</option>
-              </select>   
+              </select>
               <label class="label" for="from_month" id="month_label">Choose month:</label>
                <select name="slct" class="slct" id="from_month">
                 <option selected disabled>from</option>
@@ -84,7 +119,7 @@
                 <option value="10">October</option>
                 <option value="11">November</option>
                 <option value="12">December</option>
-              </select> 
+              </select>
               <select name="slct" class="slct" id="until_month">
                 <option selected disabled>until.</option>
                 <option value="1">January</option>
@@ -99,7 +134,7 @@
                 <option value="10">October</option>
                 <option value="11">November</option>
                 <option value="12">December</option>
-              </select>  
+              </select>
             </div>
             <button type="button" class="btn btn-success" id="show_btn">SHOW</button>
             <canvas id="activity_chart"></canvas>
