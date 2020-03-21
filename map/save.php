@@ -17,7 +17,7 @@
 $sql = substr($sql, 0, -1);
 $sql = $sql.";";
 if (mysqli_query($conn, $sql)) {
- echo "Markers saved successfully";
+ echo "Markers saved successfully\n";
 } else {
  echo "Error: " . mysqli_error($conn);
 }
@@ -63,7 +63,7 @@ if (mysqli_query($conn, $sql)) {
      $sql = substr($sql, 0, -1);
      $sql = $sql.";";
      if (mysqli_query($conn, $sql)) {
-      echo "\nScore updated successfully";
+      echo "Score updated successfully\n";
      } else {
       echo "Error: " . mysqli_error($conn);
      }
@@ -75,33 +75,36 @@ if (mysqli_query($conn, $sql)) {
      $sql = substr($sql, 0, -1);
      $sql = $sql.";";
      if (mysqli_query($conn, $sql)) {
-       echo "\nUpload date: $upload_date ";
+       echo "Upload date: $upload_date\n";
      } else {
       echo "Error: " . mysqli_error($conn);
      }
 
 // ============================
+
      // GET FIRST AND LAST REGISTER
      $query = "SELECT MIN(score_date) AS min , MAX(score_date) AS max FROM user_score WHERE username = '$username' ";
      $result = mysqli_query($conn, $query);
      $result = mysqli_fetch_row($result);
      $min = $result[0]; // first eggrafh date
      $max = $result[1]; // last eggrafh date
+
      //GET MONTHLY SCORE
      $current_date= $timezone->format('Y-m-00'); // current date
-     $query = "SELECT score AS month_score FROM user_score WHERE score_date = '$current_date' ";
+     $query = "SELECT score AS month_score FROM user_score WHERE score_date = '$current_date' and username = '$username'   ";
      $result = mysqli_query($conn,$query);
      $count = mysqli_num_rows($result);
        if($count == 1) {
          $result = mysqli_fetch_row($result);
          $month_score = $result[0]; } // monthly score
       else {
-         echo "\n No monthly score has been registered\n ";
+         echo "No monthly score has been registered\n ";
        }
+
          //GET LAST 12 MONTHS SCORE FOR EACH MONTH
          $time = new DateTime('now');
          $tempdate = $time->modify('-1 year')->format('Y-m-00');
-         $query = "SELECT score AS months_score,score_date AS months_date  FROM user_score WHERE score_date >= '$tempdate' ";
+         $query = "SELECT score AS months_score,score_date AS months_date  FROM user_score WHERE score_date >= '$tempdate' and username = '$username'   ";
          $query= mysqli_query($conn, $query);
          $months_score = Array();
          $months_date = Array();
@@ -109,9 +112,31 @@ if (mysqli_query($conn, $sql)) {
           while($result = $query->fetch_assoc()){
             echo "Last 12 months score exists\n" ;
             $months_score[] = $result['months_score'];
-            $months_date[] = $result['months_date']; } } // last 12 months score
+            $months_date[]  = $result['months_date']; } } // last 12 months score
          else  {
              echo "No 12 months score has been registered\n";
            }
+
+             // TOP 3 Leaderboard
+             $query = "SELECT score AS mscore, username AS user FROM user_score WHERE score_date = '$current_date' ORDER by mscore DESC  ";
+             $query= mysqli_query($conn, $query);
+             $mscore = Array();
+             $user = Array();
+             $count=0;
+             echo "TOP 3 leaderboard\n" ;
+              while($result = $query->fetch_assoc()){
+                $mscore[] = $result['mscore'];
+                $user[] = $result['user'];
+                $count++;
+              }
+            if ($count != 0 ){
+            $i=0;
+            for($i=0; $i < $count; $i++){
+            echo "$mscore[$i]  $user[$i]\n " ;   // TOP 3
+            //$i++ ;
+          } }
+            else {
+              echo " - ";
+            }
 
 ?>
