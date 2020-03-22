@@ -41,6 +41,6 @@ CREATE TABLE user_score(
 CREATE TABLE upload(
 	username VARCHAR(25) NOT NULL,
     upload_date DATE NOT NULL,
-	PRIMARY KEY(username,upload_date),
+	PRIMARY KEY(username),
 	FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE = InnoDB CHARACTER SET greek COLLATE greek_general_ci;

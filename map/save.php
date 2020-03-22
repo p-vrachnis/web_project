@@ -58,7 +58,7 @@ if (mysqli_query($conn, $sql)) {
     $score = 0 ;   }
     else {
     $score=($countf/($countf+ $countv))*100; }
-     $sql = $sql."('$username','$score','$dt'),";
+    $sql = $sql."('$username','$score','$dt'),";
    }
      $sql = substr($sql, 0, -1);
      $sql = $sql.";";

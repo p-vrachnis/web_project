@@ -73,7 +73,100 @@ $count = mysqli_num_rows($result);
        //echo " - ";
      }
 
+     // timestampMs
+     $query ="SELECT timestampMs FROM user_data WHERE username = '$username' ";
+     $query= mysqli_query($conn, $query);
+     $timestampMs = Array();
+     while($result = $query->fetch_assoc()){
+       $timestampMs[] = $result['timestampMs']; // timestampMs from DB
+     }
+     $min_time=0;
+     $max_time=1584828319;
+     //activities
+     $query ="SELECT activity FROM user_data WHERE username = '$username' and  timestampMs > '$min_time' and timestampMs < '$max_time' ";
+     $query= mysqli_query($conn, $query);
+     $activity = Array();
+     while($result = $query->fetch_assoc()){
+       $activity[] = $result['activity']; //activity from DB
+     }
+     // eggrafes ana eidos pososta
+     $i=0;
+     $on_foot=0;
+     $walking=0;
+     $on_bicycle=0;
+     $running=0;
+     $in_vehicle=0;
+     $in_rail_vehicle=0;
+     $still=0;
+     $tilting=0;
+     $unknown=0;
+    // $hour = array_fill(0,10,0);
+     $hour =array_fill(0, 25, array_fill(0, 10, 0));
+     $maxh=array();
+     for( $i = 0 ; $i < sizeof($activity); $i++ ) {
+       $seconds = $timestampMs[$i]/ 1000;
+       $hours= date("H",$seconds);
+       $hours = (int)$hours;
+      if ($activity[$i]=='ON_FOOT'){
+        $on_foot++;
+        $hour[$hours][1]++;
+      }
+      elseif ($activity[$i] == 'WALKING') {
+        $walking++;
+        $hour[$hours][2]++;
+      }
+      elseif ($activity[$i] == 'ON_BICYCLE') {
+        $on_bicycle++;
+        $hour[$hours][3]++;
+      }
+      elseif ($activity[$i] == 'RUNNING') {
+        $running++;
+        $hour[$hours][4]++;
+      }
+      elseif ($activity[$i] == 'IN_VEHICLE'){
+        $in_vehicle++;
+        $hour[$hours][5]++;
+      }
+      elseif ($activity[$i] == 'IN_RAIL_VEHICLE') {
+        $in_rail_vehicle++;
+       $hour[$hours][6]++;
+     }
+      elseif ($activity[$i] == 'STILL') {
+        $still++;
+        $hour[$hours][7]++;
+      }
+      elseif ($activity[$i] == 'TILTING') {
+        $tilting++;
+        $hour[$hours][8]++;
+      }
+      elseif ($activity[$i] == 'UNKNOWN') {
+        $unknown++;
+        $hour[$hours][9]++;
+      }
+     }
+     if ($i!=0){
+     $on_foot=($on_foot/$i)*100 ;
+     $walking=($walking/$i)*100;
+     $running=($on_bicycle/$i)*100;
+     $running=($running/$i)*100;
+     $in_vehicle=($in_vehicle/$i)*100;
+     $in_rail_vehicle=($in_rail_vehicle/$i)*100;
+     $still=($still/$i)*100 ;
+     $tilting=($tilting/$i)*100 ;
+     $unknown=($unknown/$i)*100 ; }
 
-
+    // MAX SCORE HOUR
+    for( $i = 1 ; $i <=9; $i++ ){
+      $maxh[$i]=1;
+      for ( $j = 1 ; $j <24; $j++ ){
+       if($hour[$j][$i] < $hour[$j+1][$i] ){
+        $maxh[$i]=$j+1;
+       }
+      }
+    }
+     //$a = array_fill(0, 10, array_fill(0, 10, 0));
+     //$seconds = $timestampMs[$i]/ 1000;
+     //$hours= date("H",$seconds);
+     //$dt= date("Y-m-d ", $seconds);
 
 ?>

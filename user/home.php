@@ -28,9 +28,9 @@
                 <br />
                 <?php
                 if ( $month_score != 0 ){
-                 echo "Montlhy score $month_score"; }
+                 echo "Montlhy score $month_score%"; }
                  else {
-                   echo "Monthly score - ";
+                   echo "Monthly score  -";
                  }
                 ?>
               </div>
@@ -39,7 +39,7 @@
                 <br />
                 <?php
                 if  ($max != 0){
-                 echo "$min  /  $max"; }
+                 echo "$min  \  $max"; }
                  else {
                    echo " - ";
                  }
@@ -50,7 +50,7 @@
                 <br />
                 <?php
                 if  ($upload_date != 0){
-                 echo "$upload_date"; }
+                 echo "$upload_date "; }
                  else {
                    echo " - ";
                  }
@@ -63,7 +63,7 @@
                 if ($count != 0 ){
                 $i=0;
                 for($i=0; $i < $count; $i++){
-                echo "$mscore[$i]  $user[$i] " ;  } }
+                echo "$user[$i] $mscore[$i]% " ;  } }
                 else {
                   echo " - ";
                 }
