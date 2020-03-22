@@ -40,7 +40,7 @@
                 <div id="date-range-value">
                   <?php
                   if  ($max != 0){
-                    echo "$min  \  $max"; }
+                    echo "$min / $max"; }
                     else {
                       echo " - ";
                     }
@@ -204,48 +204,48 @@
               <tbody>
                 <tr>
                   <th scope="row">STILL</th>
-                  <td><?php echo "$maxh[7]:00"?> </td>
-                  <td>d22</td>
+                  <td><?php if ($maxh[7]!="-"){echo "$maxh[7]:00";}?> </td>
+                  <td><?php echo "$maxd[7] "?></td>
                 </tr>
                 <tr>
                   <th scope="row">IN VEHICLE</th>
-                  <td><?php echo "$maxh[5]:00"?> </td>
-                  <td>d32</td>
+                  <td><?php if ($maxh[5]!="-"){ echo "$maxh[5]:00";}?> </td>
+                  <td><?php echo "$maxd[5] "?></td>
                 </tr>
                 <tr>
                   <th scope="row">ON FOOT</th>
-                  <td><?php echo "$maxh[1]:00"?> </td>
-                  <td>d42</td>
+                  <td><?php if ($maxh[1]!="-"){ echo "$maxh[1]:00";}?> </td>
+                  <td><?php echo "$maxd[1] "?></td>
                 </tr>
                 <tr>
                   <th scope="row">IN ROAD VEHICLE</th>
-                  <td><?php echo "$maxh[10]:00"?> </td>
-                  <td>d52</td>
+                  <td><?phpif ($maxh[10]!="-"){ echo "$maxh[10]:00";}?> </td>
+                  <td><?php echo "$maxd[10] "?></td>
                 </tr>
                 <tr>
                   <th scope="row">IN RAIL VEHCILE</th>
-                  <td><?php echo "$maxh[6]:00"?> </td>
-                  <td>d62</td>
+                  <td><?php if ($maxh[6]!="-"){ echo "$maxh[6]:00";}?> </td>
+                  <td><?php echo "$maxd[6] "?></td>
                 </tr>
                 <tr>
                   <th scope="row">WALKING</th>
-                  <td><?php echo "$maxh[2]:00"?> </td>
-                  <td>d72</td>
+                  <td><?php if ($maxh[2]!="-"){ echo "$maxh[2]:00";}?> </td>
+                  <td><?php echo "$maxd[2] "?> </td>
                 </tr>
                 <tr>
                   <th scope="row">ON BICYCLE</th>
-                  <td><?php echo "$maxh[3]:00"?> </td>
-                  <td>d82</td>
+                  <td><?php if ($maxh[3]!="-"){ echo "$maxh[3]:00";}?> </td>
+                  <td><?php echo "$maxd[3] "?></td>
                 </tr>
                 <tr>
                   <th scope="row">RUNNING</th>
-                  <td><?php echo "$maxh[4]:00"?> </td>
-                  <td>d92</td>
+                  <td><?php if ($maxh[4]!="-"){ echo "$maxh[4]:00";}?> </td>
+                  <td><?php echo "$maxd[4] "?></td>
                 </tr>
                 <tr>
                   <th scope="row">TILTITNG</th>
-                  <td><?php echo "$maxh[8]:00"?> </td>
-                  <td>d102</td>
+                  <td><?php if ($maxh[8]!="-"){ echo "$maxh[8]:00";}?> </td>
+                  <td><?php echo "$maxd[8] "?></td>
                 </tr>
               </tbody>
             </table>

@@ -19,8 +19,8 @@ $max = 0;
 $query = "SELECT MIN(score_date) AS min , MAX(score_date) AS max FROM user_score WHERE username = '$username' ";
 $result = mysqli_query($conn, $query);
 $result = mysqli_fetch_row($result);
-$min = $result[0]; // first eggrafh date
-$max = $result[1]; // last eggrafh date
+$min = $result[0]; // first register date
+$max = $result[1]; // last register date
 
 //GET MONTHLY SCORE
 $current_date= $timezone->format('Y-m-00'); // current date
@@ -110,50 +110,64 @@ $count = mysqli_num_rows($result);
      $in_road_vehicle=0;
     // $hour = array_fill(0,10,0);
      $hour =array_fill(0, 25, array_fill(0, 11, 0));
+     $day =array_fill(0, 8, array_fill(0, 11, 0));
      $maxh=array();
+     $week_days = array(' - ','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun');
      for( $i = 0 ; $i < sizeof($activity); $i++ ) {
-       $seconds = $timestampMs[$i]/ 1000;
-       $hours= date("H",$seconds);
+       //$seconds = $timestampMs[$i]/ 1000;
+       //$hours = date("H",$seconds);// ena apo ta duo einai swsto
+       $hours = date("H",$timestampMs[$i]);
+       $days= date('N', $timestampMs[$i]);
        $hours = (int)$hours;
       if ($activity[$i]=='ON_FOOT'){
         $on_foot++;
         $hour[$hours][1]++;
+        $day[$days][1]++;
       }
       elseif ($activity[$i] == 'WALKING') {
         $walking++;
         $hour[$hours][2]++;
+        $day[$days][2]++;
       }
       elseif ($activity[$i] == 'ON_BICYCLE') {
         $on_bicycle++;
         $hour[$hours][3]++;
+        $day[$days][3]++;
       }
       elseif ($activity[$i] == 'RUNNING') {
         $running++;
         $hour[$hours][4]++;
+        $day[$days][4]++;
       }
       elseif ($activity[$i] == 'IN_VEHICLE'){
         $in_vehicle++;
         $hour[$hours][5]++;
+        $day[$days][5]++;
       }
       elseif ($activity[$i] == 'IN_RAIL_VEHICLE') {
         $in_rail_vehicle++;
        $hour[$hours][6]++;
+       $day[$days][6]++;
      }
       elseif ($activity[$i] == 'STILL') {
         $still++;
         $hour[$hours][7]++;
+        $day[$days][7]++;
       }
       elseif ($activity[$i] == 'TILTING') {
         $tilting++;
         $hour[$hours][8]++;
+        $day[$days][8]++;
       }
       elseif ($activity[$i] == 'UNKNOWN') {
         $unknown++;
         $hour[$hours][9]++;
+        $day[$days][9]++;
       }
       elseif ($activity[$i] == 'IN_ROAD_VEHICLE'){
         $in_road_vehicle++;
         $hour[$hours][10]++;
+        $day[$days][10]++;
       }
      }
      if ($i!=0){
@@ -171,16 +185,24 @@ $count = mysqli_num_rows($result);
 
     // MAX SCORE HOUR
     for( $i = 1 ; $i <=10; $i++ ){
-      $maxh[$i]=1;
+      $maxh[$i]='-';
+      if($hour[1][$i]!=0){ $maxh[$i]=1;}
       for ( $j = 1 ; $j <24; $j++ ){
        if($hour[$j][$i] < $hour[$j+1][$i] ){
         $maxh[$i]=$j+1;
        }
       }
     }
-     //$a = array_fill(0, 10, array_fill(0, 10, 0));
-     //$seconds = $timestampMs[$i]/ 1000;
-     //$hours= date("H",$seconds);
-     //$dt= date("Y-m-d ", $seconds);
+    //MAX SCORE DAY
+    for( $i = 1 ; $i <=10; $i++ ){
+      $maxd[$i]=' ';
+      if($day[1][$i]!=0){$maxd[$i]=$week_days[1];}
+      for ( $j = 1 ; $j <7; $j++ ){
+       if($day[$j][$i] < $day[$j+1][$i] ){
+        $maxd[$i]=$week_days[$j+1];
+        //$maxd = date("D",$maxd);
+       }
+      }
+    }
 
 ?>

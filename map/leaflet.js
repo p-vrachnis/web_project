@@ -127,6 +127,7 @@ document.getElementById('save').onclick = function(){
     method: 'POST', // or GET
     success: function(msg) {
         alert(msg);
+        location.reload();
     }
 });
 
