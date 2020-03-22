@@ -256,6 +256,18 @@
       </div>
     </div>
 
+  <script>
+    var still = <?php echo $still; ?>;
+    var on_foot = <?php echo $on_foot; ?>;
+    var walking = <?php echo $walking; ?>;
+    var on_bicycle = <?php echo $on_bicycle; ?>;
+    var running = <?php echo $running; ?>;
+    var in_vehicle = <?php echo $in_vehicle; ?>;
+    var in_rail_vehicle = <?php echo $in_rail_vehicle; ?>;
+    var tilting = <?php echo $tilting; ?>;
+    var unknown = <?php echo $unknown; ?>;
+    var in_road_vehicle = <?php echo $in_road_vehicle; ?>;
+  </script>
   <script src="user_home_graph.js"></script>
 </body>
 </html>

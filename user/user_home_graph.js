@@ -1,3 +1,4 @@
+
 const ctx = document.getElementById('activity_chart').getContext('2d');
 const activity_chart = new Chart(ctx, {
   type: 'bar',
@@ -6,7 +7,7 @@ const activity_chart = new Chart(ctx, {
     datasets: [{
       label: '% of transports',
       // CHANGE VALUES !!!!!
-      data: [12, 19, 3, 5, 2, 3, 7, 3, 25, 5],
+      data: [still, in_vehicle, on_foot, in_road_vehicle, in_rail_vehicle, walking, on_bicycle, running, tilting, unknown],
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',

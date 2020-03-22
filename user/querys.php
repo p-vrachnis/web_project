@@ -107,8 +107,9 @@ $count = mysqli_num_rows($result);
      $still=0;
      $tilting=0;
      $unknown=0;
+     $in_road_vehicle=0;
     // $hour = array_fill(0,10,0);
-     $hour =array_fill(0, 25, array_fill(0, 10, 0));
+     $hour =array_fill(0, 25, array_fill(0, 11, 0));
      $maxh=array();
      for( $i = 0 ; $i < sizeof($activity); $i++ ) {
        $seconds = $timestampMs[$i]/ 1000;
@@ -150,6 +151,10 @@ $count = mysqli_num_rows($result);
         $unknown++;
         $hour[$hours][9]++;
       }
+      elseif ($activity[$i] == 'IN_ROAD_VEHICLE'){
+        $in_road_vehicle++;
+        $hour[$hours][10]++;
+      }
      }
      if ($i!=0){
      $on_foot=($on_foot/$i)*100 ;
@@ -160,10 +165,12 @@ $count = mysqli_num_rows($result);
      $in_rail_vehicle=($in_rail_vehicle/$i)*100;
      $still=($still/$i)*100 ;
      $tilting=($tilting/$i)*100 ;
-     $unknown=($unknown/$i)*100 ; }
+     $unknown=($unknown/$i)*100 ;
+     $in_road_vehicle=($in_road_vehicle/$i)*100;
+    }
 
     // MAX SCORE HOUR
-    for( $i = 1 ; $i <=9; $i++ ){
+    for( $i = 1 ; $i <=10; $i++ ){
       $maxh[$i]=1;
       for ( $j = 1 ; $j <24; $j++ ){
        if($hour[$j][$i] < $hour[$j+1][$i] ){
