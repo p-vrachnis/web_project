@@ -116,8 +116,20 @@
   height: 66%;
 }
 
+#eco-value, #date-range-value, #last-upload-value{
+  font-size: 18px;
+  font-weight: bold;
+  font-style: italic;
+  font-family: Alatsi, sans-serif;
+  background-color: #ccc;
+  border-radius: 20px;
+  position: relative;
+  width: 40%;
+  left: 30%;
+  text-align: center;
+}
 
-/**/
+/* BOX */
 #box{
   display: flex;
   flex-wrap: nowrap;
@@ -134,7 +146,6 @@
 
 /* CSS for Select tags */
 
-
 /* Reset Select */
 select {
   -webkit-appearance: none;
@@ -144,7 +155,7 @@ select {
   outline: 0;
   box-shadow: none;
   border: 0 !important;
-  background: #2c3e50;
+  background: #ccc;
   background-image: none;
 }
 /* Remove IE arrow */
@@ -155,49 +166,54 @@ select::-ms-expand {
 .select {
   position: relative;
   display: flex;
-
-  
   line-height: 3;
-  background: #2c3e50;
+  background: #ccc;
   overflow: hidden;
   border-radius: .25em;
 }
 select {
   flex: 1;
   padding: 0;
-  color: #fff;
+  color: black;
   cursor: pointer;
-}
+  border-radius: 20px;
+  text-align: center;
+} 
 
 
-/* */
+/*  Chart Activity-Day-Hour*/
 #activity_chart{
   margin-top: 3%;
   width: 100%;
   height: 100%;
+  background-color: #ccc;
+  border-radius: 20px;
 }
 
 .slct{
   margin-top: 2%;
   margin: 1px;
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .label{
-  margin-right: 0.6%;
+  margin-right: 1%;
   font-size: 19px;
   font-weight: bold;
-  color: teal;
+  color: darkslategrey;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-#until_year{
-  margin-right: 2%;
+#from-date-year{
+  margin-right: 1%;
 } 
 
 /* Table of activities */
 
 #activity_hour_day{
   margin-top: 5%;
+  background-color: #ccc;
+  border-radius: 20px;
 }
 
 #activity_hour_day:hover:th{
@@ -205,16 +221,68 @@ border-collapse: collapse;
 }
 
 #activity_hour_day tr:hover{
-  background-color: lightskyblue;
-  color: black;
+  background-color: dimgray;
+  color: white;
 }
 
 #activity_hour_day thead{
-  border-bottom: white 3px solid;  
+  border-bottom: black 3px solid;  
   
+}
+
+#header_ahd tr{
+  color: black;
 }
 
 #header_ahd tr:hover{
   background-color: initial;
+  color: initial;
+}
+
+/* LeaderBoard*/
+#leaderboard-table{
+  margin-top: 15%;
+  background-color: #ccc;
+  position: relative;
+  width: 80%;
+  left: 10%;
+  height: 50%;
+  text-align: center;
+  border-radius: 5%;
+  font-size: 18px;
+}
+
+#leaderboard-table:th{
+  border-collapse: collapse;
+}
+  
+#leaderboard-table tr:hover{
+  background-color: dimgray;
   color: white;
+}
+  
+#leaderboard-table thead{
+  border-bottom: black 3px solid;  
+}
+  
+#header_lead tr{
+  color: black;
+}
+  
+#header_lead tr:hover{
+  background-color: initial;
+  color: initial;
+}
+
+#rank1, #rank2, #rank3, #myrank{
+  font-size: 24px;
+}
+#leaderboard-table #rank1:hover{
+  color: gold;
+}
+#leaderboard-table #rank2:hover{
+  color: silver;
+}
+#leaderboard-table #rank3:hover{
+  color: peru;
 }
