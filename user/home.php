@@ -113,10 +113,11 @@
                       <tr>
                         <td id="myrank">#myrank</td>
                         <th scope="row"><?php echo $username ?></th>
-                        <td><?php
+                        <td>
+                          <?php
                         if ($check ==1){
                           echo "$user_score%";
-                         }?>
+                        } ?>
                        </td>
                       </tr>
                     </tbody>
@@ -203,47 +204,47 @@
               <tbody>
                 <tr>
                   <th scope="row">STILL</th>
-                  <td>d21</td>
+                  <td><?php echo "$maxh[7]:00"?> </td>
                   <td>d22</td>
                 </tr>
                 <tr>
                   <th scope="row">IN VEHICLE</th>
-                  <td>d31</td>
+                  <td><?php echo "$maxh[5]:00"?> </td>
                   <td>d32</td>
                 </tr>
                 <tr>
                   <th scope="row">ON FOOT</th>
-                  <td>d41</td>
+                  <td><?php echo "$maxh[1]:00"?> </td>
                   <td>d42</td>
                 </tr>
                 <tr>
                   <th scope="row">IN ROAD VEHICLE</th>
-                  <td>d51</td>
+                  <td><?php echo "$maxh[10]:00"?> </td>
                   <td>d52</td>
                 </tr>
                 <tr>
                   <th scope="row">IN RAIL VEHCILE</th>
-                  <td>d61</td>
+                  <td><?php echo "$maxh[6]:00"?> </td>
                   <td>d62</td>
                 </tr>
                 <tr>
                   <th scope="row">WALKING</th>
-                  <td>d71</td>
+                  <td><?php echo "$maxh[2]:00"?> </td>
                   <td>d72</td>
                 </tr>
                 <tr>
                   <th scope="row">ON BICYCLE</th>
-                  <td>d81</td>
+                  <td><?php echo "$maxh[3]:00"?> </td>
                   <td>d82</td>
                 </tr>
                 <tr>
                   <th scope="row">RUNNING</th>
-                  <td>d91</td>
+                  <td><?php echo "$maxh[4]:00"?> </td>
                   <td>d92</td>
                 </tr>
                 <tr>
                   <th scope="row">TILTITNG</th>
-                  <td>d101</td>
+                  <td><?php echo "$maxh[8]:00"?> </td>
                   <td>d102</td>
                 </tr>
               </tbody>
