@@ -57,12 +57,19 @@ $count = mysqli_num_rows($result);
       $mscore = Array();
       $user = Array();
       $count=0;
+      $check=0;
       //echo "TOP 3 leaderboard\n" ;
        while($result = $query->fetch_assoc()){
          $mscore[] = $result['mscore'];
          $user[] = $result['user'];
+         if ($user[$count]== $username){
+           $user_score=$mscore[$count];
+           $check=1;
+         }
          $count++;
        }
+
+
      if ($count != 0 ){
      $i=0;
      for($i=0; $i < $count; $i++){

@@ -57,7 +57,7 @@
                     echo " - ";
                   }
                   ?>
-                </div>  
+                </div>
               </div>
               <div id="leaderboard">
                 <a >Leaderboard TOP 3 users </a>
@@ -73,36 +73,55 @@
                     <tbody>
                       <tr>
                         <td id="rank1">#1</td>
-                        <th scope="row">Nam1</th>
-                        <td>d21</td>
+                        <th scope="row">
+                        <?php
+                        if ($count >=1 ){
+                        echo "$user[0]  " ;  }
+                        ?>
+                        </th>
+                        <td><?php
+                        if ($count >=1 ){
+                        echo "$mscore[0]%" ;  }
+                        ?> </td>
                       </tr>
                       <tr>
                         <td id="rank2">#2</td>
-                        <th scope="row">Nam2</th>
-                        <td>d31</td>
+                        <th scope="row"><?php
+                        if ($count >=2 ){
+                        echo "$user[1] " ;  }
+                        ?>
+                      </th>
+                        <td><?php
+                        if ($count >=2){
+                        echo "$mscore[1]% " ;  }
+                        ?>
+                      </td>
                       </tr>
                       <tr>
                         <td id="rank3">#3</td>
-                        <th scope="row">Nam3</th>
-                        <td>d41</td>
+                        <th scope="row"><?php
+                        if ($count >=3 ){
+                        echo "$user[2] " ;  }
+                        ?>
+                      </th>
+                        <td><?php
+                        if ($count >=3 ){
+                        echo "$mscore[2]% " ;  }
+                        ?>
+                      </td>
                       </tr>
                       <tr>
                         <td id="myrank">#myrank</td>
                         <th scope="row"><?php echo $username ?></th>
-                        <td>d51</td>
+                        <td><?php
+                        if ($check ==1){
+                          echo "$user_score%";
+                         }?>
+                       </td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
-               <?php
-                if ($count != 0 ){
-                $i=0;
-                for($i=0; $i < $count; $i++){
-                echo "$user[$i] $mscore[$i]% " ;  } }
-                else {
-                  echo " - ";
-                }
-                ?>
               </div>
             </div>
         </div>
