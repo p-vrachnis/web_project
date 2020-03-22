@@ -25,40 +25,75 @@
             <div class="container">
               <div id="score">
                 <a>Score οικολογικης κίνησης </a>
-                <br />
-                <?php
-                if ( $month_score != 0 ){
-                 echo "Montlhy score $month_score%"; }
-                 else {
-                   echo "Monthly score  -";
-                 }
-                ?>
+                <div id="eco-value">
+                  <?php
+                  if ( $month_score != 0 ){
+                  echo "Montlhy score $month_score%"; }
+                  else {
+                    echo "Monthly score  -";
+                  }
+                  ?>
+                </div>
               </div>
               <div id="date-range">
                 <a>Περίοδος εγγραφών χρήστη</a>
-                <br />
-                <?php
-                if  ($max != 0){
-                 echo "$min  \  $max"; }
-                 else {
-                   echo " - ";
-                 }
-                ?>
+                <div id="date-range-value">
+                  <?php
+                  if  ($max != 0){
+                    echo "$min  \  $max"; }
+                    else {
+                      echo " - ";
+                    }
+                  ?>
+                </div>
               </div>
               <div id="last-upload">
                 <a>Ημερομηνία τελευταίου upload</a>
-                <br />
-                <?php
-                if  ($upload_date != 0){
-                 echo "$upload_date "; }
-                 else {
-                   echo " - ";
-                 }
-                ?>
+                <div id="last-upload-value">
+                  <?php
+                  if  ($upload_date != 0){
+                  echo "$upload_date "; }
+                  else {
+                    echo " - ";
+                  }
+                  ?>
+                </div>  
               </div>
               <div id="leaderboard">
                 <a >Leaderboard TOP 3 users </a>
-                <br />
+                <div>
+                  <table id="leaderboard-table" class="table table-sm table-hover table-light">
+                    <thead id="header_lead">
+                      <tr>
+                        <th scope="col">RANK</th>
+                        <th scope="col">NAME</th>
+                        <th scope="col">ECO SCORE</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td id="rank1">#1</td>
+                        <th scope="row">Nam1</th>
+                        <td>d21</td>
+                      </tr>
+                      <tr>
+                        <td id="rank2">#2</td>
+                        <th scope="row">Nam2</th>
+                        <td>d31</td>
+                      </tr>
+                      <tr>
+                        <td id="rank3">#3</td>
+                        <th scope="row">Nam3</th>
+                        <td>d41</td>
+                      </tr>
+                      <tr>
+                        <td id="myrank">#myrank</td>
+                        <th scope="row"><?php echo $username ?></th>
+                        <td>d51</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
                <?php
                 if ($count != 0 ){
                 $i=0;
@@ -75,9 +110,24 @@
           <div class="container">
             <p style="text-align: center">Ανάλυση στοιχείων χρήστη</p>
             <div id="box">
-            <label class="label" for="from_year">Choose year:</label>
-              <select name="slct" class="slct" id="from_year">
-                <option selected disabled>from</option>
+            <label class="label" for="from-date-month">Choose date from:</label>
+            <select name="slct" class="slct" id="from-date-month">
+                <option selected disabled>month</option>
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+              </select>
+              <select name="slct" class="slct" id="from-date-year">
+                <option selected disabled>year</option>
                 <option value="2010" >2010</option>
                 <option value="2011">2011</option>
                 <option value="2012">2012</option>
@@ -90,8 +140,24 @@
                 <option value="2019">2019</option>
                 <option value="2020">2020</option>
               </select>
-              <select name="slct" class="slct" id="until_year">
-                <option selected disabled>until.</option>
+              <label class="label" for="until-date-month">, until:</label>
+              <select name="slct" class="slct" id="until-date-month">
+                <option selected disabled>month</option>
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+              </select>
+              <select name="slct" class="slct" id="until-date-year">
+                <option selected disabled>year</option>
                 <option value="2010">2010</option>
                 <option value="2011">2011</option>
                 <option value="2012">2012</option>
@@ -104,41 +170,10 @@
                 <option value="2019">2019</option>
                 <option value="2020">2020</option>
               </select>
-              <label class="label" for="from_month" id="month_label">Choose month:</label>
-               <select name="slct" class="slct" id="from_month">
-                <option selected disabled>from</option>
-                <option value="1">January</option>
-                <option value="2">February</option>
-                <option value="3">March</option>
-                <option value="4">April</option>
-                <option value="5">May</option>
-                <option value="6">June</option>
-                <option value="7">July</option>
-                <option value="8">August</option>
-                <option value="9">September</option>
-                <option value="10">October</option>
-                <option value="11">November</option>
-                <option value="12">December</option>
-              </select>
-              <select name="slct" class="slct" id="until_month">
-                <option selected disabled>until.</option>
-                <option value="1">January</option>
-                <option value="2">February</option>
-                <option value="3">March</option>
-                <option value="4">April</option>
-                <option value="5">May</option>
-                <option value="6">June</option>
-                <option value="7">July</option>
-                <option value="8">August</option>
-                <option value="9">September</option>
-                <option value="10">October</option>
-                <option value="11">November</option>
-                <option value="12">December</option>
-              </select>
             </div>
             <button type="button" class="btn btn-success" id="show_btn">SHOW</button>
             <canvas id="activity_chart"></canvas>
-            <table id="activity_hour_day" class="table table-sm table-hover table-dark">
+            <table id="activity_hour_day" class="table table-sm table-hover table-light">
               <thead id="header_ahd">
                 <tr>
                   <th scope="col">ACTIVITY</th>
