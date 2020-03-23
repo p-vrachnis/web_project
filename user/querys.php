@@ -87,22 +87,44 @@ $count = mysqli_num_rows($result);
      while($result = $query->fetch_assoc()){
        $timestampMs[] = $result['timestampMs']; // timestampMs from DB
      }
-     /* Select specific range of dates and show the analysis of user data.  */
-     if($_SERVER['REQUEST_METHOD'] == "POST") {
+    /* Select specific range of dates and show the analysis of user data.  */
+    $months = array(
+      "January" => 1,
+      "February" => 2,
+      "March" => 3,
+      "April" => 4,
+      "May" => 5,
+      "June" => 6,
+      "July" => 7,
+      "August" => 8,
+      "September" => 9,
+      "October" => 10,
+      "November" => 11,
+      "December" => 12
+    );
+
+    if($_SERVER['REQUEST_METHOD'] == "POST") {
       $f_month = $_POST['f_month'];
       $f_year = $_POST['f_year'];
       $u_month = $_POST['u_month'];
       $u_year = $_POST['u_year'];
 
-      $from_ts = strtotime(" $f_month $f_year");
-      $until_ts = strtotime(" $u_month $u_year");
-      $min_time=$from_ts;
-      $max_time=$until_ts;
-     }
-     else{
+      // Check if user input dates are valid.
+      if ($f_year > $u_year || $months[$f_month] > $months[$u_month] ){
+        echo "<script type='text/javascript'>alert('Wrong range of dates! Choose again.');</script>";
+        $min_time=0;
+        $max_time=0;
+      }else{
+        $from_ts = strtotime(" $f_month $f_year");
+        $until_ts = strtotime(" $u_month $u_year");
+        $min_time=$from_ts;
+        $max_time=$until_ts;
+      }
+    }
+    else{
       $min_time=0;
       $max_time=0;
-     }
+    }
      //activities
      $query ="SELECT activity FROM user_data WHERE username = '$username' and  timestampMs > '$min_time' and timestampMs < '$max_time' ";
      $query= mysqli_query($conn, $query);
