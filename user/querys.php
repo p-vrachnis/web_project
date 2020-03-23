@@ -87,8 +87,22 @@ $count = mysqli_num_rows($result);
      while($result = $query->fetch_assoc()){
        $timestampMs[] = $result['timestampMs']; // timestampMs from DB
      }
-     $min_time=0;
-     $max_time=1584828319;
+     /* Select specific range of dates and show the analysis of user data.  */
+     if($_SERVER['REQUEST_METHOD'] == "POST") {
+      $f_month = $_POST['f_month'];
+      $f_year = $_POST['f_year'];
+      $u_month = $_POST['u_month'];
+      $u_year = $_POST['u_year'];
+
+      $from_ts = strtotime(" $f_month $f_year");
+      $until_ts = strtotime(" $u_month $u_year");
+      $min_time=$from_ts;
+      $max_time=$until_ts;
+     }
+     else{
+      $min_time=0;
+      $max_time=0;
+     }
      //activities
      $query ="SELECT activity FROM user_data WHERE username = '$username' and  timestampMs > '$min_time' and timestampMs < '$max_time' ";
      $query= mysqli_query($conn, $query);

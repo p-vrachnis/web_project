@@ -129,69 +129,71 @@
         <div class="user_analyse">
           <div class="container">
             <p style="text-align: center">Ανάλυση στοιχείων χρήστη</p>
-            <div id="box">
-            <label class="label" for="from-date-month">Choose date from:</label>
-            <select name="slct" class="slct" id="from-date-month">
-                <option selected disabled>month</option>
-                <option value="1">January</option>
-                <option value="2">February</option>
-                <option value="3">March</option>
-                <option value="4">April</option>
-                <option value="5">May</option>
-                <option value="6">June</option>
-                <option value="7">July</option>
-                <option value="8">August</option>
-                <option value="9">September</option>
-                <option value="10">October</option>
-                <option value="11">November</option>
-                <option value="12">December</option>
-              </select>
-              <select name="slct" class="slct" id="from-date-year">
-                <option selected disabled>year</option>
-                <option value="2010" >2010</option>
-                <option value="2011">2011</option>
-                <option value="2012">2012</option>
-                <option value="2013">2013</option>
-                <option value="2014">2014</option>
-                <option value="2015">2015</option>
-                <option value="2016">2016</option>
-                <option value="2017">2017</option>
-                <option value="2018">2018</option>
-                <option value="2019">2019</option>
-                <option value="2020">2020</option>
-              </select>
-              <label class="label" for="until-date-month">, until:</label>
-              <select name="slct" class="slct" id="until-date-month">
-                <option selected disabled>month</option>
-                <option value="1">January</option>
-                <option value="2">February</option>
-                <option value="3">March</option>
-                <option value="4">April</option>
-                <option value="5">May</option>
-                <option value="6">June</option>
-                <option value="7">July</option>
-                <option value="8">August</option>
-                <option value="9">September</option>
-                <option value="10">October</option>
-                <option value="11">November</option>
-                <option value="12">December</option>
-              </select>
-              <select name="slct" class="slct" id="until-date-year">
-                <option selected disabled>year</option>
-                <option value="2010">2010</option>
-                <option value="2011">2011</option>
-                <option value="2012">2012</option>
-                <option value="2013">2013</option>
-                <option value="2014">2014</option>
-                <option value="2015">2015</option>
-                <option value="2016">2016</option>
-                <option value="2017">2017</option>
-                <option value="2018">2018</option>
-                <option value="2019">2019</option>
-                <option value="2020">2020</option>
-              </select>
-            </div>
-            <button type="button" class="btn btn-success" id="show_btn">SHOW</button>
+            <form id="user-data-analysis" method="POST">
+              <div id="box">
+                <label class="label" for="from-date-month">Choose date from:</label>
+                <select name="f_month" class="slct" id="from-date-month" form="user-data-analysis">
+                  <option selected disabled>month</option>
+                  <option value="January">January</option>
+                  <option value="February">February</option>
+                  <option value="March">March</option>
+                  <option value="April">April</option>
+                  <option value="May">May</option>
+                  <option value="June">June</option>
+                  <option value="July">July</option>
+                  <option value="August">August</option>
+                  <option value="September">September</option>
+                  <option value="October">October</option>
+                  <option value="November">November</option>
+                  <option value="December">December</option>
+                </select>
+                <select name="f_year" class="slct" id="from-date-year" form="user-data-analysis">
+                  <option selected disabled>year</option>
+                  <option value=2010 >2010</option>
+                  <option value=2011>2011</option>
+                  <option value=2012>2012</option>
+                  <option value=2013>2013</option>
+                  <option value=2014>2014</option>
+                  <option value=2015>2015</option>
+                  <option value=2016>2016</option>
+                  <option value=2017>2017</option>
+                  <option value=2018>2018</option>
+                  <option value=2019>2019</option>
+                  <option value=2020>2020</option>
+                </select>
+                <label class="label" for="until-date-month">, until:</label>
+                <select name="u_month" class="slct" id="until-date-month" form="user-data-analysis">
+                  <option selected disabled>month</option>
+                  <option value="January">January</option>
+                  <option value="February">February</option>
+                  <option value="March">March</option>
+                  <option value="April">April</option>
+                  <option value="May">May</option>
+                  <option value="June">June</option>
+                  <option value="July">July</option>
+                  <option value="August">August</option>
+                  <option value="September">September</option>
+                  <option value="October">October</option>
+                  <option value="November">November</option>
+                  <option value="December">December</option>
+                </select>
+                <select name="u_year" class="slct" id="until-date-year" form="user-data-analysis">
+                  <option selected disabled>year</option>
+                  <option value=2010>2010</option>
+                  <option value=2011>2011</option>
+                  <option value=2012>2012</option>
+                  <option value=2013>2013</option>
+                  <option value=2014>2014</option>
+                  <option value=2015>2015</option>
+                  <option value=2016>2016</option>
+                  <option value=2017>2017</option>
+                  <option value=2018>2018</option>
+                  <option value=2019>2019</option>
+                  <option value=2020>2020</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-success" id="show_btn" onclick="showData();">SHOW</button>
+            </form>
             <canvas id="activity_chart"></canvas>
             <table id="activity_hour_day" class="table table-sm table-hover table-light">
               <thead id="header_ahd">
