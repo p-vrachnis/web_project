@@ -1,11 +1,12 @@
+var m1;
 const ctx2 = document.getElementById('score_chart').getContext('2d');
 const activity_chart2 = new Chart(ctx2, {
   type: 'bar',
   data: {
-    labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+    labels: [m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12],
     datasets: [{
-      label: '% of transports',
-      data: [4, 5, 1, 28, 11, 7, 15, 20, 4, 1, 5, 8],
+      label: 'ECO SCORE LAST 12 MONTHS',
+      data: [v1 , v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12],
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',

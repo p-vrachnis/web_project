@@ -77,7 +77,7 @@
                         <th scope="row">
                         <?php
                         if ($count >=1 ){
-                        echo "$user[0]  " ;  }
+                        echo "$user[0] " ;  }
                         ?>
                         </th>
                         <td><?php
@@ -261,6 +261,34 @@
     </div>
 
 
+  <script>
+    var m1 = "<?php echo strval(date("F", strtotime("0 months"))); ?>";
+    var m2 = "<?php echo strval(date("F", strtotime("-1 months"))); ?>";
+    var m3 = "<?php echo strval(date("F", strtotime("-2 months"))); ?>";
+    var m4 = "<?php echo strval(date("F", strtotime("-3 months"))); ?>";
+    var m5 = "<?php echo strval(date("F", strtotime("-4 months"))); ?>";
+    var m6 = "<?php echo strval(date("F", strtotime("-5 months"))); ?>";
+    var m7 = "<?php echo strval(date("F", strtotime("-6 months"))); ?>";
+    var m8 = "<?php echo strval(date("F", strtotime("-7 months"))); ?>";
+    var m9 = "<?php echo strval(date("F", strtotime("-8 months"))); ?>";
+    var m10 = "<?php echo strval(date("F", strtotime("-9 months"))); ?>";
+    var m11 = "<?php echo strval(date("F", strtotime("-10 months"))); ?>";
+    var m12 = "<?php echo strval(date("F", strtotime("-11 months"))); ?>";
+
+    var v1 = <?php echo $year_months[date("F", strtotime("0 months"))]; ?>;
+    var v2 = <?php echo $year_months[date("F", strtotime("-1 months"))]; ?>;
+    var v3 = <?php echo $year_months[date("F", strtotime("-2 months"))]; ?>;
+    var v4 = <?php echo $year_months[date("F", strtotime("-3 months"))]; ?>;
+    var v5 = <?php echo $year_months[date("F", strtotime("-4 months"))]; ?>;
+    var v6 = <?php echo $year_months[date("F", strtotime("-5 months"))]; ?>;
+    var v7 = <?php echo $year_months[date("F", strtotime("-6 months"))]; ?>;
+    var v8 = <?php echo $year_months[date("F", strtotime("-7 months"))]; ?>;
+    var v9 = <?php echo $year_months[date("F", strtotime("-8 months"))]; ?>;
+    var v10 = <?php echo $year_months[date("F", strtotime("-9 months"))]; ?>;
+    var v11 = <?php echo $year_months[date("F", strtotime("-10 months"))]; ?>;
+    var v12 = <?php echo $year_months[date("F", strtotime("-11 months"))]; ?>;
+
+  </script>
   <script src="score_home_graph.js"></script>
 
   <script>
@@ -275,7 +303,6 @@
     var unknown = <?php echo $unknown; ?>;
     var in_road_vehicle = <?php echo $in_road_vehicle; ?>;
   </script>
-
   <script src="user_home_graph.js"></script>
 </body>
 </html>

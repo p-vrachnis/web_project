@@ -23,7 +23,7 @@ $min = $result[0]; // first register date
 $max = $result[1]; // last register date
 
 //GET MONTHLY SCORE
-$current_date= $timezone->format('Y-m-00'); // current date
+$current_date= $timezone->format('Y-m-01'); // current date
 $month_score = 0;
 $query = "SELECT score AS month_score FROM user_score WHERE score_date = '$current_date' and username = '$username'   ";
 $result = mysqli_query($conn,$query);
@@ -37,18 +37,51 @@ $count = mysqli_num_rows($result);
 
   //GET LAST 12 MONTHS SCORE FOR EACH MONTH
   $time = new DateTime('now');
-  $tempdate = $time->modify('-1 year')->format('Y-m-00');
+  $tempdate = $time->modify('-1 year')->format('Y-m-01');
   $query = "SELECT score AS months_score,score_date AS months_date  FROM user_score WHERE score_date >= '$tempdate' and username = '$username'   ";
   $query= mysqli_query($conn, $query);
   $months_score = Array();
   $months_date = Array();
-  if ($result = $query->fetch_assoc()) {
+  //if ($result = $query->fetch_assoc()) {
    while($result = $query->fetch_assoc()){
      //echo "Last 12 months score exists\n" ;
      $months_score[] = $result['months_score'];
-     $months_date[]  = $result['months_date']; } } // last 12 months score
-  else  {
+     $months_date[]  = $result['months_date']; } //} // last 12 months score 
+
+  //else  {
       //echo "No 12 months score has been registered\n";
+    //}
+
+    // Fill the missing scores of each month
+    $size_month_score = sizeof($months_score);
+    while( $size_month_score < 12){
+      array_push($months_score, 0);
+      $size_month_score++;
+    }
+
+    // Create array of the last 12 months
+    $year_months = array(
+      strval(date("F", strtotime("0 months"))) => 0,
+      strval(date("F", strtotime("-1 months"))) => 0,
+      strval(date("F", strtotime("-2 months"))) => 0,
+      strval(date("F", strtotime("-3 months"))) => 0,
+      strval(date("F", strtotime("-4 months"))) => 0,
+      strval(date("F", strtotime("-5 months"))) => 0,
+      strval(date("F", strtotime("-6 months"))) => 0,
+      strval(date("F", strtotime("-7 months"))) => 0,
+      strval(date("F", strtotime("-8 months"))) => 0,
+      strval(date("F", strtotime("-9 months"))) => 0,
+      strval(date("F", strtotime("-10 months"))) => 0,
+      strval(date("F", strtotime("-11 months"))) => 0
+    );
+
+    // Check if value key of year_months (array) is equal with the value of the array months_date,
+    // if yes, then change the specific value of the years_month. 
+    for($count = 0; $count < sizeof($months_date); $count++){
+      $check_key = strval(date("F", strtotime($months_date[$count])));
+      if (array_key_exists($check_key,$year_months)){
+        $year_months[$check_key] = $months_score[$count];
+      }
     }
 
       // TOP 3 Leaderboard
