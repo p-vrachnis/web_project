@@ -34,6 +34,7 @@
                   }
                   ?>
                 </div>
+                <canvas id="score_chart"></canvas>
               </div>
               <div id="date-range">
                 <a>Περίοδος εγγραφών χρήστη</a>
@@ -161,7 +162,7 @@
                   <option value=2019>2019</option>
                   <option value=2020>2020</option>
                 </select>
-                <label class="label" for="until-date-month">, until:</label>
+                <label class="label" for="until-date-month">until:</label>
                 <select name="u_month" class="slct" id="until-date-month" form="user-data-analysis">
                   <option selected disabled>month</option>
                   <option value="January">January</option>
@@ -259,6 +260,9 @@
       </div>
     </div>
 
+
+  <script src="score_home_graph.js"></script>
+
   <script>
     var still = <?php echo $still; ?>;
     var on_foot = <?php echo $on_foot; ?>;
@@ -271,6 +275,7 @@
     var unknown = <?php echo $unknown; ?>;
     var in_road_vehicle = <?php echo $in_road_vehicle; ?>;
   </script>
+
   <script src="user_home_graph.js"></script>
 </body>
 </html>

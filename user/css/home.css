@@ -113,7 +113,11 @@
 }
 
 #leaderboard{
-  height: 66%;
+  height: 32%;
+}
+#score{
+  height: 43%;
+  padding-bottom: 60%;
 }
 
 #eco-value, #date-range-value, #last-upload-value{
@@ -190,6 +194,14 @@ select {
   border-radius: 20px;
 }
 
+/* Chart Eco Month*/
+#score_chart{
+  margin-top: 3%;
+  position: absolute;
+  background-color: #ccc;
+  border-radius: 20px;
+}
+
 .slct{
   margin-top: 2%;
   margin: 1px;
@@ -241,15 +253,14 @@ border-collapse: collapse;
 
 /* LeaderBoard*/
 #leaderboard-table{
-  margin-top: 15%;
+  margin-top: 2%;
   background-color: #ccc;
   position: relative;
   width: 80%;
   left: 10%;
-  height: 50%;
   text-align: center;
   border-radius: 5%;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 #leaderboard-table:th{
@@ -275,14 +286,5 @@ border-collapse: collapse;
 }
 
 #rank1, #rank2, #rank3, #myrank{
-  font-size: 24px;
-}
-#leaderboard-table #rank1:hover{
-  color: gold;
-}
-#leaderboard-table #rank2:hover{
-  color: silver;
-}
-#leaderboard-table #rank3:hover{
-  color: peru;
+  font-size: 16px;
 }
