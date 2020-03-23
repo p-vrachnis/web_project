@@ -40,12 +40,12 @@ if (mysqli_query($conn, $sql)) {
    $sql = "REPLACE INTO user_score (username,score,score_date) values";
    //$timestampMs = $data[0][0];
    $seconds = $timestampMs[0]/ 1000;
-   $tmp= date("Y-m-00", $seconds);
+   $tmp= date("Y-m-01", $seconds);
    for( $i = 0 ; $i < sizeof($timestampMs); $i++ ){
     //$activity = $data[$i][3];
     //$timestampMs = $data[$i][0];
      $seconds = $timestampMs[$i]/ 1000;
-     $dt= date("Y-m-00", $seconds);
+     $dt= date("Y-m-01", $seconds);
      if ($tmp != $dt){
        $countf = 0;
        $countv = 0; }
