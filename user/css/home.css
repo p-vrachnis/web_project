@@ -78,7 +78,7 @@
     height: 890px;
   }
   .data_load{
-    margin-top: 450px;
+    margin-top: 1%;
     width: 100%;
   }
 }
@@ -303,5 +303,12 @@ border-collapse: collapse;
   height: 45%;
 }
 #map2{
-  height: 60%;
+  height: 43%;
+}
+
+#title{
+    margin-top: 40px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bolder;
 }
