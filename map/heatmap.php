@@ -18,7 +18,9 @@
     <p id="title">HeatMap Analysis</a>
     <div id = "heatmap"> </div>
 
-    <script src="../external/leaflet/leaflet.js"></script>
+    <script src="../external/node_modules/heatmap.js/build/heatmap.min.js"></script>
+    <!-- ΔΕΝ ΤΟ ΕΧΟΥΜΕ ΚΑΤΕΒΑΣΕΙ !! -->
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-heatmap@1.0.0/leaflet-heatmap.js"></script>
     <script src="../map/heatmap.js"></script>
 
 </body>
