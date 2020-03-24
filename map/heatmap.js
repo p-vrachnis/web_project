@@ -5,9 +5,9 @@ let baseLayer = L.tileLayer(
 )
 
 let cfg = {
-    "radius": 40,
+    "radius": 20,
     "useLocalExtrema": true,
-    valueField: 'price'
+    //valueField: 'price'
 };
 let heatmapLayer = new HeatmapOverlay(cfg);
 
@@ -19,7 +19,7 @@ let propertyHeatMap = new L.Map('heatmap', {
 
 var testData = {
     max: 8,
-    data: [{lat: 38.230462, lng: 21.753150, count: 3}]
+    data: [{lat: 38.230462, lng: 21.753150,}]
 };
 
 heatmapLayer.setData(testData);

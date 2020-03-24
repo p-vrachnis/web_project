@@ -46,7 +46,7 @@ $count = mysqli_num_rows($result);
    while($result = $query->fetch_assoc()){
      //echo "Last 12 months score exists\n" ;
      $months_score[] = $result['months_score'];
-     $months_date[]  = $result['months_date']; } //} // last 12 months score 
+     $months_date[]  = $result['months_date']; } //} // last 12 months score
 
   //else  {
       //echo "No 12 months score has been registered\n";
@@ -76,7 +76,7 @@ $count = mysqli_num_rows($result);
     );
 
     // Check if value key of year_months (array) is equal with the value of the array months_date,
-    // if yes, then change the specific value of the years_month. 
+    // if yes, then change the specific value of the years_month.
     for($count = 0; $count < sizeof($months_date); $count++){
       $check_key = strval(date("F", strtotime($months_date[$count])));
       if (array_key_exists($check_key,$year_months)){
@@ -101,8 +101,6 @@ $count = mysqli_num_rows($result);
          }
          $count++;
        }
-
-
      if ($count != 0 ){
      $i=0;
      for($i=0; $i < $count; $i++){
@@ -136,22 +134,29 @@ $count = mysqli_num_rows($result);
       "December" => 12
     );
 
-    if($_SERVER['REQUEST_METHOD'] == "POST") {
-      $f_month = $_POST['f_month'];
-      $f_year = $_POST['f_year'];
-      $u_month = $_POST['u_month'];
-      $u_year = $_POST['u_year'];
 
-      // Check if user input dates are valid.
-      if ($f_year > $u_year || $months[$f_month] > $months[$u_month] ){
-        echo "<script type='text/javascript'>alert('Wrong range of dates! Choose again.');</script>";
+    if($_SERVER['REQUEST_METHOD'] == "POST") {
+      if(empty($_POST['f_month']) && empty($_POST['f_year']) && empty($_POST['f_month']) && empty($_POST['f_month'])){
         $min_time=0;
         $max_time=0;
       }else{
-        $from_ts = strtotime(" $f_month $f_year");
-        $until_ts = strtotime(" $u_month $u_year");
-        $min_time=$from_ts;
-        $max_time=$until_ts;
+
+        $f_month = $_POST['f_month'];
+        $f_year = $_POST['f_year'];
+        $u_month = $_POST['u_month'];
+        $u_year = $_POST['u_year'];
+
+        // Check if user input dates are valid.
+        if ($f_year > $u_year || $months[$f_month] > $months[$u_month] ){
+          echo "<script type='text/javascript'>alert('Wrong range of dates! Choose again.');</script>";
+          $min_time=0;
+          $max_time=0;
+        }else{
+          $from_ts = strtotime(" $f_month $f_year");
+          $until_ts = strtotime(" $u_month $u_year");
+          $min_time=$from_ts;
+          $max_time=$until_ts;
+        }
       }
     }
     else{
