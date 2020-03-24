@@ -30,7 +30,7 @@
                   if ( $month_score != 0 ){
                   echo "Montlhy score $month_score%"; }
                   else {
-                    echo "Monthly score  -";
+                    echo "Monthly score  - $regyears[6] ";
                   }
                   ?>
                 </div>
@@ -207,47 +207,47 @@
               <tbody>
                 <tr>
                   <th scope="row">STILL</th>
-                  <td><?php if ($maxh[7]!="-"){echo "$maxh[7]:00";}?> </td>
+                  <td><?php if ($maxh[7]!="-"){echo "$maxh[7]";}?> </td>
                   <td><?php echo "$maxd[7] "?></td>
                 </tr>
                 <tr>
                   <th scope="row">IN VEHICLE</th>
-                  <td><?php if ($maxh[5]!="-"){ echo "$maxh[5]:00";}?> </td>
+                  <td><?php if ($maxh[5]!="-"){ echo "$maxh[5]";}?> </td>
                   <td><?php echo "$maxd[5] "?></td>
                 </tr>
                 <tr>
                   <th scope="row">ON FOOT</th>
-                  <td><?php if ($maxh[1]!="-"){ echo "$maxh[1]:00";}?> </td>
+                  <td><?php if ($maxh[1]!="-"){ echo "$maxh[1]";}?> </td>
                   <td><?php echo "$maxd[1] "?></td>
                 </tr>
                 <tr>
                   <th scope="row">IN ROAD VEHICLE</th>
-                  <td><?phpif ($maxh[10]!="-"){ echo "$maxh[10]:00";}?> </td>
+                  <td><?phpif ($maxh[10]!="-"){ echo "$maxh[10]";}?> </td>
                   <td><?php echo "$maxd[10] "?></td>
                 </tr>
                 <tr>
                   <th scope="row">IN RAIL VEHCILE</th>
-                  <td><?php if ($maxh[6]!="-"){ echo "$maxh[6]:00";}?> </td>
+                  <td><?php if ($maxh[6]!="-"){ echo "$maxh[6]";}?> </td>
                   <td><?php echo "$maxd[6] "?></td>
                 </tr>
                 <tr>
                   <th scope="row">WALKING</th>
-                  <td><?php if ($maxh[2]!="-"){ echo "$maxh[2]:00";}?> </td>
+                  <td><?php if ($maxh[2]!="-"){ echo "$maxh[2]";}?> </td>
                   <td><?php echo "$maxd[2] "?> </td>
                 </tr>
                 <tr>
                   <th scope="row">ON BICYCLE</th>
-                  <td><?php if ($maxh[3]!="-"){ echo "$maxh[3]:00";}?> </td>
+                  <td><?php if ($maxh[3]!="-"){ echo "$maxh[3]";}?> </td>
                   <td><?php echo "$maxd[3] "?></td>
                 </tr>
                 <tr>
                   <th scope="row">RUNNING</th>
-                  <td><?php if ($maxh[4]!="-"){ echo "$maxh[4]:00";}?> </td>
+                  <td><?php if ($maxh[4]!="-"){ echo "$maxh[4]";}?> </td>
                   <td><?php echo "$maxd[4] "?></td>
                 </tr>
                 <tr>
                   <th scope="row">TILTITNG</th>
-                  <td><?php if ($maxh[8]!="-"){ echo "$maxh[8]:00";}?> </td>
+                  <td><?php if ($maxh[8]!="-"){ echo "$maxh[8]";}?> </td>
                   <td><?php echo "$maxd[8] "?></td>
                 </tr>
               </tbody>

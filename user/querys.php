@@ -1,12 +1,12 @@
 <?php
 
 $username = $_SESSION['login_user'];
-//$data = json_decode($_POST['data']);
 // SQL Insert Query of the data.
 include_once '../external/connect_db.php';
 
-// LAST UPLOAD DATE
 $timezone= new DateTime("now", new DateTimeZone('Europe/Bucharest') );
+
+// LAST UPLOAD DATE
 $upload_date = 0;
 $query = "SELECT upload_date FROM upload WHERE username = '$username' ";
 $result = mysqli_query($conn, $query);
@@ -163,6 +163,36 @@ $count = mysqli_num_rows($result);
       $min_time=0;
       $max_time=0;
     }
+
+
+    $week_days = array(' - ','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun');
+   $hours_1 =  Array('-',
+   '12:00 am',
+   '1:00 am',
+   '2:00 am',
+   '3:00 am',
+   '4:00 am',
+   '5:00 am',
+   '6:00 am',
+   '7:00 am',
+   '8:00 am',
+   '9:00 am',
+   '10:00 am',
+   '11:00 am',
+   '12:00 pm',
+   '1:00 pm',
+   '2:00 pm',
+   '3:00 pm',
+   '4:00 pm',
+   '5:00 pm',
+   '6:00 pm',
+   '7:00 pm',
+   '8:00 pm',
+   '9:00 pm',
+   '10:00 pm',
+   '11:00 pm'
+) ;
+
      //activities
      $query ="SELECT activity FROM user_data WHERE username = '$username' and  timestampMs > '$min_time' and timestampMs < '$max_time' ";
      $query= mysqli_query($conn, $query);
@@ -186,13 +216,14 @@ $count = mysqli_num_rows($result);
      $hour =array_fill(0, 25, array_fill(0, 11, 0));
      $day =array_fill(0, 8, array_fill(0, 11, 0));
      $maxh=array();
-     $week_days = array(' - ','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun');
+
      for( $i = 0 ; $i < sizeof($activity); $i++ ) {
-       //$seconds = $timestampMs[$i]/ 1000;
-       //$hours = date("H",$seconds);// ena apo ta duo einai swsto
-       $hours = date("H",$timestampMs[$i]);
-       $days= date('N', $timestampMs[$i]);
-       $hours = (int)$hours;
+       $seconds = $timestampMs[$i]/ 1000;
+       $hours = date("H",$seconds);// ena apo ta duo einai swsto
+       //$hours = date("H",$timestampMs[$i]);
+       //$days= date('N', $timestampMs[$i]);\
+       $days= date('N', $seconds);// days of week in  number
+       $hours = (int)$hours; // 06 -> 6
       if ($activity[$i]=='ON_FOOT'){
         $on_foot++;
         $hour[$hours][1]++;
@@ -264,6 +295,8 @@ $count = mysqli_num_rows($result);
       for ( $j = 1 ; $j <24; $j++ ){
        if($hour[$j][$i] < $hour[$j+1][$i] ){
         $maxh[$i]=$j+1;
+        $maxh[$i]=$hours_1[$maxh[$i]+1];
+        //$maxh[$i] = date('H',$maxh[$i]);
        }
       }
     }
@@ -274,9 +307,77 @@ $count = mysqli_num_rows($result);
       for ( $j = 1 ; $j <7; $j++ ){
        if($day[$j][$i] < $day[$j+1][$i] ){
         $maxd[$i]=$week_days[$j+1];
-        //$maxd = date("D",$maxd);
        }
       }
     }
+
+    //=================== ADMIN ==================
+ //    $query ="SELECT username FROM users ";
+ //    $query= mysqli_query($conn, $query);
+ //    $user = Array();
+ //    while($result = $query->fetch_assoc()){
+ //      $user[] = $result['username']; //activity from DB
+ //    }
+ //
+ //   //$regcount = Array();
+ //   for( $i = 1 ; $i < sizeof($user); $i++ ){
+ //    $regcount[$i] = 0;
+ //    $registers = Array();
+ //    $query ="SELECT timestampMs FROM user_data WHERE username = '$user[$i]'";
+ //    $query= mysqli_query($conn, $query);
+ //    while($result = $query->fetch_assoc()){
+ //      //$timestampMs[] = $result['timestampMs']; // activity from DB
+ //      $regcount[$i]++; //833 swsto
+ //    }
+ //   }
+ //
+ //   // $totalcount=0;
+ //   // $query ="SELECT timestampMs FROM user_data ";
+ //   // $query= mysqli_query($conn, $query);
+ //   // while($result = $query->fetch_assoc()){
+ //   //   $timestampMs[] = $result['timestampMs']; // activity from DB
+ //   //   $totalcount++;
+ //   // }
+ //
+ //  // $seconds = $timestampMs[]/ 1000;
+ //   //$tmp= date("Y-m-01", $seconds);
+ // $week_days = array(' - ','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun');
+ // //$current_date= $timezone->format('Y-m-01'); // current date
+ //  $reghours=array_fill(1, 24, 0);
+ //  $regdays=array_fill(1, 7, 0);
+ //  $regmonths=array_fill(1, 12, 0);
+ //  $regyears=array_fill(0, 10, 0); // 2010 me 2020
+ //  for( $i = 0 ; $i < sizeof($timestampMs); $i++ ) {
+ //   $seconds = $timestampMs[$i] / 1000;
+ //   //$tmp= date("Y-m-d", $seconds);
+ //   $hour = date("H",$seconds); // swsta!!! // se 06 h wra
+ //   $day  = date('N',$seconds); // se noumero h mera ths evdomadas
+ //   $year = date("Y", $seconds); // year
+ //   $month = date("m", $seconds);
+ //   //$year= (int)$year;
+ //   $tyear = $year - 2000;
+ //   //$hour = (int)$hour;
+ //   //$day = (int)$day;
+ //   $month = (int)$month;
+ //
+ //   for( $j = 1 ; $j <= 24; $j++ ){
+ //     if ($hour==$j){ $reghours[$j]++;} }
+ //   for( $j = 1 ; $j <= 7; $j++ ){
+ //     if ($day==$j){ $regdays[$j]++;} }
+ //   for( $j = 1 ; $j <= 12; $j++ ){
+ //     if ($month==$j){ $regmonths[$j]++;} }
+ //   for( $j = 1 ; $j <= 10; $j++ ){
+ //     if ($tyear==($j+10)){ $regyears[$j]++;} }
+ //   }
+ //
+ //   for( $j = 1 ; $j <= 24; $j++ ){
+ //     ($reghours[$j]/sizeof($timestampMs)*100;}
+ //   for( $j = 1 ; $j <= 7; $j++ ){
+ //     ($regdays$j]/sizeof($timestampMs)*100}
+ //   for( $j = 1 ; $j <= 12; $j++ ){
+ //     ($regmonths[$j]/sizeof($timestampMs)*100}
+ //   for( $j = 1 ; $j <= 10; $j++ ){
+ //     ($regyears[$j]/sizeof($timestampMs)*100}
+
 
 ?>
