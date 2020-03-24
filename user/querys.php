@@ -136,7 +136,7 @@ $count = mysqli_num_rows($result);
 
 
     if($_SERVER['REQUEST_METHOD'] == "POST") {
-      if(empty($_POST['f_month']) || empty($_POST['f_year']) || empty($_POST['u_month']) || empty($_POST['u_month'])){
+      if(empty($_POST['f_month']) || empty($_POST['f_year']) || empty($_POST['u_month']) || empty($_POST['u_year'])){
         $min_time=0;
         $max_time=0;
       }else{
@@ -163,6 +163,49 @@ $count = mysqli_num_rows($result);
       $min_time=0;
       $max_time=0;
     }
+
+    // Function which converts number to a string and inserting a decimal point in the third place of it.
+    function decimal($num){
+      $snum = strval($num);
+      $snum =  "" . substr($snum, 0, 2) . "." . substr($snum,2). ""; 
+      return $snum;
+    }
+
+    // Latitude query
+    $query ="SELECT latitudeE7 FROM user_data WHERE timestampMs > '$min_time' and timestampMs < '$max_time' ";
+    $query= mysqli_query($conn, $query);
+    $lat = Array();
+    while($result = $query->fetch_assoc()){
+      $lat[] = $result['latitudeE7']; 
+    }
+    
+    // Longtude query
+    $query ="SELECT longitudeE7 FROM user_data WHERE timestampMs > '$min_time' and timestampMs < '$max_time' ";
+    $query= mysqli_query($conn, $query);
+    $lng = Array();
+    while($result = $query->fetch_assoc()){
+      $lng[] = $result['longitudeE7']; 
+    }
+
+
+    $lat[0] = decimal($lat[0]);
+    $lng[0] = decimal($lng[0]);
+
+    $temp_heatmap = array();
+    $data_heatmap = array(array("lat"=>$lat[0], "lng"=>$lng[0]));
+
+    // For each value of coordinates, we create an array (dictionary) to include lat,lon for the HeatMap
+    for($iter=1; $iter<sizeof($lat); $iter++){
+      $lat[$iter] = decimal($lat[$iter]);
+      $lng[$iter] = decimal($lng[$iter]);
+
+      $temp_heatmap = array("lat"=>$lat[$iter], "lng"=>$lng[$iter]);
+      array_push($data_heatmap, $temp_heatmap);
+    }
+
+    // Array convert into JSON, in order to send them to Javascript file.
+    $data_heatmap = json_encode($data_heatmap);
+
      //activities
      $query ="SELECT activity FROM user_data WHERE username = '$username' and  timestampMs > '$min_time' and timestampMs < '$max_time' ";
      $query= mysqli_query($conn, $query);
@@ -188,11 +231,12 @@ $count = mysqli_num_rows($result);
      $maxh=array();
      $week_days = array(' - ','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun');
      for( $i = 0 ; $i < sizeof($activity); $i++ ) {
-       //$seconds = $timestampMs[$i]/ 1000;
-       //$hours = date("H",$seconds);// ena apo ta duo einai swsto
-       $hours = date("H",$timestampMs[$i]);
-       $days= date('N', $timestampMs[$i]);
-       $hours = (int)$hours;
+       $seconds = $timestampMs[$i]/ 1000;
+       $hours = date("H",$seconds); // ena apo ta duo einai swsto
+      //  $hours = date("H",$timestampMs[$i]);
+      //  $days= date('N', $timestampMs[$i]);
+      $days = date('N', $seconds);
+      $hours = (int)$hours;
       if ($activity[$i]=='ON_FOOT'){
         $on_foot++;
         $hour[$hours][1]++;

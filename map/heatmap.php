@@ -1,5 +1,5 @@
 <?php
-
+    include_once "../user/querys.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +16,12 @@
 
 <body>
 
-    <div id = "heatmap"> </div>
+    <div id = "heatmap"></div>
+
+    <script>
+        var data_heatmap = <?php echo $data_heatmap; ?>;        
+    </script>
+
     <script src="../external/node_modules/heatmap.js/build/heatmap.min.js"></script>
     <!-- ΔΕΝ ΤΟ ΕΧΟΥΜΕ ΚΑΤΕΒΑΣΕΙ !! -->
     <script src="https://cdn.jsdelivr.net/npm/leaflet-heatmap@1.0.0/leaflet-heatmap.js"></script>
