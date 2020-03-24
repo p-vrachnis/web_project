@@ -136,7 +136,7 @@ $count = mysqli_num_rows($result);
 
 
     if($_SERVER['REQUEST_METHOD'] == "POST") {
-      if(empty($_POST['f_month']) && empty($_POST['f_year']) && empty($_POST['f_month']) && empty($_POST['f_month'])){
+      if(empty($_POST['f_month']) || empty($_POST['f_year']) || empty($_POST['u_month']) || empty($_POST['u_month'])){
         $min_time=0;
         $max_time=0;
       }else{
