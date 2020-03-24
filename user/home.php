@@ -258,6 +258,9 @@
           <div id="map1">
             <?php include "../map/leaflet.php" ?>
           </div>
+          <div id="title">
+            <p>HeatMap Analysis</p>
+          </div>
           <div id="map2">
             <?php include "../map/heatmap.php" ?>
           </div>
