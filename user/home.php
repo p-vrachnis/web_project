@@ -30,7 +30,7 @@
                   if ( $month_score != 0 ){
                   echo "Montlhy score $month_score%"; }
                   else {
-                    echo "Monthly score  - $regyears[6] ";
+                    echo "Monthly score  - ";
                   }
                   ?>
                 </div>

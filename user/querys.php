@@ -133,10 +133,9 @@ $count = mysqli_num_rows($result);
       "November" => 11,
       "December" => 12
     );
-
-
+    // GRAPHS AND PINAKAS
     if($_SERVER['REQUEST_METHOD'] == "POST") {
-      if(empty($_POST['f_month']) || empty($_POST['f_year']) || empty($_POST['u_month']) || empty($_POST['u_month'])){
+      if(empty($_POST['f_month']) || empty($_POST['f_year']) || empty($_POST['u_month']) || empty($_POST['u_year'])){
         $min_time=0;
         $max_time=0;
       }else{
@@ -164,34 +163,78 @@ $count = mysqli_num_rows($result);
       $max_time=0;
     }
 
-
     $week_days = array(' - ','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun');
-   $hours_1 =  Array('-',
-   '12:00 am',
-   '1:00 am',
-   '2:00 am',
-   '3:00 am',
-   '4:00 am',
-   '5:00 am',
-   '6:00 am',
-   '7:00 am',
-   '8:00 am',
-   '9:00 am',
-   '10:00 am',
-   '11:00 am',
-   '12:00 pm',
-   '1:00 pm',
-   '2:00 pm',
-   '3:00 pm',
-   '4:00 pm',
-   '5:00 pm',
-   '6:00 pm',
-   '7:00 pm',
-   '8:00 pm',
-   '9:00 pm',
-   '10:00 pm',
-   '11:00 pm'
-) ;
+    $hours_1 =  Array('-',
+    '12:00 am',
+    '1:00 am',
+    '2:00 am',
+    '3:00 am',
+    '4:00 am',
+    '5:00 am',
+    '6:00 am',
+    '7:00 am',
+    '8:00 am',
+    '9:00 am',
+    '10:00 am',
+    '11:00 am',
+    '12:00 pm',
+    '1:00 pm',
+    '2:00 pm',
+    '3:00 pm',
+    '4:00 pm',
+    '5:00 pm',
+    '6:00 pm',
+    '7:00 pm',
+    '8:00 pm',
+    '9:00 pm',
+    '10:00 pm',
+    '11:00 pm'
+    ) ;
+
+    //HEATMAP
+    // Function which converts number to a string and inserting a decimal point in the third place of it.
+    function decimal($num){
+      $snum = strval($num);
+      $snum =  "" . substr($snum, 0, 2) . "." . substr($snum,2). "";
+      return $snum;
+    }
+
+    // Latitude query
+    $counter=0;
+    $query ="SELECT latitudeE7 FROM user_data WHERE timestampMs > '$min_time' and timestampMs < '$max_time' ";
+    $query= mysqli_query($conn, $query);
+    $lat = Array();
+    while($result = $query->fetch_assoc()){
+      $lat[] = $result['latitudeE7'];
+      $counter++;
+    }
+
+    // Longtude query
+    $query ="SELECT longitudeE7 FROM user_data WHERE timestampMs > '$min_time' and timestampMs < '$max_time' ";
+    $query= mysqli_query($conn, $query);
+    $lng = Array();
+    while($result = $query->fetch_assoc()){
+      $lng[] = $result['longitudeE7'];
+    }
+
+    if ($counter !=0){
+    $lat[0] = decimal($lat[0]);
+    $lng[0] = decimal($lng[0]);
+
+    $temp_heatmap = array();
+    $data_heatmap = array(array("lat"=>$lat[0], "lng"=>$lng[0]));
+
+    // For each value of coordinates, we create an array (dictionary) to include lat,lon for the HeatMap
+    for($iter=1; $iter<sizeof($lat); $iter++){
+      $lat[$iter] = decimal($lat[$iter]);
+      $lng[$iter] = decimal($lng[$iter]);
+
+      $temp_heatmap = array("lat"=>$lat[$iter], "lng"=>$lng[$iter]);
+      array_push($data_heatmap, $temp_heatmap);
+    }
+
+    // Array convert into JSON, in order to send them to Javascript file.
+    $data_heatmap = json_encode($data_heatmap); }
 
      //activities
      $query ="SELECT activity FROM user_data WHERE username = '$username' and  timestampMs > '$min_time' and timestampMs < '$max_time' ";
@@ -219,11 +262,11 @@ $count = mysqli_num_rows($result);
 
      for( $i = 0 ; $i < sizeof($activity); $i++ ) {
        $seconds = $timestampMs[$i]/ 1000;
-       $hours = date("H",$seconds);// ena apo ta duo einai swsto
-       //$hours = date("H",$timestampMs[$i]);
-       //$days= date('N', $timestampMs[$i]);\
-       $days= date('N', $seconds);// days of week in  number
-       $hours = (int)$hours; // 06 -> 6
+       $hours = date("H",$seconds); // ena apo ta duo einai swsto
+      //  $hours = date("H",$timestampMs[$i]);
+      //  $days= date('N', $timestampMs[$i]);
+      $days = date('N', $seconds);
+      $hours = (int)$hours;
       if ($activity[$i]=='ON_FOOT'){
         $on_foot++;
         $hour[$hours][1]++;
@@ -302,7 +345,7 @@ $count = mysqli_num_rows($result);
     }
     //MAX SCORE DAY
     for( $i = 1 ; $i <=10; $i++ ){
-      $maxd[$i]=' ';
+      $maxd[$i]='';
       if($day[1][$i]!=0){$maxd[$i]=$week_days[1];}
       for ( $j = 1 ; $j <7; $j++ ){
        if($day[$j][$i] < $day[$j+1][$i] ){
