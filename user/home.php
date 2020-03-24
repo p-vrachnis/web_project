@@ -255,7 +255,12 @@
           </div>
         </div>
         <div class="data_load">
-          <?php include "../map/leaflet.php" ?>
+          <div id="map1">
+            <?php include "../map/leaflet.php" ?>
+          </div>
+          <div id="map2">
+            <?php include "../map/heatmap.php" ?>
+          </div>
         </div>
       </div>
     </div>
