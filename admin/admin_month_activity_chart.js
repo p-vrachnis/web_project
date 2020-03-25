@@ -7,7 +7,7 @@ new Chart(document.getElementById("month_activity_chart"), {
         {
           label: "Recodrs Per Month",
           backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-          data: [1,2,3,4,5,6,7,8,9,10,11,12]
+          data: regmonths 
         }
       ]
     },

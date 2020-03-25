@@ -6,7 +6,7 @@ new Chart(document.getElementById("year_activity_chart"), {
         {
           label: "Recodrs Per Year",
           backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-          data: [1,2,3,4,5,6,7,8,9,10,11]
+          data: regyears //[1,2,3,4,5,6,7,8,9,10,11]
         }
       ]
     },

@@ -42,21 +42,17 @@ $hours_1 =  Array('-',
     while($result = $query->fetch_assoc()){
       $user[] = $result['username']; //activity from DB
     }
-    /* Not include admin */
-    //unset($user[0]);
 
    //Registers count for user
    $regcount = Array();
   for( $i = 0 ; $i < sizeof($user); $i++ ){
    $regcount[$i] = 0;
-   //$registers = Array();
    $query ="SELECT timestampMs FROM user_data WHERE username = '$user[$i]'";
    $query= mysqli_query($conn, $query);
    while($result = $query->fetch_assoc()){
      //$timestampMs[] = $result['timestampMs']; // activity from DB
      $regcount[$i]++; //833 swsto
    }
-   //$regcount[$i] = (int)$regcount[$i];
   }
 
   //total registers
@@ -69,9 +65,9 @@ $hours_1 =  Array('-',
   }
 
  // Registers per hour month day and year
- $reghours=array_fill(1, 24, 0);
- $regdays=array_fill(1, 7, 0);
- $regmonths=array_fill(1, 12, 0);
+ $reghours=array_fill(0, 24, 0);
+ $regdays=array_fill(0, 7, 0);
+ $regmonths=array_fill(0, 12, 0);
  $regyears=array_fill(0, 10, 0); //2010 to 2020
  for( $i = 0 ; $i < sizeof($timestampMs); $i++ ) {
   $seconds = $timestampMs[$i] / 1000;
@@ -87,11 +83,11 @@ $hours_1 =  Array('-',
   $month = (int)$month;
 
   for( $j = 1 ; $j <= 24; $j++ ){
-    if ($hour==$j){ $reghours[$j]++;} }
+    if ($hour==$j){ $reghours[$j-1]++;} }
   for( $j = 1 ; $j <= 7; $j++ ){
-    if ($day==$j){ $regdays[$j]++;} }
+    if ($day==$j){ $regdays[$j-1]++;} }
   for( $j = 1 ; $j <= 12; $j++ ){
-    if ($month==$j){ $regmonths[$j]++;} }
+    if ($month==$j){ $regmonths[$j-1]++;} }
   for( $j = 1 ; $j <= 10; $j++ ){
     if ($tyear==($j+10)){ $regyears[$j]++;} }
   }

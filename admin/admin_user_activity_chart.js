@@ -1,7 +1,7 @@
 new Chart(document.getElementById("user_activity_chart"), {
     type: 'pie',
     data: {
-      labels: user, //["User1", "User2", "User3", "User4"],
+      labels: user, 
       datasets: [
         {
           label: "Recodrs Per User",
