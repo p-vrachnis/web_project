@@ -42,17 +42,21 @@ $hours_1 =  Array('-',
     while($result = $query->fetch_assoc()){
       $user[] = $result['username']; //activity from DB
     }
+    /* Not include admin */
+    //unset($user[0]);
 
    //Registers count for user
-  for( $i = 1 ; $i < sizeof($user); $i++ ){
+   $regcount = Array();
+  for( $i = 0 ; $i < sizeof($user); $i++ ){
    $regcount[$i] = 0;
-   $registers = Array();
+   //$registers = Array();
    $query ="SELECT timestampMs FROM user_data WHERE username = '$user[$i]'";
    $query= mysqli_query($conn, $query);
    while($result = $query->fetch_assoc()){
      //$timestampMs[] = $result['timestampMs']; // activity from DB
      $regcount[$i]++; //833 swsto
    }
+   //$regcount[$i] = (int)$regcount[$i];
   }
 
   //total registers

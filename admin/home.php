@@ -43,18 +43,39 @@
   <script>
     var still = <?php echo $still; ?>;
 
-</script>
-<script src="admin_activity_chart.js"></script>
+  </script>
+  <script src="admin_activity_chart.js"></script>
 
-<script src="admin_hour_activity_chart.js"></script>
+  <script>
+    var still = <?php echo $still; ?>;
 
-<script src="admin_month_activity_chart.js"></script>
+  </script>
+  <script src="admin_hour_activity_chart.js"></script>
 
-<script src="admin_week_activity_chart.js"></script>
+  <script>
+    var still = <?php echo $still; ?>;
 
-<script src="admin_user_activity_chart.js"></script>
+  </script>
+  <script src="admin_month_activity_chart.js"></script>
 
-<script src="admin_year_activity_chart.js"></script>
+  <script>
+    var still = <?php echo $still; ?>;
+
+  </script>
+  <script src="admin_week_activity_chart.js"></script>
+
+  <script>
+    var user = <?php echo json_encode($user); ?>;
+    var regcount = <?php echo json_encode($regcount); ?>;
+
+  </script>
+  <script src="admin_user_activity_chart.js"></script>
+
+  <script>
+    var still = <?php echo $still; ?>;
+
+  </script>
+  <script src="admin_year_activity_chart.js"></script>
 
 </body>
 </html>

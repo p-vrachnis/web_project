@@ -1,12 +1,12 @@
 new Chart(document.getElementById("user_activity_chart"), {
     type: 'pie',
     data: {
-      labels: ["User1", "User2", "User3"],
+      labels: user, //["User1", "User2", "User3", "User4"],
       datasets: [
         {
           label: "Recodrs Per User",
           backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f"],
-          data: [1,2,3]
+          data: regcount
         }
       ]
     },
