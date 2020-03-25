@@ -7,7 +7,7 @@ const admin_activity_chart = new Chart(ctx, {
       label: '% of transports',
       // CHANGE VALUES !!!!!
       //       data: [still, in_vehicle, on_foot, in_road_vehicle, in_rail_vehicle, walking, on_bicycle, running, tilting, unknown],
-      data: [still, 2, 2, 2, 5, 8, 5, 5, 8, 8],
+      data: [still, in_vehicle, on_foot, in_road_vehicle, in_rail_vehicle, walking, on_bicycle, running, tilting, unknown],
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',
