@@ -176,7 +176,7 @@ $hours_1 =  Array(
       $hour[$hours][8]++;
       $day[$days][8]++;
     }
-    elseif ($activity[$i] == 'UNKNOWN') {
+    elseif ($activity[$i] == 'UNKNOWN' || $activity[$i] == '' ) {
       $unknown++;
       $hour[$hours][9]++;
       $day[$days][9]++;
