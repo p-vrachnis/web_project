@@ -45,7 +45,7 @@
       </div>
     </div>
 
-
+ 
   <script>
     var still = <?php echo $still; ?>;
     var on_foot = <?php echo $on_foot; ?>;
