@@ -93,14 +93,14 @@ $hours_1 =  Array('-',
   }
   //$day = $week_days[$day]; // // h mera se onoma
 
-  for( $j = 1 ; $j <= 24; $j++ ){
-    ($reghours[$j]/sizeof($timestampMs)*100;}
-  for( $j = 1 ; $j <= 7; $j++ ){
-    ($regdays$j]/sizeof($timestampMs)*100}
-  for( $j = 1 ; $j <= 12; $j++ ){
-    ($regmonths[$j]/sizeof($timestampMs)*100}
-  for( $j = 1 ; $j <= 10; $j++ ){
-    ($regyears[$j]/sizeof($timestampMs)*100}
+  // for( $j = 1 ; $j <= 24; $j++ ){
+  //   ($reghours[$j]/sizeof($timestampMs)*100;}
+  // for( $j = 1 ; $j <= 7; $j++ ){
+  //   ($regdays$j]/sizeof($timestampMs)*100}
+  // for( $j = 1 ; $j <= 12; $j++ ){
+  //   ($regmonths[$j]/sizeof($timestampMs)*100}
+  // for( $j = 1 ; $j <= 10; $j++ ){
+  //   ($regyears[$j]/sizeof($timestampMs)*100}
 
 
 
@@ -186,16 +186,16 @@ $hours_1 =  Array('-',
    }
   }
   if ($i!=0){
-  $on_foot=($on_foot/$i)*100 ;
-  $walking=($walking/$i)*100;
-  $running=($on_bicycle/$i)*100;
-  $running=($running/$i)*100;
-  $in_vehicle=($in_vehicle/$i)*100;
-  $in_rail_vehicle=($in_rail_vehicle/$i)*100;
-  $still=($still/$i)*100 ;
-  $tilting=($tilting/$i)*100 ;
-  $unknown=($unknown/$i)*100 ;
-  $in_road_vehicle=($in_road_vehicle/$i)*100;
+    $on_foot=($on_foot/$i)*100 ;
+    $walking=($walking/$i)*100;
+    $on_bicycle=($on_bicycle/$i)*100;
+    $running=($running/$i)*100;
+    $in_vehicle=($in_vehicle/$i)*100;
+    $in_rail_vehicle=($in_rail_vehicle/$i)*100;
+    $still=($still/$i)*100 ;
+    $tilting=($tilting/$i)*100 ;
+    $unknown=($unknown/$i)*100 ;
+    $in_road_vehicle=($in_road_vehicle/$i)*100;
  }
 
 
