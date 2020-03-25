@@ -12,7 +12,7 @@ new Chart(document.getElementById("hour_activity_chart"), {
       ]
     },
     options: {
-        responsive: true,
+        responsive: false,
         legend:{
             display: false
         },

@@ -24,14 +24,20 @@
         <div class="user_info">
           <p style="text-align: center">Απεικόνιση κατάστασης ΒΔ (dashboard)</p>
           <canvas id="admin_activity_chart"></canvas>
-          <canvas id="hour_activity_chart"></canvas>
-          <canvas id="month_activity_chart"></canvas>
         </div>
         <div class="user_analyse">
-          <p style="text-align: center">Απεικόνιση στοιχείων σε χάρτη</p>
-          <canvas id="week_activity_chart"></canvas>
-          <canvas id="user_activity_chart"></canvas>
-          <canvas id="year_activity_chart"></canvas>
+          <p style="text-align: center">Απεικόνιση κατάστασης ΒΔ (dashboard)</p>
+          <div id="flex-container1">
+            <div><canvas id="year_activity_chart"></canvas></div>
+            <div><canvas id="month_activity_chart"></canvas></div>
+          </div>
+          <div id="flex-container2">
+            <div><canvas id="week_activity_chart"></canvas></div>
+            <div><canvas id="hour_activity_chart"></canvas></div>
+          </div>
+          <div id="flex-container3">
+            <div><canvas id="user_activity_chart"></canvas></div>
+          </div>
         </div>
         <div class="data_load">
           <p style="text-align: center">Διαγραφή/Εξαγωγή δεδομένων</p>
@@ -81,6 +87,8 @@
     var regyears = <?php echo json_encode($regyears); ?>;
   </script>
   <script src="admin_year_activity_chart.js"></script>
+
+  <script src="home.js"></script>
 
 </body>
 </html>

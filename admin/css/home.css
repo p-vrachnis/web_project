@@ -104,7 +104,50 @@
   border-radius: 20px;
 }
 
-/* Month-Axtivity Pie */
+/* Pie Charts */
+
+#flex-container1{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+#year_activity_chart{
+  width: 475px;
+  height: 100%;
+
+}
+
+#month_activity_chart{
+  width: 475px;
+  height: 100%; 
+  margin-left: -200px;
+}
+
+#flex-container2{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+#week_activity_chart{
+  width: 475px;
+  height: 100%;
+}
+
 #hour_activity_chart{
-  width: 5%;
+  width: 475px;
+  height: 100%; 
+  margin-left: -200px;
+}
+
+#flex-container3{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+#user_activity_chart{
+  width: 475px;
+  height: 100%;
 }

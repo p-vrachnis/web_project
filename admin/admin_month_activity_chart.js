@@ -12,7 +12,7 @@ new Chart(document.getElementById("month_activity_chart"), {
       ]
     },
     options: {
-        responsive: true,
+        responsive: false,
         legend:{
             display: false
         },
