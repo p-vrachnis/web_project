@@ -262,11 +262,11 @@ $count = mysqli_num_rows($result);
 
      for( $i = 0 ; $i < sizeof($activity); $i++ ) {
        $seconds = $timestampMs[$i]/ 1000;
-       $hours = date("H",$seconds); // ena apo ta duo einai swsto
+       $hours = date("H",$seconds) ; // ena apo ta duo einai swsto
       //  $hours = date("H",$timestampMs[$i]);
       //  $days= date('N', $timestampMs[$i]);
       $days = date('N', $seconds);
-      $hours = (int)$hours;
+      $hours = (int)$hours +2 ;
       if ($activity[$i]=='ON_FOOT'){
         $on_foot++;
         $hour[$hours][1]++;
