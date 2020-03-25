@@ -4,7 +4,7 @@ $username = $_SESSION['login_user'];
 // SQL Insert Query of the data.
 include_once '../external/connect_db.php';
 
-$timezone= new DateTime("now", new DateTimeZone('Europe/Bucharest') );
+$timezone= new DateTime("now", new DateTimeZone('Europe/Athens') );
 
 // LAST UPLOAD DATE
 $upload_date = 0;
@@ -165,8 +165,6 @@ $count = mysqli_num_rows($result);
 
     $week_days = array(' - ','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun');
     $hours_1 =  Array('-',
-    '12:00 am',
-    '1:00 am',
     '2:00 am',
     '3:00 am',
     '4:00 am',
@@ -188,7 +186,9 @@ $count = mysqli_num_rows($result);
     '8:00 pm',
     '9:00 pm',
     '10:00 pm',
-    '11:00 pm'
+    '11:00 pm',
+    '12:00 am',
+    '1:00 am',
     ) ;
 
     //HEATMAP
@@ -259,14 +259,12 @@ $count = mysqli_num_rows($result);
      $hour =array_fill(0, 25, array_fill(0, 11, 0));
      $day =array_fill(0, 8, array_fill(0, 11, 0));
      $maxh=array();
-
+     //$hours->setTimezone(new DateTimeZone("GMT+2"));
      for( $i = 0 ; $i < sizeof($activity); $i++ ) {
        $seconds = $timestampMs[$i]/ 1000;
-       $hours = date("H",$seconds) ; // ena apo ta duo einai swsto
-      //  $hours = date("H",$timestampMs[$i]);
-      //  $days= date('N', $timestampMs[$i]);
-      $days = date('N', $seconds);
-      $hours = (int)$hours +2 ;
+       $hours = date("H ",$seconds) ; // ena apo ta duo einai swsto;
+       $days = date('N', $seconds);
+       $hours = (int)$hours ;
       if ($activity[$i]=='ON_FOOT'){
         $on_foot++;
         $hour[$hours][1]++;
@@ -353,74 +351,5 @@ $count = mysqli_num_rows($result);
        }
       }
     }
-
-    //=================== ADMIN ==================
- //    $query ="SELECT username FROM users ";
- //    $query= mysqli_query($conn, $query);
- //    $user = Array();
- //    while($result = $query->fetch_assoc()){
- //      $user[] = $result['username']; //activity from DB
- //    }
- //
- //   //$regcount = Array();
- //   for( $i = 1 ; $i < sizeof($user); $i++ ){
- //    $regcount[$i] = 0;
- //    $registers = Array();
- //    $query ="SELECT timestampMs FROM user_data WHERE username = '$user[$i]'";
- //    $query= mysqli_query($conn, $query);
- //    while($result = $query->fetch_assoc()){
- //      //$timestampMs[] = $result['timestampMs']; // activity from DB
- //      $regcount[$i]++; //833 swsto
- //    }
- //   }
- //
- //   // $totalcount=0;
- //   // $query ="SELECT timestampMs FROM user_data ";
- //   // $query= mysqli_query($conn, $query);
- //   // while($result = $query->fetch_assoc()){
- //   //   $timestampMs[] = $result['timestampMs']; // activity from DB
- //   //   $totalcount++;
- //   // }
- //
- //  // $seconds = $timestampMs[]/ 1000;
- //   //$tmp= date("Y-m-01", $seconds);
- // $week_days = array(' - ','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun');
- // //$current_date= $timezone->format('Y-m-01'); // current date
- //  $reghours=array_fill(1, 24, 0);
- //  $regdays=array_fill(1, 7, 0);
- //  $regmonths=array_fill(1, 12, 0);
- //  $regyears=array_fill(0, 10, 0); // 2010 me 2020
- //  for( $i = 0 ; $i < sizeof($timestampMs); $i++ ) {
- //   $seconds = $timestampMs[$i] / 1000;
- //   //$tmp= date("Y-m-d", $seconds);
- //   $hour = date("H",$seconds); // swsta!!! // se 06 h wra
- //   $day  = date('N',$seconds); // se noumero h mera ths evdomadas
- //   $year = date("Y", $seconds); // year
- //   $month = date("m", $seconds);
- //   //$year= (int)$year;
- //   $tyear = $year - 2000;
- //   //$hour = (int)$hour;
- //   //$day = (int)$day;
- //   $month = (int)$month;
- //
- //   for( $j = 1 ; $j <= 24; $j++ ){
- //     if ($hour==$j){ $reghours[$j]++;} }
- //   for( $j = 1 ; $j <= 7; $j++ ){
- //     if ($day==$j){ $regdays[$j]++;} }
- //   for( $j = 1 ; $j <= 12; $j++ ){
- //     if ($month==$j){ $regmonths[$j]++;} }
- //   for( $j = 1 ; $j <= 10; $j++ ){
- //     if ($tyear==($j+10)){ $regyears[$j]++;} }
- //   }
- //
- //   for( $j = 1 ; $j <= 24; $j++ ){
- //     ($reghours[$j]/sizeof($timestampMs)*100;}
- //   for( $j = 1 ; $j <= 7; $j++ ){
- //     ($regdays$j]/sizeof($timestampMs)*100}
- //   for( $j = 1 ; $j <= 12; $j++ ){
- //     ($regmonths[$j]/sizeof($timestampMs)*100}
- //   for( $j = 1 ; $j <= 10; $j++ ){
- //     ($regyears[$j]/sizeof($timestampMs)*100}
-
 
 ?>

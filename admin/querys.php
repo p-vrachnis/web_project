@@ -33,8 +33,6 @@ $hours_1 =  Array(
 '11:00 pm'
 ) ;
 
-    //=================== ADMIN ==================
-
     //USERS
     $query ="SELECT username FROM users ";
     $query= mysqli_query($conn, $query);
@@ -93,8 +91,6 @@ $hours_1 =  Array(
       if ($tyear==($j+10)){ $regyears[$j]++;} }
     }
 
-    //$day = $week_days[$day]; // // h mera se onoma
-
     for( $j = 1 ; $j <= 24; $j++ ){
       $reghours[$j-1] = (($reghours[$j-1])/sizeof($timestampMs))*100;}
     for( $j = 1 ; $j <= 7; $j++ ){
@@ -103,9 +99,6 @@ $hours_1 =  Array(
       $regmonths[$j-1] = (($regmonths[$j-1])/sizeof($timestampMs))*100;}
     for( $j = 1 ; $j <= 10; $j++ ){
       $regyears[$j-1] = (($regyears[$j-1])/sizeof($timestampMs))*100;}
-
-
-
 
     //Register pr activities
     $query ="SELECT activity FROM user_data ";

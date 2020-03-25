@@ -31,7 +31,7 @@ const admin_activity_chart = new Chart(ctx, {
         'rgba(205, 109, 64, 1)',
         'rgba(55, 159, 4, 1)',
         'rgba(25, 159, 164, 1)'
-      ], 
+      ],
       borderWidth: 2
     }]
   },

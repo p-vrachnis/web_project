@@ -1,13 +1,13 @@
 new Chart(document.getElementById("month_activity_chart"), {
     type: 'pie',
     data: {
-      labels: ["January", "February", "March", "April", "May", "June", "July", "August", 
+      labels: ["January", "February", "March", "April", "May", "June", "July", "August",
                  "September", "October", "November", "December"],
       datasets: [
         {
-          label: "Recodrs Per Month",
+          label: "Records Per Month %",
           backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-          data: regmonths 
+          data: regmonths
         }
       ]
     },
@@ -24,7 +24,7 @@ new Chart(document.getElementById("month_activity_chart"), {
                 // convert the data value to local string so it uses a comma seperated number
                 var dataLabel = data.labels[tooltipItem.index];
                 var value = ': ' + data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index].toLocaleString();
-      
+
                 // make this isn't a multi-line label (e.g. [["label 1 - line 1, "line 2, ], [etc...]])
                 if (Chart.helpers.isArray(dataLabel)) {
                   // show value on first line of multiline label
@@ -34,7 +34,7 @@ new Chart(document.getElementById("month_activity_chart"), {
                 } else {
                   dataLabel += value;
                 }
-      
+
                 // return the text to display on the tooltip
                 return dataLabel;
               }
@@ -42,7 +42,7 @@ new Chart(document.getElementById("month_activity_chart"), {
           },
         title: {
             display: true,
-            text: 'Records Per Month'
+            text: 'Records Per Month %'
         }
     }
 });

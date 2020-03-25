@@ -1,10 +1,10 @@
 new Chart(document.getElementById("user_activity_chart"), {
     type: 'pie',
     data: {
-      labels: user, 
+      labels: user,
       datasets: [
         {
-          label: "Recodrs Per User",
+          label: "Records Per User %",
           backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f"],
           data: regcount
         }
@@ -23,7 +23,7 @@ new Chart(document.getElementById("user_activity_chart"), {
                 // convert the data value to local string so it uses a comma seperated number
                 var dataLabel = data.labels[tooltipItem.index];
                 var value = ': ' + data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index].toLocaleString();
-      
+
                 // make this isn't a multi-line label (e.g. [["label 1 - line 1, "line 2, ], [etc...]])
                 if (Chart.helpers.isArray(dataLabel)) {
                   // show value on first line of multiline label
@@ -33,7 +33,7 @@ new Chart(document.getElementById("user_activity_chart"), {
                 } else {
                   dataLabel += value;
                 }
-      
+
                 // return the text to display on the tooltip
                 return dataLabel;
               }
@@ -41,7 +41,7 @@ new Chart(document.getElementById("user_activity_chart"), {
           },
         title: {
             display: true,
-            text: 'Records Per User'
+            text: 'Records Per User %'
         }
     }
 });
