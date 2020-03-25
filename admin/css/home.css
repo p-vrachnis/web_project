@@ -94,3 +94,17 @@
     margin-top: 2%;
   }
 }
+
+/* Activities Bars */
+#admin_activity_chart{
+  margin-top: 3%;
+  width: 50%;
+  height: 50%;
+  background-color: #ccc;
+  border-radius: 20px;
+}
+
+/* Month-Axtivity Pie */
+#hour_activity_chart{
+  width: 5%;
+}
