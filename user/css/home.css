@@ -193,6 +193,12 @@ select {
   text-align: center;
 }
 
+.slct{
+  margin-top: 2%;
+  margin: 1px;
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
 
 /*  Chart Activity-Day-Hour*/
 #activity_chart{
@@ -211,11 +217,6 @@ select {
   border-radius: 20px;
 }
 
-.slct{
-  margin-top: 2%;
-  margin: 1px;
-  font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
 
 .label{
   margin-right: 1%;
