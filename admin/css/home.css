@@ -155,7 +155,7 @@
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
-  margin-top: 2%;
+  margin-top: 1%;
 }
 
 #user_activity_chart{
@@ -168,30 +168,45 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: left;
+  margin-top: 20px;
 }
 
 #box-flex1{
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
+  margin-top: 3px;
 }
 
 #box-flex2{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 3px;
 }
 
 #box-flex3{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 3px;
 }
 
 #box-flex4{
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  margin-top: 3px;
+}
+
+/* Show & Export Buttons flexbox */
+#box-flex-btn{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
 }
 
 /* Radio Labels */
@@ -216,14 +231,14 @@
   text-align: center;
 }
 
-/* SHOW BUTTON */
-#show_btn{
-  position: relative;
-  left: 32%;
-  margin-top: 5%;
+/* SHOW & EXPORT BUTTON */
+#show_btn, #export_btn{
   text-align: center;
-  width: 200px;
+  width: 80%;
   font-size: 20px;
+  font-weight: bold;
+  border-radius: 40px;
+  margin-top: 3px;
 }
 
 /* SELECT LABELS */

@@ -1,7 +1,7 @@
 <?php
   include "./session.php";
   include "./header.php";
-  include "../admin/querys.php";
+  include "./querys.php";
 ?>
 
 <!DOCTYPE html>
@@ -39,13 +39,14 @@
           <p style="text-align: center">Απεικόνιση κατάστασης ΒΔ (dashboard)</p>
           <div id="flex-container0">
             <canvas id="admin_activity_chart"></canvas>
-            <div>
+            <!-- <div>
               <p style="text-align: center">Επιλογές εμφάνισης/export</p>
-              <!-- <button type="button" class="btn btn-info" id="export-btn">Export Data</button>
-              <button type="button" class="btn btn-danger" id="delete-btn">Delete Data from DB</button> -->
-            </div>
+              <button type="button" class="btn btn-info" id="export-btn">Export Data</button>
+              <button type="button" class="btn btn-danger" id="delete-btn">Delete Data from DB</button>
+            </div> -->
             <form id="admin-data-analysis" method="POST">
               <div id="box">
+                <p style="text-align: center">Επιλογές εμφάνισης/export</p>
                 <div id="box-flex1">
                   <label class="label" for="from-date-month">Choose date from:</label>
                   <select name="f_month" class="slct" id="from-date-month" form="admin-data-analysis">
@@ -210,16 +211,20 @@
                       <input type="radio" name="activity9" id="tilting" value="tilting" /><label class="radio-label" for="tilting">Tilting</label>
                       <input type="radio" name="activity10" id="unknown" value="unknown" /><label class="radio-label" for="unknown">Unknown</label>
                     </div>
-
                   </div>
                 </div>
               </div>
-              <button type="submit" class="btn btn-success" id="show_btn">SHOW</button>
+              <div id="box-flex-btn">
+                <button type="submit" class="btn btn-success" id="show_btn">SHOW</button>
+                <button type="submit" class="btn btn-info" id="export_btn">EXPORT</button>
+              </div>  
             </form>
           </div>  
         </div>
         <div class="data_load">
-          <p style="text-align: center">Απεικόνιση στοιχείων σε χάρτη</p>
+          <div >
+            <?php include "../map/aheatmap.php" ?>
+          </div>
         </div>
       </div>
     </div>
@@ -267,7 +272,6 @@
   </script>
   <script src="admin_year_activity_chart.js"></script>
 
-  <script src="home.js"></script>
 
 </body>
 </html>
