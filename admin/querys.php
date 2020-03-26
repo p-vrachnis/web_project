@@ -194,4 +194,35 @@ $hours_1 =  Array(
   }
 }
 
+/* QUERYS FOR SELECT */
+
+$min_y=0;
+$max_y=2021;
+$min_m=0;
+$max_m=13;
+$min_d=0;
+$max_d=8;
+$min_h=0;
+$max_h=25;
+
+$query ="SELECT latitudeE7, longitudeE7, timestampMs FROM user_data ";
+$query= mysqli_query($conn, $query);
+$i=0;
+if($_SERVER['REQUEST_METHOD'] == "POST") {
+  if(empty($_POST['$min_y']) || empty($_POST['$max_y'])){}
+  else{
+    $min_y = $_POST['$min_y'];
+    $max_y = $_POST['$max_y']; }
+ if(empty($_POST['$min_m']) || empty($_POST['$max_m'])){}
+ else{
+    $min_m = $_POST['$min_m'];
+    $max_m = $_POST['$max_m']; }
+  if(empty($_POST['$min_d']) || empty($_POST['$max_d'])){}
+  else{
+    $min_d = $_POST['$min_d'];
+    $max_d = $_POST['$max_d']; }
+  if(empty($_POST['$min_h']) || empty($_POST['$max_h'])){ }
+  else{
+    $min_h = $_POST['$min_h'];
+    $max_h = $_POST['$max_h']; } 
 ?>
