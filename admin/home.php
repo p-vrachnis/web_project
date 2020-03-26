@@ -13,6 +13,9 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./home.js"></script>
+
     <link href="../external/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="./css/home.css">
     <title>Home Page</title>
@@ -222,14 +225,24 @@
           </div>  
         </div>
         <div class="data_load">
-          <div >
+          <div id="heatmap">
             <?php include "../map/aheatmap.php" ?>
+          </div>
+          <div>
+            <button class="btn btn-danger" id="delete">DELETE</button>
+            <form action="" method="POST">
+              <div id="del-conf" style="display: none">
+                <p id="check-msg">Are you sure?</p>
+                <button class="btn btn-success" id="delete-conf" type="submit">YES</button>
+                <input type="button" value="NO" id="delete-neg">
+              </div>            
+            </form>
           </div>
         </div>
       </div>
     </div>
 
- 
+
   <script>
     var still = <?php echo $still; ?>;
     var on_foot = <?php echo $on_foot; ?>;
@@ -271,7 +284,6 @@
     var regyears = <?php echo json_encode($regyears); ?>;
   </script>
   <script src="admin_year_activity_chart.js"></script>
-
 
 </body>
 </html>

@@ -292,3 +292,73 @@ select {
   font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   height: 26px;
 }
+
+/* HEATMAP */
+#heatmap{
+  height: 75%;
+}
+
+/* DELETE BUTTON */
+#delete{
+  position: relative;
+  left: 10%;
+  text-align: center;
+  width: 80%;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 40px;
+  margin-top: 15px;
+  margin-bottom: 2%;
+
+}
+
+/* Flex box delete */
+#del-conf{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  margin-top: 5%;
+}
+
+/* MSG before confirmation of deletion */
+#check-msg{
+  font-size: 24px;
+  font-weight: bold;
+  color: darkslategrey;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  margin-right: 15px;
+}
+
+/* Confirm or No buttons */
+#delete-conf, #delete-neg{
+  font-size: 24px;
+  border-radius: 30px;
+  font-weight: bold;
+}
+
+#delete-conf:hover,
+#delete-conf:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.25em);
+}
+
+#delete-neg{
+  font-size: 24px;
+  border-radius: 30px;
+  font-weight: bold;
+  margin-left: 8px;
+  background-color: rgb(218, 165, 32);
+  color: white;
+  cursor: pointer;
+}
+
+#delete-neg:hover{
+  background-color: rgb(228, 185, 79);
+}
+
+#delete-neg:hover,
+#delete-neg:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.25em);
+}
