@@ -14,7 +14,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="./home.js"></script>
 
     <link href="../external/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="./css/home.css">
@@ -233,7 +232,7 @@
             <form action="" method="POST">
               <div id="del-conf" style="display: none">
                 <p id="check-msg">Are you sure?</p>
-                <button class="btn btn-success" id="delete-conf" type="submit">YES</button>
+                <button class="btn btn-success" id="delete-conf" type="submit" name="DELETE">YES</button>
                 <input type="button" value="NO" id="delete-neg">
               </div>            
             </form>
@@ -242,6 +241,8 @@
       </div>
     </div>
 
+
+  <script src="home.js"></script>
 
   <script>
     var still = <?php echo $still; ?>;
