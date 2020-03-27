@@ -205,24 +205,61 @@ $max_d=8;
 $min_h=0;
 $max_h=25;
 
+/* Select specific range of dates and show the analysis of user data.  */
+$months = array(
+  "January" => 1,
+  "February" => 2,
+  "March" => 3,
+  "April" => 4,
+  "May" => 5,
+  "June" => 6,
+  "July" => 7,
+  "August" => 8,
+  "September" => 9,
+  "October" => 10,
+  "November" => 11,
+  "December" => 12
+);
+
 $query ="SELECT latitudeE7, longitudeE7, timestampMs FROM user_data ";
 $query= mysqli_query($conn, $query);
+
 $i=0;
+
 if($_SERVER['REQUEST_METHOD'] == "POST") {
-  if(empty($_POST['$min_y']) || empty($_POST['$max_y'])){}
+  if(empty($_POST['f_year']) || empty($_POST['u_year'])){}
   else{
-    $min_y = $_POST['$min_y'];
-    $max_y = $_POST['$max_y']; }
- if(empty($_POST['$min_m']) || empty($_POST['$max_m'])){}
+    $min_y = $_POST['f_year'];
+    $max_y = $_POST['u_year']; }
+ if(empty($_POST['f_month']) || empty($_POST['u_month'])){}
  else{
-    $min_m = $_POST['$min_m'];
-    $max_m = $_POST['$max_m']; }
-  if(empty($_POST['$min_d']) || empty($_POST['$max_d'])){}
+    $min_m = $_POST['f_month'];
+    $max_m = $_POST['u_month']; }
+  if(empty($_POST['f_day']) || empty($_POST['u_day'])){}
   else{
-    $min_d = $_POST['$min_d'];
-    $max_d = $_POST['$max_d']; }
-  if(empty($_POST['$min_h']) || empty($_POST['$max_h'])){ }
+    $min_d = $_POST['f_day'];
+    $max_d = $_POST['u_day']; }
+  if(empty($_POST['f_hour']) || empty($_POST['u_hour'])){ }
   else{
-    $min_h = $_POST['$min_h'];
-    $max_h = $_POST['$max_h']; } 
+    $min_h = $_POST['f_hour'];
+    $max_h = $_POST['u_hour']; } 
+
+  // Check if user input dates are valid.
+  if ( $min_y > $max_y || $months[$min_m] > $months[$max_m] ){
+    echo "<script type='text/javascript'>alert('Wrong range of dates! Choose again.');</script>";
+    $min_y=0;
+    $max_y=2021;
+    $min_m=0;
+    $max_m=13;
+    $min_d=0;
+    $max_d=8;
+    $min_h=0;
+    $max_h=25;
+  }else{
+    // Find Timestamp
+    $min_ts = strtotime(" $min_y-$min_m $min_h ");
+    $max_ts = strtotime(" $max_y-$max_m $max_h ");
+  }
+  
+}
 ?>
