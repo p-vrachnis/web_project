@@ -253,7 +253,7 @@
     </div>
 
 
-  <script src="home.js"></script>
+  <script src="ahome.js"></script>
 
   <script>
     var still = <?php echo $still; ?>;
