@@ -238,7 +238,58 @@
   font-size: 20px;
   font-weight: bold;
   border-radius: 40px;
-  margin-top: 3px;
+}
+
+#show_btn{
+  margin-top: 2px;
+}
+
+/* EXPORT */
+#export_options{
+  font-size: 19px;
+  margin-top: 15px;
+  color: black;
+  background-color: lightgrey;
+  font-family:  'Trebuchet MS', sans-serif;
+  border-radius: 10px;
+}
+
+/* Ok/Cancel Buttons for export */
+#delete-neg{
+  margin-left: 8px;
+  background-color: rgb(218, 165, 32);
+  color: white;
+  cursor: pointer;
+}
+#cancel-export{
+  font-size: 16px;
+  height: 35px;
+  border-radius: 30px;
+  font-weight: bold;
+  margin-left: 8px;
+  background-color: rgb(218, 165, 32);
+  color: white;
+  cursor: pointer;
+}
+#ok-export{
+  font-size: 16px;
+  border-radius: 30px;
+  font-weight: bold;
+  margin-left: 5px;
+}
+#ok-export:hover,
+#dok-export:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.25em);
+}
+#cancel-export:hover{
+  background-color: rgb(228, 185, 79);
+}
+
+#cancel-export:hover,
+#cancel-export:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.25em);
 }
 
 /* SELECT LABELS */
@@ -295,7 +346,7 @@ select {
 
 /* HEATMAP */
 #heatmap{
-  height: 75%;
+  height: 80%;
 }
 
 /* DELETE BUTTON */
@@ -308,8 +359,6 @@ select {
   font-weight: bold;
   border-radius: 40px;
   margin-top: 15px;
-  margin-bottom: 2%;
-
 }
 
 /* Flex box delete */
@@ -318,7 +367,7 @@ select {
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
-  margin-top: 5%;
+  margin-top: 2%;
 }
 
 /* MSG before confirmation of deletion */
@@ -341,16 +390,6 @@ select {
 #delete-conf:focus {
   box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
   transform: translateY(-0.25em);
-}
-
-#delete-neg{
-  font-size: 24px;
-  border-radius: 30px;
-  font-weight: bold;
-  margin-left: 8px;
-  background-color: rgb(218, 165, 32);
-  color: white;
-  cursor: pointer;
 }
 
 #delete-neg:hover{

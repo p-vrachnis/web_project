@@ -46,25 +46,25 @@
               <button type="button" class="btn btn-info" id="export-btn">Export Data</button>
               <button type="button" class="btn btn-danger" id="delete-btn">Delete Data from DB</button>
             </div> -->
-            <form id="admin-data-analysis" method="POST">
+            <form id="admin-data-analysis" action="" method="POST">
               <div id="box">
                 <p style="text-align: center">Επιλογές εμφάνισης/export</p>
                 <div id="box-flex1">
                   <label class="label" for="from-date-month">Choose date from:</label>
                   <select name="f_month" class="slct" id="from-date-month" form="admin-data-analysis">
                     <option selected disabled>month</option>
-                    <option value="January">January</option>
-                    <option value="February">February</option>
-                    <option value="March">March</option>
-                    <option value="April">April</option>
-                    <option value="May">May</option>
-                    <option value="June">June</option>
-                    <option value="July">July</option>
-                    <option value="August">August</option>
-                    <option value="September">September</option>
-                    <option value="October">October</option>
-                    <option value="November">November</option>
-                    <option value="December">December</option>
+                    <option value=1>January</option>
+                    <option value=2>February</option>
+                    <option value=3>March</option>
+                    <option value=4>April</option>
+                    <option value=5>May</option>
+                    <option value=6>June</option>
+                    <option value=7>July</option>
+                    <option value=8>August</option>
+                    <option value=9>September</option>
+                    <option value=10>October</option>
+                    <option value=11>November</option>
+                    <option value=12>December</option>
                   </select>
                   <select name="f_year" class="slct" id="from-date-year" form="admin-data-analysis">
                     <option selected disabled>year</option>
@@ -83,18 +83,18 @@
                   <label class="label" for="until-date-month">until:</label>
                   <select name="u_month" class="slct" id="until-date-month" form="admin-data-analysis">
                     <option selected disabled>month</option>
-                    <option value="January">January</option>
-                    <option value="February">February</option>
-                    <option value="March">March</option>
-                    <option value="April">April</option>
-                    <option value="May">May</option>
-                    <option value="June">June</option>
-                    <option value="July">July</option>
-                    <option value="August">August</option>
-                    <option value="September">September</option>
-                    <option value="October">October</option>
-                    <option value="November">November</option>
-                    <option value="December">December</option>
+                    <option value=1>January</option>
+                    <option value=2>February</option>
+                    <option value=3>March</option>
+                    <option value=4>April</option>
+                    <option value=5>May</option>
+                    <option value=6>June</option>
+                    <option value=7>July</option>
+                    <option value=8>August</option>
+                    <option value=9>September</option>
+                    <option value=10>October</option>
+                    <option value=11>November</option>
+                    <option value=12>December</option>
                   </select>
                   <select name="u_year" class="slct" id="until-date-year" form="admin-data-analysis">
                     <option selected disabled>year</option>
@@ -217,21 +217,23 @@
                 </div>
               </div>
               <div id="box-flex-btn">
-                <button type="submit" class="btn btn-success" id="show_btn">SHOW</button>
-                <button type="submit" class="btn btn-info" id="export_btn">EXPORT</button>
-                <div id="export_options">
-                  <label class="checkbox-inline">
-                    <input type="checkbox" value="json" name="export" class="export">JSON
+                <button type="submit" class="btn btn-success" id="show_btn">SHOW TO MAP</button>
+                <div id="export_options" style="display: none">
+                  <label class="checkbox-inline">Choose type:
+                    <input type="checkbox" value="json" name="export" class="export"> JSON
                   </label>
                   <label class="checkbox-inline">
-                    <input type="checkbox" value="xml" name="export" class="export">XML
+                    <input type="checkbox" value="xml" name="export" class="export"> XML
                   </label>
                   <label class="checkbox-inline">
-                    <input type="checkbox" value="csv" name="export" class="export">CSV
+                    <input type="checkbox" value="csv" name="export" class="export"> CSV
                   </label>
+                  <button class="btn btn-success" id="ok-export" type="submit" name="DELETE">OK</button>
+                  <input type="button" value="CANCEL" id="cancel-export">
                 </div>
               </div>  
             </form>
+            <button class="btn btn-info" id="export_btn">EXPORT DATA</button>
           </div>  
         </div>
         <div class="data_load">
@@ -239,7 +241,7 @@
             <?php include "../map/aheatmap.php" ?>
           </div>
           <div>
-            <button class="btn btn-danger" id="delete">DELETE</button>
+            <button class="btn btn-danger" id="delete">DELETE DATA FROM DATABASE</button>
             <form action="" method="POST">
               <div id="del-conf" style="display: none">
                 <p id="check-msg">Are you sure?</p>

@@ -41,3 +41,18 @@ $(document).ready(function(){
         $('.export').not(this).prop('checked', false);
     });
 });
+
+/* SHOW/HIDE export options */
+$(function () {
+    $("#export_btn").click(function () {
+        $("#export_options").show();
+        $("#export_btn").hide();
+    });
+});
+
+$(function () {
+    $("#cancel-export").click(function () {
+        $("#export_options").hide();
+        $("#export_btn").show();
+    });
+});
