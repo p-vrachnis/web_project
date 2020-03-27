@@ -196,17 +196,17 @@
                 <div id="box-flex4">
                   <label class="label">Choose one or more Activities:</label>
                   <div id="selectall-div">
-                      <input type="radio" name="selectall" id="selectall" value="selectall" /><label class="radio-label" id="radio-label-all" for="selectall">Select All</label>
+                      <input type="radio" name="activity" id="selectall" value="selectall" /><label class="radio-label" id="radio-label-all" for="selectall">Select All</label>
                   </div>
                   <div>
-                    <div>
+                    <div >
                       <input type="radio" name="activity1" id="on_foot" value="on_foot" /><label class="radio-label" for="on_foot">On Foot</label>
                       <input type="radio" name="activity2" id="walking" value="walking"  /><label class="radio-label" for="walking">Walking</label>
                       <input type="radio" name="activity3" id="running" value="running" /><label class="radio-label" for="running">Running</label>
                       <input type="radio" name="activity4" id="on_bicycle" value="on_bicycle" /><label class="radio-label" for="on_bicycle">On Bicycle</label>
                       <input type="radio" name="activity5" id="in_vehicle" value="in_vehicle" /><label class="radio-label" for="in_vehicle">In Vehicle</label>
                     </div>
-                    <div>
+                    <div >
                       <input type="radio" name="activity6" id="in_rail_vehicle" value="in_rail_vehicle" /><label class="radio-label" for="in_rail_vehicle">In Rail Vehicle</label>
                       <input type="radio" name="activity7" id="in_road_vehicle" value="in_road_vehicle" /><label class="radio-label" for="in_road_vehicle">In Road Vehicle</label>
                       <input type="radio" name="activity8" id="still" value="still" /><label class="radio-label" for="still">Still</label>
@@ -219,6 +219,17 @@
               <div id="box-flex-btn">
                 <button type="submit" class="btn btn-success" id="show_btn">SHOW</button>
                 <button type="submit" class="btn btn-info" id="export_btn">EXPORT</button>
+                <div id="export_options">
+                  <label class="checkbox-inline">
+                    <input type="checkbox" value="json" name="export" class="export">JSON
+                  </label>
+                  <label class="checkbox-inline">
+                    <input type="checkbox" value="xml" name="export" class="export">XML
+                  </label>
+                  <label class="checkbox-inline">
+                    <input type="checkbox" value="csv" name="export" class="export">CSV
+                  </label>
+                </div>
               </div>  
             </form>
           </div>  

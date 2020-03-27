@@ -330,7 +330,7 @@ select {
   margin-right: 15px;
 }
 
-/* Confirm or No buttons */
+/* Yes or No buttons */
 #delete-conf, #delete-neg{
   font-size: 24px;
   border-radius: 30px;
