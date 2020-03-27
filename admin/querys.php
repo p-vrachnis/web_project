@@ -245,7 +245,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     $max_h = $_POST['u_hour']; } 
 
   // Check if user input dates are valid.
-  if ( $min_y > $max_y || $months[$min_m] > $months[$max_m] ){
+  if ( $min_y > $max_y || $min_m >$max_m ){
     echo "<script type='text/javascript'>alert('Wrong range of dates! Choose again.');</script>";
     $min_y=0;
     $max_y=2021;
