@@ -115,83 +115,83 @@
                   <label class="label" for="from-day">Choose day from:</label>
                   <select name="f_day" class="slct" id="from-day" form="admin-data-analysis">
                     <option selected disabled>Day</option>
-                    <option value=Monday>Monday</option>
-                    <option value=Tuesday>Tuesday</option>
-                    <option value=Wednesday>Wednesday</option>
-                    <option value=Thursday>Thursday</option>
-                    <option value=Friday>Friday</option>
-                    <option value=Saturday>Saturday</option>
-                    <option value=Sunday>Sunday</option>
-                  </select>   
+                    <option value=1>Monday</option>
+                    <option value=2>Tuesday</option>
+                    <option value=3>Wednesday</option>
+                    <option value=4>Thursday</option>
+                    <option value=5>Friday</option>
+                    <option value=6>Saturday</option>
+                    <option value=7>Sunday</option>
+                  </select>
                   <label class="label" for="until-day">until:</label>
                   <select name="u_day" class="slct" id="until-day" form="admin-data-analysis">
                     <option selected disabled>Day</option>
-                    <option value=Monday>Monday</option>
-                    <option value=Tuesday>Tuesday</option>
-                    <option value=Wednesday>Wednesday</option>
-                    <option value=Thursday>Thursday</option>
-                    <option value=Friday>Friday</option>
-                    <option value=Saturday>Saturday</option>
-                    <option value=Sunday>Sunday</option>
+                    <option value=1>Monday</option>
+                    <option value=2>Tuesday</option>
+                    <option value=3>Wednesday</option>
+                    <option value=4>Thursday</option>
+                    <option value=5>Friday</option>
+                    <option value=6>Saturday</option>
+                    <option value=7>Sunday</option>
                   </select>
-                </div>   
+                </div>
                 <div id="box-flex3">
                   <label class="label" for="from-hour">Choose hour from:</label>
                   <select name="f_hour" class="slct" id="from-hour" form="admin-data-analysis">
                     <option selected disabled>Hour</option>
-                    <option value=00:00>00:00</option>
-                    <option value=01:00>01:00</option>
-                    <option value=02:00>02:00</option>
-                    <option value=03:00>03:00</option>
-                    <option value=04:00>04:00</option>
-                    <option value=05:00>05:00</option>
-                    <option value=06:00>06:00</option>
-                    <option value=07:00>07:00</option>
-                    <option value=08:00>08:00</option>
-                    <option value=09:00>09:00</option>
-                    <option value=10:00>10:00</option>
-                    <option value=11:00>11:00</option>
-                    <option value=12:00>12:00</option>
-                    <option value=13:00>13:00</option>
-                    <option value=14:00>14:00</option>
-                    <option value=15:00>15:00</option>
-                    <option value=16:00>16:00</option>
-                    <option value=17:00>17:00</option>
-                    <option value=18:00>18:00</option>
-                    <option value=19:00>19:00</option>
-                    <option value=20:00>20:00</option>
-                    <option value=21:00>21:00</option>
-                    <option value=22:00>22:00</option>
-                    <option value=23:00>23:00</option>
-                  </select>  
+                    <option value=0>00:00</option>
+                    <option value=1>01:00</option>
+                    <option value=2>02:00</option>
+                    <option value=3>03:00</option>
+                    <option value=4>04:00</option>
+                    <option value=5>05:00</option>
+                    <option value=6>06:00</option>
+                    <option value=7>07:00</option>
+                    <option value=8>08:00</option>
+                    <option value=9>09:00</option>
+                    <option value=10>10:00</option>
+                    <option value=11>11:00</option>
+                    <option value=12>12:00</option>
+                    <option value=13>13:00</option>
+                    <option value=14>14:00</option>
+                    <option value=15>15:00</option>
+                    <option value=16>16:00</option>
+                    <option value=17>17:00</option>
+                    <option value=18>18:00</option>
+                    <option value=19>19:00</option>
+                    <option value=20>20:00</option>
+                    <option value=21>21:00</option>
+                    <option value=22>22:00</option>
+                    <option value=23>23:00</option>
+                  </select>
                   <label class="label" for="until-hour">until:</label>
                   <select name="u_hour" class="slct" id="until-hour" form="admin-data-analysis">
                     <option selected disabled>Hour</option>
-                    <option value=00:00>00:00</option>
-                    <option value=01:00>01:00</option>
-                    <option value=02:00>02:00</option>
-                    <option value=03:00>03:00</option>
-                    <option value=04:00>04:00</option>
-                    <option value=05:00>05:00</option>
-                    <option value=06:00>06:00</option>
-                    <option value=07:00>07:00</option>
-                    <option value=08:00>08:00</option>
-                    <option value=09:00>09:00</option>
-                    <option value=10:00>10:00</option>
-                    <option value=11:00>11:00</option>
-                    <option value=12:00>12:00</option>
-                    <option value=13:00>13:00</option>
-                    <option value=14:00>14:00</option>
-                    <option value=15:00>15:00</option>
-                    <option value=16:00>16:00</option>
-                    <option value=17:00>17:00</option>
-                    <option value=18:00>18:00</option>
-                    <option value=19:00>19:00</option>
-                    <option value=20:00>20:00</option>
-                    <option value=21:00>21:00</option>
-                    <option value=22:00>22:00</option>
-                    <option value=23:00>23:00</option>
-                  </select>   
+                    <option value=0>00:00</option>
+                    <option value=1>01:00</option>
+                    <option value=2>02:00</option>
+                    <option value=3>03:00</option>
+                    <option value=4>04:00</option>
+                    <option value=5>05:00</option>
+                    <option value=6>06:00</option>
+                    <option value=7>07:00</option>
+                    <option value=8>08:00</option>
+                    <option value=9>09:00</option>
+                    <option value=10>10:00</option>
+                    <option value=11>11:00</option>
+                    <option value=12>12:00</option>
+                    <option value=13>13:00</option>
+                    <option value=14>14:00</option>
+                    <option value=15>15:00</option>
+                    <option value=16>16:00</option>
+                    <option value=17>17:00</option>
+                    <option value=18>18:00</option>
+                    <option value=19>19:00</option>
+                    <option value=20>20:00</option>
+                    <option value=21>21:00</option>
+                    <option value=22>22:00</option>
+                    <option value=23>23:00</option>
+                  </select>
                 </div>
                 <div id="box-flex4">
                   <label class="label">Choose one or more Activities:</label>
@@ -231,10 +231,10 @@
                   <button class="btn btn-success" id="ok-export" type="submit" name="DELETE">OK</button>
                   <input type="button" value="CANCEL" id="cancel-export">
                 </div>
-              </div>  
+              </div>
             </form>
             <button class="btn btn-info" id="export_btn">EXPORT DATA</button>
-          </div>  
+          </div>
         </div>
         <div class="data_load">
           <div id="heatmap">
@@ -247,7 +247,7 @@
                 <p id="check-msg">Are you sure?</p>
                 <button class="btn btn-success" id="delete-conf" type="submit" name="DELETE">YES</button>
                 <input type="button" value="NO" id="delete-neg">
-              </div>            
+              </div>
             </form>
           </div>
         </div>

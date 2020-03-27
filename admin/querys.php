@@ -195,7 +195,6 @@ $hours_1 =  Array(
 }
 
 /* QUERYS FOR SELECT */
-
 $min_y=0;
 $max_y=2021;
 $min_m=0;
@@ -203,28 +202,11 @@ $max_m=13;
 $min_d=0;
 $max_d=8;
 $min_h=0;
-$max_h=25;
+$max_h=24;
 
 /* Select specific range of dates and show the analysis of user data.  */
-$months = array(
-  "January" => 1,
-  "February" => 2,
-  "March" => 3,
-  "April" => 4,
-  "May" => 5,
-  "June" => 6,
-  "July" => 7,
-  "August" => 8,
-  "September" => 9,
-  "October" => 10,
-  "November" => 11,
-  "December" => 12
-);
-
 $query ="SELECT latitudeE7, longitudeE7, timestampMs FROM user_data ";
 $query= mysqli_query($conn, $query);
-
-$i=0;
 
 if($_SERVER['REQUEST_METHOD'] == "POST") {
   if(empty($_POST['f_year']) || empty($_POST['u_year'])){}
@@ -248,13 +230,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
   if ( $min_y > $max_y || $min_m >$max_m ){
     echo "<script type='text/javascript'>alert('Wrong range of dates! Choose again.');</script>";
     $min_y=0;
-    $max_y=2021;
+    $max_y=0;
     $min_m=0;
-    $max_m=13;
+    $max_m=0;
     $min_d=0;
-    $max_d=8;
+    $max_d=0;
     $min_h=0;
-    $max_h=25;
+    $max_h=0;
   }else{
     // Find Timestamp
     $min_ts = strtotime(" $min_y-$min_m $min_h ");
@@ -262,6 +244,26 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
   }
 
 }
+$i=0;
+while($result = $query->fetch_assoc()){
+  $timestamps[] = $result['timestampMs']; // activity from DB
+  $seconds = $timestamps[$i] / 1000;
+  $hour2 = date("H",$seconds) + 3; // swsta!!! // se 06 h wra
+  $day2  = date('N',$seconds); // se noumero h mera ths evdomadas (1-7)
+  $year2 = date("Y", $seconds); // year
+  $month2 = date("m", $seconds);
+  $month2 = (int)$month2;
+  $hour2 =(int)$hour2;
+  $i++;
+  if ($year2 >= $min_y &&  $year2 <= $max_y &&
+  $month2 >= $min_m &&  $month2 <= $max_m &&
+  $day2 >= $min_d &&  $day2 <= $max_d &&
+  $hour2>= $min_h &&  $hour2 <= $max_h ) {
+    $long[] = $result['longitudeE7'];
+    $lat[] =  $result['latitudeE7'];
+  }
+}
+
 // Check if delete button is checked.
 if (isset($_POST['DELETE'])){
     // Delete all records from the table
