@@ -134,16 +134,16 @@ $count = mysqli_num_rows($result);
       "December" => 12
     );
     // GRAPHS AND PINAKAS
-    if($_SERVER['REQUEST_METHOD'] == "POST") {
-      if(empty($_POST['f_month']) || empty($_POST['f_year']) || empty($_POST['u_month']) || empty($_POST['u_year'])){
+    if($_SERVER['REQUEST_METHOD'] == "GET") {
+      if(empty($_GET['f_month']) || empty($_GET['f_year']) || empty($_GET['u_month']) || empty($_GET['u_year'])){
         $min_time=0;
         $max_time=0;
       }else{
 
-        $f_month = $_POST['f_month'];
-        $f_year = $_POST['f_year'];
-        $u_month = $_POST['u_month'];
-        $u_year = $_POST['u_year'];
+        $f_month = $_GET['f_month'];
+        $f_year = $_GET['f_year'];
+        $u_month = $_GET['u_month'];
+        $u_year = $_GET['u_year'];
 
         // Check if user input dates are valid.
         if ($f_year > $u_year || $months[$f_month] > $months[$u_month] ){

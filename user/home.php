@@ -130,7 +130,7 @@
         <div class="user_analyse">
           <div class="container">
             <p style="text-align: center">Ανάλυση στοιχείων χρήστη</p>
-            <form id="user-data-analysis" method="POST">
+            <form id="user-data-analysis" method="GET">
               <div id="box">
                 <label class="label" for="from-date-month">Choose date from:</label>
                 <select name="f_month" class="slct" id="from-date-month" form="user-data-analysis">
@@ -193,7 +193,7 @@
                   <option value=2020>2020</option>
                 </select>
               </div>
-              <button type="submit" class="btn btn-success" id="show_btn" onclick="showData();">SHOW</button>
+              <button type="submit" class="btn btn-success" id="show_btn">SHOW</button>
             </form>
             <canvas id="activity_chart"></canvas>
             <table id="activity_hour_day" class="table table-sm table-hover table-light">
