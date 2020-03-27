@@ -242,7 +242,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
   if(empty($_POST['f_hour']) || empty($_POST['u_hour'])){ }
   else{
     $min_h = $_POST['f_hour'];
-    $max_h = $_POST['u_hour']; } 
+    $max_h = $_POST['u_hour']; }
 
   // Check if user input dates are valid.
   if ( $min_y > $max_y || $min_m >$max_m ){
@@ -260,6 +260,19 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     $min_ts = strtotime(" $min_y-$min_m $min_h ");
     $max_ts = strtotime(" $max_y-$max_m $max_h ");
   }
-  
+
 }
+// Check if delete button is checked.
+if (isset($_POST['DELETE'])){
+    // Delete all records from the table
+    $sql = "DELETE  FROM user_data";
+    $sql= mysqli_query($conn, $sql);
+    $sql = "DELETE  FROM upload";
+    $sql= mysqli_query($conn, $sql);
+    $sql = "DELETE  FROM user_score";
+    $sql= mysqli_query($conn, $sql);
+  //  $sql = "DELETE  FROM users WHERE username <> 'admin';
+  //  $sql= mysqli_query($conn, $sql);
+  }
+
 ?>
