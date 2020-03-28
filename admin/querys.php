@@ -239,7 +239,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['show'])) {
     $max_h = $_POST['u_hour']; }
 
   // Check if user input dates are valid.
-  if ( $min_y > $max_y || $min_m >$max_m ){
+  if ( $min_y > $max_y || $min_m >$max_m|| $min_d > $max_d || $min_h >$max_h ){
     echo "<script type='text/javascript'>alert('Wrong range of dates! Choose again.');</script>";
     $min_y=0;
     $max_y=2021;
@@ -261,18 +261,19 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['show'])) {
   array_push ($activities, "on_foot", "walking", "running", "on_bicycle", "in_vehicle",
   "in_rail_vehicle", "in_road_vehicle", "still", "tilting", "unknown" );
   $acount=50; }
-  else if(isset($_POST["activity1"])){
+  else {
+  if(isset($_POST["activity1"])){
   array_push ($activities, 'ON_FOOT');
   $acount++; }
-  else if (isset($_POST['activity2'])){
+   if (isset($_POST['activity2'])){
   array_push ($activities, 'WALKING');
   $acount++;
   }
-  else if (isset($_POST['activity3'])){
+  if (isset($_POST['activity3'])){
   array_push ($activities, 'RUNNING');
   $acount++;
   }
-  else if (isset($_POST['activity4'])){
+  if (isset($_POST['activity4'])){
   array_push ($activities, 'ON_BICYCLE');
   $acount++;
   }
@@ -280,27 +281,27 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['show'])) {
   array_push ($activities, 'IN_VEHICLE');
   $acount++;
   }
-  else if (isset($_POST['activity6'])){
+   if (isset($_POST['activity6'])){
   array_push ($activities, 'IN_RAIL_VEHICLE');
   $acount++;
   }
-  else if (isset($_POST['activity7'])){
+   if (isset($_POST['activity7'])){
   array_push ($activities, 'IN_ROAD_VEHICLE');
   $acount++;
   }
-  else if (isset($_POST['activity8'])){
+  if (isset($_POST['activity8'])){
   array_push ($activities, 'STILL');
   $acount++;
   }
-  else if (isset($_POST['activity9'])){
+   if (isset($_POST['activity9'])){
   array_push ($activities, 'TILTING');
   $acount++;
   }
-  else if (isset($_POST['activity10'])){
+  if (isset($_POST['activity10'])){
   array_push ($activities, 'UNKNOWN');
   $acount++;
   }
-
+ }
 }
 
 $i=0;
