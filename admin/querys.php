@@ -196,32 +196,44 @@ $hours_1 =  Array(
 
 /* QUERYS FOR SELECT */
 $min_y=0;
-$max_y=2021;
+$max_y=0;
 $min_m=0;
-$max_m=13;
+$max_m=0;
 $min_d=0;
-$max_d=8;
+$max_d=0;
 $min_h=0;
-$max_h=24;
+$max_h=0;
 
 /* Select specific range of dates and show the analysis of user data.  */
 $query ="SELECT latitudeE7, longitudeE7, timestampMs FROM user_data ";
 $query= mysqli_query($conn, $query);
 
-if($_SERVER['REQUEST_METHOD'] == "POST") {
-  if(empty($_POST['f_year']) || empty($_POST['u_year'])){}
+if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['show'])) {
+  if(empty($_POST['f_year']) || empty($_POST['u_year'])){ 
+    $min_y=0;
+    $max_y=2021;
+  }
   else{
     $min_y = $_POST['f_year'];
     $max_y = $_POST['u_year']; }
- if(empty($_POST['f_month']) || empty($_POST['u_month'])){}
+ if(empty($_POST['f_month']) || empty($_POST['u_month'])){
+  $min_m=0;
+  $max_m=13;
+ }
  else{
     $min_m = $_POST['f_month'];
     $max_m = $_POST['u_month']; }
-  if(empty($_POST['f_day']) || empty($_POST['u_day'])){}
+  if(empty($_POST['f_day']) || empty($_POST['u_day'])){
+    $min_d=0;
+    $max_d=8;
+  }
   else{
     $min_d = $_POST['f_day'];
     $max_d = $_POST['u_day']; }
-  if(empty($_POST['f_hour']) || empty($_POST['u_hour'])){ }
+  if(empty($_POST['f_hour']) || empty($_POST['u_hour'])){
+    $min_h=0;
+    $max_h=24;
+   }
   else{
     $min_h = $_POST['f_hour'];
     $max_h = $_POST['u_hour']; }
@@ -245,6 +257,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
 }
 $i=0;
+$c1=0;
 while($result = $query->fetch_assoc()){
   $timestamps[] = $result['timestampMs']; // activity from DB
   $seconds = $timestamps[$i] / 1000;
@@ -259,10 +272,36 @@ while($result = $query->fetch_assoc()){
   $month2 >= $min_m &&  $month2 <= $max_m &&
   $day2 >= $min_d &&  $day2 <= $max_d &&
   $hour2>= $min_h &&  $hour2 <= $max_h ) {
-    $long[] = $result['longitudeE7'];
+    $c1++;
+    $lng[] = $result['longitudeE7'];
     $lat[] =  $result['latitudeE7'];
   }
 }
+
+function decimal($num){
+  $snum = strval($num);
+  $snum =  "" . substr($snum, 0, 2) . "." . substr($snum,2). "";
+  return $snum;
+}
+
+if ($c1 != 0 ){
+  $lat[0] = decimal($lat[0]);
+  $lng[0] = decimal($lng[0]);
+
+  //$temp_heatmap = array();
+  $data_heatmap = array(array("lat"=>$lat[0], "lng"=>$lng[0]));
+
+  // For each value of coordinates, we create an array (dictionary) to include lat,lon for the HeatMap
+  for($iter=1; $iter<sizeof($lat); $iter++){
+    $lat[$iter] = decimal($lat[$iter]);
+    $lng[$iter] = decimal($lng[$iter]);
+
+    $temp_heatmap = array("lat"=>$lat[$iter], "lng"=>$lng[$iter]);
+    array_push($data_heatmap, $temp_heatmap);
+  }
+
+  // Array convert into JSON, in order to send them to Javascript file.
+  $data_heatmap = json_encode($data_heatmap); }
 
 // Check if delete button is checked.
 if (isset($_POST['delete'])){

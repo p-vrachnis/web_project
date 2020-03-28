@@ -41,7 +41,7 @@
           <p style="text-align: center">Απεικόνιση κατάστασης ΒΔ (dashboard)</p>
           <div id="flex-container0">
             <canvas id="admin_activity_chart"></canvas>
-            <form id="admin-data-analysis" >
+            <form id="admin-data-analysis" action="querys.php" method="POST">
               <div id="box">
                 <p style="text-align: center">Επιλογές εμφάνισης/export</p>
                 <div id="box-flex1">
@@ -212,7 +212,7 @@
                 </div>
               </div>
               <div id="box-flex-btn">
-                <button type="submit" class="btn btn-success" id="show_btn" onclick="test()">SHOW TO MAP</button>
+                <button type="submit" class="btn btn-success" id="show_btn" name="show" value="submit">SHOW TO MAP</button>
                 <div id="export_options" style="display: none">
                   <label class="checkbox-inline">Choose type:
                     <input type="checkbox" value="json" name="export" class="export"> JSON
