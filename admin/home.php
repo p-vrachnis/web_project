@@ -41,7 +41,7 @@
           <p style="text-align: center">Απεικόνιση κατάστασης ΒΔ (dashboard)</p>
           <div id="flex-container0">
             <canvas id="admin_activity_chart"></canvas>
-            <form id="admin-data-analysis" action="querys.php" method="POST">
+            <form id="admin-data-analysis"  method="POST" action= "">
               <div id="box">
                 <p style="text-align: center">Επιλογές εμφάνισης/export</p>
                 <div id="box-flex1">
@@ -189,7 +189,7 @@
                   </select>
                 </div>
                 <div id="box-flex4">
-                  <label class="label">Choose one or more Activities:</label>
+                  <label class="label">Choose one or more Activities: </label>
                   <div id="selectall-div">
                       <input type="radio" name="activity" id="selectall" value="selectall" /><label class="radio-label" id="radio-label-all" for="selectall">Select All</label>
                   </div>

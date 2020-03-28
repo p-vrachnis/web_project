@@ -51,7 +51,7 @@ if (mysqli_query($conn, $sql)) {
        $countv = 0; }
      if ($activity[$i] == 'ON_FOOT' || $activity[$i] == 'WALKING' || $activity[$i] == 'ON_BICYCLE' || $activity[$i] == 'RUNNING' ) {
         $countf = $countf + 1; }
-      if ($activity[$i] == 'IN_VEHICLE' || $activity[$i] == 'IN_RAIL_VEHICLE') {
+      if ($activity[$i] == 'IN_VEHICLE' || $activity[$i] == 'IN_RAIL_VEHICLE' || $activity[$i] == 'IN_ROAD_VEHICLE' ) {
         $countv = $countv+ 1; }
          $tmp =$dt;
     if ($countf==0 && $countv==0) {

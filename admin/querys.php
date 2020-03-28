@@ -205,11 +205,11 @@ $min_h=0;
 $max_h=0;
 
 /* Select specific range of dates and show the analysis of user data.  */
-$query ="SELECT latitudeE7, longitudeE7, timestampMs FROM user_data ";
+$query ="SELECT latitudeE7, longitudeE7, timestampMs, activity FROM user_data ";
 $query= mysqli_query($conn, $query);
 
 if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['show'])) {
-  if(empty($_POST['f_year']) || empty($_POST['u_year'])){ 
+  if(empty($_POST['f_year']) || empty($_POST['u_year'])){
     $min_y=0;
     $max_y=2021;
   }
@@ -242,20 +242,67 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['show'])) {
   if ( $min_y > $max_y || $min_m >$max_m ){
     echo "<script type='text/javascript'>alert('Wrong range of dates! Choose again.');</script>";
     $min_y=0;
-    $max_y=0;
+    $max_y=2021;
     $min_m=0;
-    $max_m=0;
+    $max_m=13;
     $min_d=0;
-    $max_d=0;
+    $max_d=8;
     $min_h=0;
-    $max_h=0;
+    $max_h=24;
   }else{
     // Find Timestamp
     $min_ts = strtotime(" $min_y-$min_m $min_h ");
     $max_ts = strtotime(" $max_y-$max_m $max_h ");
   }
 
+  $activities = array();
+  $acount=0;
+  if (isset($_POST["activity"])){
+  array_push ($activities, "on_foot", "walking", "running", "on_bicycle", "in_vehicle",
+  "in_rail_vehicle", "in_road_vehicle", "still", "tilting", "unknown" );
+  $acount=50; }
+  else if(isset($_POST["activity1"])){
+  array_push ($activities, 'ON_FOOT');
+  $acount++; }
+  else if (isset($_POST['activity2'])){
+  array_push ($activities, 'WALKING');
+  $acount++;
+  }
+  else if (isset($_POST['activity3'])){
+  array_push ($activities, 'RUNNING');
+  $acount++;
+  }
+  else if (isset($_POST['activity4'])){
+  array_push ($activities, 'ON_BICYCLE');
+  $acount++;
+  }
+  else if (isset($_POST['activity5'])){
+  array_push ($activities, 'IN_VEHICLE');
+  $acount++;
+  }
+  else if (isset($_POST['activity6'])){
+  array_push ($activities, 'IN_RAIL_VEHICLE');
+  $acount++;
+  }
+  else if (isset($_POST['activity7'])){
+  array_push ($activities, 'IN_ROAD_VEHICLE');
+  $acount++;
+  }
+  else if (isset($_POST['activity8'])){
+  array_push ($activities, 'STILL');
+  $acount++;
+  }
+  else if (isset($_POST['activity9'])){
+  array_push ($activities, 'TILTING');
+  $acount++;
+  }
+  else if (isset($_POST['activity10'])){
+  array_push ($activities, 'UNKNOWN');
+  $acount++;
+  }
+
 }
+
 $i=0;
 $c1=0;
 while($result = $query->fetch_assoc()){
@@ -272,9 +319,20 @@ while($result = $query->fetch_assoc()){
   $month2 >= $min_m &&  $month2 <= $max_m &&
   $day2 >= $min_d &&  $day2 <= $max_d &&
   $hour2>= $min_h &&  $hour2 <= $max_h ) {
+    if ($acount==50 || $acount==0 ){
     $c1++;
     $lng[] = $result['longitudeE7'];
-    $lat[] =  $result['latitudeE7'];
+    $lat[] =  $result['latitudeE7']; }
+    else {
+      for( $j = 0 ; $j < $acount; $j++ ){
+        if ($result['activity'] == $activities[$j]){
+          $c1++;
+          $lng[] = $result['longitudeE7'];
+          $lat[] = $result['latitudeE7'];
+        }
+      }
+    }
+    //$act[]=  $result['activity'];
   }
 }
 

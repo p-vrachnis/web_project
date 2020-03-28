@@ -19,7 +19,7 @@ $(function () {
 
 /* Check/Uncheck Radio Buttons */
 $("input[type=radio]").data('checkedStatus', false);
-$("input[type=radio]").on("click",function(){   
+$("input[type=radio]").on("click",function(){
     if($(this).data('checkedStatus') == true)
     {
         this.checked = false;
@@ -80,17 +80,17 @@ $(document).ready(function(){
 });
 
 /* POST METHOD SHOW FORM */
-$(document).ready(function(){
-    $("#admin-data-analysis").submit(function(event){
-        event.preventDefault();
-        var submit = $("#show_btn").val();
-
-        $.post("querys.php", {
-            show: submit
-        }, function(){
-            //location.reload()
-            // NOT SURE!!!!!!!!!!!!
-           // $('../map/aheatmap.php #map').load('../map/aheatmap.php #map');
-        });
-    });
-});
+// $(document).ready(function(){
+//     $("#admin-data-analysis").submit(function(event){
+//         event.preventDefault();
+//         var submit = $("#show_btn").val();
+//
+//         $.post("querys.php", {
+//             show: submit
+//         }, function(){
+//             //location.reload()
+//             // NOT SURE!!!!!!!!!!!!
+//            // $('../map/aheatmap.php #map').load('../map/aheatmap.php #map');
+//         });
+//     });
+// });
