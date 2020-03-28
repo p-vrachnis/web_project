@@ -1,6 +1,6 @@
 <?php
 
-$username = $_SESSION['login_user'];
+//$username = $_SESSION['login_user'];
 include_once '../external/connect_db.php';
 
 $timezone= new DateTime("now", new DateTimeZone('Europe/Bucharest') );
@@ -265,7 +265,7 @@ while($result = $query->fetch_assoc()){
 }
 
 // Check if delete button is checked.
-if (isset($_POST['DELETE'])){
+if (isset($_POST['delete'])){
     // Delete all records from the table
     $sql = "DELETE  FROM user_data";
     $sql= mysqli_query($conn, $sql);
@@ -276,5 +276,4 @@ if (isset($_POST['DELETE'])){
   //  $sql = "DELETE  FROM users WHERE username <> 'admin';
   //  $sql= mysqli_query($conn, $sql);
   }
-
 ?>

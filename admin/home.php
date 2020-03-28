@@ -24,7 +24,7 @@
     <div class="design">
       <div class="main_content">
         <div class="user_info">
-          <p style="text-align: center">Απεικόνιση κατάστασης ΒΔ (dashboard)</p>
+          <p> DASHBOARD </p>
           <div id="flex-container1">
             <div><canvas id="year_activity_chart"></canvas></div>
             <div><canvas id="month_activity_chart"></canvas></div>
@@ -41,12 +41,7 @@
           <p style="text-align: center">Απεικόνιση κατάστασης ΒΔ (dashboard)</p>
           <div id="flex-container0">
             <canvas id="admin_activity_chart"></canvas>
-            <!-- <div>
-              <p style="text-align: center">Επιλογές εμφάνισης/export</p>
-              <button type="button" class="btn btn-info" id="export-btn">Export Data</button>
-              <button type="button" class="btn btn-danger" id="delete-btn">Delete Data from DB</button>
-            </div> -->
-            <form id="admin-data-analysis" action="" method="POST">
+            <form id="admin-data-analysis" >
               <div id="box">
                 <p style="text-align: center">Επιλογές εμφάνισης/export</p>
                 <div id="box-flex1">
@@ -217,7 +212,7 @@
                 </div>
               </div>
               <div id="box-flex-btn">
-                <button type="submit" class="btn btn-success" id="show_btn">SHOW TO MAP</button>
+                <button type="submit" class="btn btn-success" id="show_btn" onclick="test()">SHOW TO MAP</button>
                 <div id="export_options" style="display: none">
                   <label class="checkbox-inline">Choose type:
                     <input type="checkbox" value="json" name="export" class="export"> JSON
@@ -242,10 +237,10 @@
           </div>
           <div>
             <button class="btn btn-danger" id="delete">DELETE DATA FROM DATABASE</button>
-            <form action="" method="POST">
+            <form id="delete_form" action="querys.php" method="POST">
               <div id="del-conf" style="display: none">
                 <p id="check-msg">Are you sure?</p>
-                <button class="btn btn-success" id="delete-conf" type="submit" name="DELETE">YES</button>
+                <button class="btn btn-success" id="delete-conf" type="submit" name="DELETE" value="submit">YES</button>
                 <input type="button" value="NO" id="delete-neg">
               </div>
             </form>

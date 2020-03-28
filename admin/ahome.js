@@ -11,6 +11,12 @@ $(function () {
     });
 });
 
+$(function () {
+    $("#delete-conf").click(function () {
+        $("#del-conf").hide();
+    });
+});
+
 /* Check/Uncheck Radio Buttons */
 $("input[type=radio]").data('checkedStatus', false);
 $("input[type=radio]").on("click",function(){   
@@ -54,5 +60,21 @@ $(function () {
     $("#cancel-export").click(function () {
         $("#export_options").hide();
         $("#export_btn").show();
+    });
+});
+
+/* POST METHOD DELETE FORM */
+$(document).ready(function(){
+    $("#delete_form").submit(function(event){
+        event.preventDefault();
+        var submit = $("#delete-conf").val();
+
+        $.post("querys.php", {
+            delete: submit
+        }, function(){
+            location.reload()
+            // Δεν γίνεται να κάνω load και τα 5 Chart μαζί με αυτην την εντολή!!
+            //$('#year_activity_chart').load('#year_activity_chart');
+        });
     });
 });
