@@ -123,9 +123,11 @@ li{
 
 #login{
     left: 0px;
+
 }
 
 #register{
     left: 1000px;
     top: -40%;
+    visibility: hidden;
 }
