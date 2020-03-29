@@ -245,18 +245,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['show'])) {
     $min_h = $_POST['f_hour'];
     $max_h = $_POST['u_hour']; }
 
-if ($emptyshow==4) {
-  $min_y=0;
-  $max_y=0;
-  $min_m=0;
-  $max_m=0;
-  $min_d=0;
-  $max_d=0;
-  $min_h=0;
-  $max_h=0;
-}
-
-
   // Check if user input dates are valid.
   if ( $min_y > $max_y || $min_m >$max_m|| $min_d > $max_d || $min_h >$max_h ){
     echo "<script type='text/javascript'>alert('Wrong range of dates! Choose again.');</script>";
@@ -277,9 +265,9 @@ if ($emptyshow==4) {
   $activities = array();
   $acount=0;
   if (isset($_POST["activity"])){
-  array_push ($activities, "on_foot", "walking", "running", "on_bicycle", "in_vehicle",
-  "in_rail_vehicle", "in_road_vehicle", "still", "tilting", "unknown" );
-  $acount=50; }
+  array_push ($activities, "ON_FOOT", "WALKING", "RUNNING", "ON_BICYCLE", "IN_VEHICLE",
+  "IN_RAIL_VEHICLE", "IN_ROAD_VEHICLE", "STILL", "TILTING", "UNKNOWN" );
+  $acount=10; }
   else {
   if(isset($_POST["activity1"])){
   array_push ($activities, 'ON_FOOT');
@@ -296,7 +284,7 @@ if ($emptyshow==4) {
   array_push ($activities, 'ON_BICYCLE');
   $acount++;
   }
-  else if (isset($_POST['activity5'])){
+   if (isset($_POST['activity5'])){
   array_push ($activities, 'IN_VEHICLE');
   $acount++;
   }
@@ -323,6 +311,17 @@ if ($emptyshow==4) {
  }
 }
 
+if ($emptyshow==4 && $acount==0 ) {
+  $min_y=0;
+  $max_y=0;
+  $min_m=0;
+  $max_m=0;
+  $min_d=0;
+  $max_d=0;
+  $min_h=0;
+  $max_h=0;
+}
+
 $i=0;
 $c1=0;
 while($result = $query->fetch_assoc()){
@@ -339,11 +338,10 @@ while($result = $query->fetch_assoc()){
   $month2 >= $min_m &&  $month2 <= $max_m &&
   $day2 >= $min_d &&  $day2 <= $max_d &&
   $hour2>= $min_h &&  $hour2 <= $max_h ) {
-    if ($acount==50 || $acount==0 ){
+    if ($acount==10 || $acount==0 ){
+    // for( $j = 0 ; $j < $acount; $j++ ){
+    // if ($result['activity'] == $activities[$j]){
     $c1++;
-    // $lng[] = $result['longitudeE7'];
-    // $lat[] =  $result['latitudeE7'];
-    // $us[]= $result['username'];
     $lng[] = $result['longitudeE7'];
     $lat[] = $result['latitudeE7'];
     $act[] =  $result['activity'];
@@ -355,7 +353,7 @@ while($result = $query->fetch_assoc()){
     $head[] = $result['heading'];
     $vert_acc[]= $result['verticalAccuracy'];
     $timest[]=  $result['timestampMs'];
-    $us[]= $result['username'];     }
+    $us[]= $result['username'];  }
     else {
       for( $j = 0 ; $j < $acount; $j++ ){
         if ($result['activity'] == $activities[$j]){
@@ -380,8 +378,8 @@ while($result = $query->fetch_assoc()){
 }
 
 if ($c1 != 0 ){
-for( $i = 0 ; $i < $acount; $i++ ){
- $query ="SELECT userID FROM users WHERE username = '$us[$i]' ";
+for( $i = 0 ; $i < $c1; $i++ ){
+ $query ="SELECT userID,username FROM users WHERE username = '$us[$i]' ";
  $query= mysqli_query($conn, $query);
  $usid[$i] =  $result['userID']; } }
 
@@ -424,13 +422,13 @@ if (isset($_POST['delete'])){
   //  $sql= mysqli_query($conn, $sql);
   }
 
- if (isset($_POST[''])){
-  $result = mysqli_query($con, 'SELECT * FROM user_data');
-  $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-  $fp = fopen('file.csv', 'w');
-  foreach ($row as $val) {
-    fputcsv($fp, $val);
-  }
-  fclose($fp);
-  }
+ // if (isset($_POST['"ok-export"'])){
+ //  $result = mysqli_query($con, 'SELECT * FROM user_data');
+ //  $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+ //  $fp = fopen('file.csv', 'w');
+ //  foreach ($row as $val) {
+ //    fputcsv($fp, $val);
+ //  }
+ //  fclose($fp);
+ //  }
 ?>
