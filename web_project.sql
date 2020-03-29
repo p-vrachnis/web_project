@@ -25,7 +25,7 @@ CREATE TABLE user_data(
 	longitudeE7 INT NOT NULL,
 	accuracy INT,
 	altitude INT,
-	accuracy INT,
+	velocity INT,
 	verticalAccuracy INT,
 	heading VARCHAR(10),
 	activity VARCHAR(10),
