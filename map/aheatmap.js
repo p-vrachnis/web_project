@@ -16,14 +16,14 @@
 
     // Create the overall Leaflet map using the two layers we created
     let propertyHeatMap = new L.Map('map', {
-      center: new L.LatLng(38.230462, 21.753150),
+      center: [38.246362,21.736515],
       zoom: 13.3,
       layers: [baseLayer, heatmapLayer]
     })
 
     var testData = {
-        data: data_heatmap //[{ lat:38.230462, lng:21.753150}] 
+        data: data_heatmap //[{ lat:38.230462, lng:21.753150}]
     };
-    
+
     // Add data (from sales.js file) to the heatmap.js layer
     heatmapLayer.setData(testData);
