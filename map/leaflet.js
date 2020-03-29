@@ -23,12 +23,41 @@ document.getElementById('load').onclick = function(){
 
               if(distance([lat,lon],[38.230462,21.753150]) <= 10){
                 var timestamp = result.locations[i].timestampMs;
+                if(typeof result.locations[i].accuracy != "undefined") {
+                  var accuracy = result.locations[i].accuracy;
+                }else{
+                  var accuracy = null;
+                }
+                if(typeof result.locations[i].altitude != "undefined") {
+                  var altitude = result.locations[i].altitude;
+                }else{
+                  var altitude = null;
+                }
+                if(typeof result.locations[i].velocity != "undefined") {
+                  var velocity = result.locations[i].velocity;
+                }else{
+                  var velocity = null;
+                }
+                if(typeof result.locations[i].verticalAccuracy != "undefined") {
+                  var verticalAccuracy = result.locations[i].verticalAccuracy;
+                }else{
+                  var verticalAccuracy = null;
+                }
+                if(typeof result.locations[i].heading != "undefined") {
+                  var heading = result.locations[i].heading;
+                }else{
+                  var heading = null;
+                }
                 if(typeof result.locations[i].activity != "undefined") {
                   var activity = result.locations[i].activity[0].activity[0].type;
+                  var act_timestampMs = result.locations[i].activity[0].timestampMs;
+                  var act_confidence = result.locations[i].activity[0].activity[0].confidence;
                 }else{
                   var activity = null;
+                  var act_timestampMs = null;
+                  var act_confidence = null;
                 }
-                showMarker(lat, lon, timestamp, activity);
+                showMarker(timestamp, lat, lon, accuracy, altitude, velocity, verticalAccuracy, heading, activity, act_timestampMs, act_confidence);
               }
           }
           fr.abort();
@@ -69,10 +98,17 @@ var mapOptions = {
     return snum.slice(0, 2) + "." + snum.slice(2);
  }
 // Function which show the position (Marker) of the user on the Map Layer.
-function showMarker(latitude, longitude, timestamp, activity){
+function (timestamp, lat, lon, accuracy, altitude, velocity, verticalAccuracy, heading, activity, act_timestampMs, act_confidence){
     var mymarker = L.marker([latitude,longitude]);
     mymarker._id = timestamp;
+    mymarker.accuracy = accuracy;
+    mymarker.altitude = altitude;
+    mymarker.velocity = velocity;
+    mymarker.verticalAccuracy = verticalAccuracy;
+    mymarker.heading = heading;
     mymarker.activity = activity;
+    mymarker.act_timestampMs = act_timestampMs;
+    mymarker.act_confidence = act_confidence;
     mymarker.addTo(map);
     markers.push(mymarker);
     var popupContent =
@@ -108,12 +144,26 @@ document.getElementById('save').onclick = function(){
 
     lat =  parseInt(markers[i]._latlng.lat.toFixed(7).toString().replace(".", ""),10);
     lng =  parseInt(markers[i]._latlng.lng.toFixed(7).toString().replace(".", ""),10);
+    accuracy = markers[i].accuracy;
+    altitude = markers[i].altitude;
+    velocity = markers[i].velocity;
+    verticalAccuracy = markers[i].verticalAccuracy;
+    heading = markers[i].heading;
     activity = markers[i].activity;
+    act_timestampMs = markers[i].act_timestampMs;
+    act_confidence = markers[i].act_confidence;
 
     tempArray.push(timestamp);
     tempArray.push(lat);
     tempArray.push(lng);
+    tempArray.push(accuracy);
+    tempArray.push(altitude);
+    tempArray.push(velocity);
+    tempArray.push(verticalAccuracy);
+    tempArray.push(heading);
     tempArray.push(activity);
+    tempArray.push(act_timestampMs);
+    tempArray.push(act_confidence);
 
     dbArray.push(tempArray);
 

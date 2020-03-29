@@ -6,13 +6,20 @@
   // SQL Insert Query of the data.
   include_once '../external/connect_db.php';
   // GET ALL JSON DATA TO DATABASE
-  $sql = "REPLACE INTO user_data (username, timestampMs, latitudeE7, longitudeE7, activity) values";
+  $sql = "REPLACE INTO user_data (username, timestampMs, latitudeE7, longitudeE7, accuracy, altitude, velocity, verticalAccuracy, heading, activity, act_timestampMs, act_confidence) values";
   for( $index = 0; $index < sizeof($data) ; $index++ ){
     $timestampMs = $data[$index][0];
     $latitudeE7 = $data[$index][1];
     $longitudeE7 = $data[$index][2];
-    $activity = $data[$index][3];
-    $sql = $sql."('$username','$timestampMs',$latitudeE7,$longitudeE7,'$activity'),";
+    $accuracy = $data[$index][3];
+    $altitude = $data[$index][4];
+    $velocity = $data[$index][5];
+    $verticalAccuracy = $data[$index][6];
+    $heading = $data[$index][7];
+    $activity = $data[$index][8];
+    $act_timestampMS = $data[$index][9];
+    $act_confidence = $data[$index][10];
+    $sql = $sql."('$username','$timestampMs',$latitudeE7,$longitudeE7,$accuracy,$altitude,$velocity,$verticalAccuracy,'$heading','$activity','$act_timestampMS','$act_confidence'),";
   }
 $sql = substr($sql, 0, -1);
 $sql = $sql.";";
