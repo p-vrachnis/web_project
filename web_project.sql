@@ -7,7 +7,6 @@ CREATE TABLE users(
 	username VARCHAR(25) NOT NULL,
 	password CHAR(32) NOT NULL,
 	email VARCHAR(50) NOT NULL,
-	last_upload datetime,
 	PRIMARY KEY(username)
 )ENGINE = InnoDB CHARACTER SET greek COLLATE greek_general_ci;
 
@@ -24,7 +23,14 @@ CREATE TABLE user_data(
 	timestampMs VARCHAR(13) NOT NULL,
 	latitudeE7 INT NOT NULL,
 	longitudeE7 INT NOT NULL,
+	accuracy INT,
+	altitude INT,
+	accuracy INT,
+	verticalAccuracy INT,
+	heading VARCHAR(10),
 	activity VARCHAR(10),
+	act_timestampMs VARCHAR(13),
+	act_confidence VARCHAR(13),
     PRIMARY KEY(username,timestampMs),
 	FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE = InnoDB CHARACTER SET greek COLLATE greek_general_ci;
