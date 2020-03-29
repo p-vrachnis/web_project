@@ -19,7 +19,7 @@
     $activity = $data[$index][8];
     $act_timestampMS = $data[$index][9];
     $act_confidence = $data[$index][10];
-    $sql = $sql."('$username','$timestampMs',$latitudeE7,$longitudeE7,$accuracy,$altitude,$velocity,$verticalAccuracy,'$heading','$activity','$act_timestampMS','$act_confidence'),";
+    $sql = $sql."('$username','$timestampMs','$latitudeE7','$longitudeE7','$accuracy','$altitude','$velocity','$verticalAccuracy','$heading','$activity','$act_timestampMS','$act_confidence'),";
   }
 $sql = substr($sql, 0, -1);
 $sql = $sql.";";

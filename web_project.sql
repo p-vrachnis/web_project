@@ -30,7 +30,7 @@ CREATE TABLE user_data(
 	heading VARCHAR(10),
 	activity VARCHAR(10),
 	act_timestampMs VARCHAR(13),
-	act_confidence VARCHAR(13),
+	act_confidence INT,
     PRIMARY KEY(username,timestampMs),
 	FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE = InnoDB CHARACTER SET greek COLLATE greek_general_ci;

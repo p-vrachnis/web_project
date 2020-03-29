@@ -98,7 +98,7 @@ var mapOptions = {
     return snum.slice(0, 2) + "." + snum.slice(2);
  }
 // Function which show the position (Marker) of the user on the Map Layer.
-function (timestamp, lat, lon, accuracy, altitude, velocity, verticalAccuracy, heading, activity, act_timestampMs, act_confidence){
+function showMarker(timestamp, latitude, longitude, accuracy, altitude, velocity, verticalAccuracy, heading, activity, act_timestampMs, act_confidence){
     var mymarker = L.marker([latitude,longitude]);
     mymarker._id = timestamp;
     mymarker.accuracy = accuracy;
@@ -169,6 +169,7 @@ document.getElementById('save').onclick = function(){
 
     tempArray = [];
   }
+  console.log(dbArray);
 
   dbArray = JSON.stringify(dbArray)
   $.ajax({
