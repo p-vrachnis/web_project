@@ -205,13 +205,17 @@ $min_h=0;
 $max_h=0;
 
 /* Select specific range of dates and show the analysis of user data.  */
-$query ="SELECT latitudeE7, longitudeE7, timestampMs, activity FROM user_data ";
+//$query ="SELECT latitudeE7, longitudeE7, timestampMs, activity, username FROM user_data ";
+$query ="SELECT * FROM user_data ";
 $query= mysqli_query($conn, $query);
+
+$emptyshow=0;
 
 if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['show'])) {
   if(empty($_POST['f_year']) || empty($_POST['u_year'])){
     $min_y=0;
     $max_y=2021;
+    $emptyshow++;
   }
   else{
     $min_y = $_POST['f_year'];
@@ -219,6 +223,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['show'])) {
  if(empty($_POST['f_month']) || empty($_POST['u_month'])){
   $min_m=0;
   $max_m=13;
+  $emptyshow++;
  }
  else{
     $min_m = $_POST['f_month'];
@@ -226,6 +231,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['show'])) {
   if(empty($_POST['f_day']) || empty($_POST['u_day'])){
     $min_d=0;
     $max_d=8;
+    $emptyshow++;
   }
   else{
     $min_d = $_POST['f_day'];
@@ -233,10 +239,23 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['show'])) {
   if(empty($_POST['f_hour']) || empty($_POST['u_hour'])){
     $min_h=0;
     $max_h=24;
+    $emptyshow++;
    }
   else{
     $min_h = $_POST['f_hour'];
     $max_h = $_POST['u_hour']; }
+
+if ($emptyshow==4) {
+  $min_y=0;
+  $max_y=0;
+  $min_m=0;
+  $max_m=0;
+  $min_d=0;
+  $max_d=0;
+  $min_h=0;
+  $max_h=0;
+}
+
 
   // Check if user input dates are valid.
   if ( $min_y > $max_y || $min_m >$max_m|| $min_d > $max_d || $min_h >$max_h ){
@@ -322,20 +341,50 @@ while($result = $query->fetch_assoc()){
   $hour2>= $min_h &&  $hour2 <= $max_h ) {
     if ($acount==50 || $acount==0 ){
     $c1++;
+    // $lng[] = $result['longitudeE7'];
+    // $lat[] =  $result['latitudeE7'];
+    // $us[]= $result['username'];
     $lng[] = $result['longitudeE7'];
-    $lat[] =  $result['latitudeE7']; }
+    $lat[] = $result['latitudeE7'];
+    $act[] =  $result['activity'];
+    $acc[] = $result['accuracy'];
+    $alt[] = $result['altitude'];
+    $vel[] = $result['velocity'];
+    $a_time[] = $result['act_timestampMs'];
+    $a_conf[] = $result['act_confidence'];
+    $head[] = $result['heading'];
+    $vert_acc[]= $result['verticalAccuracy'];
+    $timest[]=  $result['timestampMs'];
+    $us[]= $result['username'];     }
     else {
       for( $j = 0 ; $j < $acount; $j++ ){
         if ($result['activity'] == $activities[$j]){
           $c1++;
           $lng[] = $result['longitudeE7'];
           $lat[] = $result['latitudeE7'];
+          $act[] =  $result['activity'];
+          $acc[] = $result['accuracy'];
+          $alt[] = $result['altitude'];
+          $vel[] = $result['velocity'];
+          $a_time[] = $result['act_timestampMs'];
+          $a_conf[] = $result['act_confidence'];
+          $head[] = $result['heading'];
+          $vert_acc[]= $result['verticalAccuracy'];
+          $timest[]=  $result['timestampMs'];
+          $us[]= $result['username'];
         }
       }
     }
     //$act[]=  $result['activity'];
   }
 }
+
+if ($c1 != 0 ){
+for( $i = 0 ; $i < $acount; $i++ ){
+ $query ="SELECT userID FROM users WHERE username = '$us[$i]' ";
+ $query= mysqli_query($conn, $query);
+ $usid[$i] =  $result['userID']; } }
+
 
 function decimal($num){
   $snum = strval($num);
@@ -373,5 +422,15 @@ if (isset($_POST['delete'])){
     $sql= mysqli_query($conn, $sql);
   //  $sql = "DELETE  FROM users WHERE username <> 'admin';
   //  $sql= mysqli_query($conn, $sql);
+  }
+
+ if (isset($_POST[''])){
+  $result = mysqli_query($con, 'SELECT * FROM user_data');
+  $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+  $fp = fopen('file.csv', 'w');
+  foreach ($row as $val) {
+    fputcsv($fp, $val);
+  }
+  fclose($fp);
   }
 ?>
