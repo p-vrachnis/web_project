@@ -1,6 +1,6 @@
 <?php
 
-$username = $_SESSION['login_user'];
+//$username = $_SESSION['login_user'];
 include_once '../external/connect_db.php';
 
 $timezone= new DateTime("now", new DateTimeZone('Europe/Bucharest') );
@@ -196,55 +196,116 @@ $hours_1 =  Array(
 
 /* QUERYS FOR SELECT */
 $min_y=0;
-$max_y=2021;
+$max_y=0;
 $min_m=0;
-$max_m=13;
+$max_m=0;
 $min_d=0;
-$max_d=8;
+$max_d=0;
 $min_h=0;
-$max_h=24;
+$max_h=0;
 
 /* Select specific range of dates and show the analysis of user data.  */
-$query ="SELECT latitudeE7, longitudeE7, timestampMs FROM user_data ";
+$query ="SELECT latitudeE7, longitudeE7, timestampMs, activity FROM user_data ";
 $query= mysqli_query($conn, $query);
 
-if($_SERVER['REQUEST_METHOD'] == "POST") {
-  if(empty($_POST['f_year']) || empty($_POST['u_year'])){}
+if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['show'])) {
+  if(empty($_POST['f_year']) || empty($_POST['u_year'])){
+    $min_y=0;
+    $max_y=2021;
+  }
   else{
     $min_y = $_POST['f_year'];
     $max_y = $_POST['u_year']; }
- if(empty($_POST['f_month']) || empty($_POST['u_month'])){}
+ if(empty($_POST['f_month']) || empty($_POST['u_month'])){
+  $min_m=0;
+  $max_m=13;
+ }
  else{
     $min_m = $_POST['f_month'];
     $max_m = $_POST['u_month']; }
-  if(empty($_POST['f_day']) || empty($_POST['u_day'])){}
+  if(empty($_POST['f_day']) || empty($_POST['u_day'])){
+    $min_d=0;
+    $max_d=8;
+  }
   else{
     $min_d = $_POST['f_day'];
     $max_d = $_POST['u_day']; }
-  if(empty($_POST['f_hour']) || empty($_POST['u_hour'])){ }
+  if(empty($_POST['f_hour']) || empty($_POST['u_hour'])){
+    $min_h=0;
+    $max_h=24;
+   }
   else{
     $min_h = $_POST['f_hour'];
     $max_h = $_POST['u_hour']; }
 
   // Check if user input dates are valid.
-  if ( $min_y > $max_y || $min_m >$max_m ){
+  if ( $min_y > $max_y || $min_m >$max_m|| $min_d > $max_d || $min_h >$max_h ){
     echo "<script type='text/javascript'>alert('Wrong range of dates! Choose again.');</script>";
     $min_y=0;
-    $max_y=0;
+    $max_y=2021;
     $min_m=0;
-    $max_m=0;
+    $max_m=13;
     $min_d=0;
-    $max_d=0;
+    $max_d=8;
     $min_h=0;
-    $max_h=0;
+    $max_h=24;
   }else{
     // Find Timestamp
     $min_ts = strtotime(" $min_y-$min_m $min_h ");
     $max_ts = strtotime(" $max_y-$max_m $max_h ");
   }
 
+  $activities = array();
+  $acount=0;
+  if (isset($_POST["activity"])){
+  array_push ($activities, "on_foot", "walking", "running", "on_bicycle", "in_vehicle",
+  "in_rail_vehicle", "in_road_vehicle", "still", "tilting", "unknown" );
+  $acount=50; }
+  else {
+  if(isset($_POST["activity1"])){
+  array_push ($activities, 'ON_FOOT');
+  $acount++; }
+   if (isset($_POST['activity2'])){
+  array_push ($activities, 'WALKING');
+  $acount++;
+  }
+  if (isset($_POST['activity3'])){
+  array_push ($activities, 'RUNNING');
+  $acount++;
+  }
+  if (isset($_POST['activity4'])){
+  array_push ($activities, 'ON_BICYCLE');
+  $acount++;
+  }
+  else if (isset($_POST['activity5'])){
+  array_push ($activities, 'IN_VEHICLE');
+  $acount++;
+  }
+   if (isset($_POST['activity6'])){
+  array_push ($activities, 'IN_RAIL_VEHICLE');
+  $acount++;
+  }
+   if (isset($_POST['activity7'])){
+  array_push ($activities, 'IN_ROAD_VEHICLE');
+  $acount++;
+  }
+  if (isset($_POST['activity8'])){
+  array_push ($activities, 'STILL');
+  $acount++;
+  }
+   if (isset($_POST['activity9'])){
+  array_push ($activities, 'TILTING');
+  $acount++;
+  }
+  if (isset($_POST['activity10'])){
+  array_push ($activities, 'UNKNOWN');
+  $acount++;
+  }
+ }
 }
+
 $i=0;
+$c1=0;
 while($result = $query->fetch_assoc()){
   $timestamps[] = $result['timestampMs']; // activity from DB
   $seconds = $timestamps[$i] / 1000;
@@ -259,13 +320,50 @@ while($result = $query->fetch_assoc()){
   $month2 >= $min_m &&  $month2 <= $max_m &&
   $day2 >= $min_d &&  $day2 <= $max_d &&
   $hour2>= $min_h &&  $hour2 <= $max_h ) {
-    $long[] = $result['longitudeE7'];
-    $lat[] =  $result['latitudeE7'];
+    if ($acount==50 || $acount==0 ){
+    $c1++;
+    $lng[] = $result['longitudeE7'];
+    $lat[] =  $result['latitudeE7']; }
+    else {
+      for( $j = 0 ; $j < $acount; $j++ ){
+        if ($result['activity'] == $activities[$j]){
+          $c1++;
+          $lng[] = $result['longitudeE7'];
+          $lat[] = $result['latitudeE7'];
+        }
+      }
+    }
+    //$act[]=  $result['activity'];
   }
 }
 
+function decimal($num){
+  $snum = strval($num);
+  $snum =  "" . substr($snum, 0, 2) . "." . substr($snum,2). "";
+  return $snum;
+}
+
+if ($c1 != 0 ){
+  $lat[0] = decimal($lat[0]);
+  $lng[0] = decimal($lng[0]);
+
+  //$temp_heatmap = array();
+  $data_heatmap = array(array("lat"=>$lat[0], "lng"=>$lng[0]));
+
+  // For each value of coordinates, we create an array (dictionary) to include lat,lon for the HeatMap
+  for($iter=1; $iter<sizeof($lat); $iter++){
+    $lat[$iter] = decimal($lat[$iter]);
+    $lng[$iter] = decimal($lng[$iter]);
+
+    $temp_heatmap = array("lat"=>$lat[$iter], "lng"=>$lng[$iter]);
+    array_push($data_heatmap, $temp_heatmap);
+  }
+
+  // Array convert into JSON, in order to send them to Javascript file.
+  $data_heatmap = json_encode($data_heatmap); }
+
 // Check if delete button is checked.
-if (isset($_POST['DELETE'])){
+if (isset($_POST['delete'])){
     // Delete all records from the table
     $sql = "DELETE  FROM user_data";
     $sql= mysqli_query($conn, $sql);
@@ -276,5 +374,4 @@ if (isset($_POST['DELETE'])){
   //  $sql = "DELETE  FROM users WHERE username <> 'admin';
   //  $sql= mysqli_query($conn, $sql);
   }
-
 ?>

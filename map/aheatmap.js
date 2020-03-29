@@ -22,7 +22,7 @@
     })
 
     var testData = {
-        data: [{ lat:38.230462, lng:21.753150}] //data_heatmap
+        data: data_heatmap //[{ lat:38.230462, lng:21.753150}] 
     };
     
     // Add data (from sales.js file) to the heatmap.js layer

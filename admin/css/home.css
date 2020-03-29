@@ -358,7 +358,7 @@ select {
   font-size: 20px;
   font-weight: bold;
   border-radius: 40px;
-  margin-top: 15px;
+  margin-top: 45px;
 }
 
 /* Flex box delete */
@@ -367,7 +367,7 @@ select {
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
-  margin-top: 2%;
+  margin-top: 45px;
 }
 
 /* MSG before confirmation of deletion */

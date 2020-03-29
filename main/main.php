@@ -31,8 +31,8 @@
           <div class="form-box" id="box-2">
               <div class="button-box">
                   <div class="btn-group btn-group-justified">
-                  <button type="button" class="btn btn-primary" onclick="login()" >Log In</button>
-                  <button type="button" class="btn btn-primary" onclick="register()">Register</button>
+                  <button type="button" class="btn btn-primary" onclick="login()" id="login_btn" >Log In</button>
+                  <button type="button" class="btn btn-primary" onclick="register()" id="register_btn">Register</button>
                   </div>
               </div>
               <form id="login" class="input-group" name="login_form" action="/main/login.php" method="POST">
@@ -46,7 +46,7 @@
                   </div>
                   <button id="btnLogin" type="submit" name="submit" class="btn btn-success btn-lg">Log in</button>
               </form>
-              <form id="register" class="input-group" name="register_form" action="/main/register.php" method="POST">
+              <form id="register" class="input-group" name="register_form" action="/main/register.php" method="POST" style="display: none">
                   <div class="input-group">
                       <i class="fa fa-user fa-2x"></i>
                       <input id="username" type="text" class="form-control" name="username" placeholder="Username">
@@ -59,8 +59,8 @@
                       <i class="fa fa-envelope fa-2x"></i>
                       <input id="email" type="email" class="form-control" name="email" placeholder="Email" >
                   </div>
-                  <div>
-                      <input type="checkbox" name="agree" id="agree" value="agree" /> <label for='agree'>Do you agree to the terms?</label>
+                  <div class="input-group">
+                    <div id="argee"><input type="checkbox" name="agree" value="agree" /> <label for='agree'>Do you agree to the terms?</label></div>
                   </div>
                   <button id="btnRegister" type="submit" name="submit" class="btn btn-success btn-lg">Register</button>
               </form>
