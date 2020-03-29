@@ -14,7 +14,7 @@
 
 <body>
       <div class="header">
-        <a class="logo" href="./home.php"><img src= "../images/logo.png">Welcome user <?php echo $username ?></a>
+        <a class="logo" href="./home.php"><img src= "../images/logo.png">Welcome <?php echo $username ?></a>
         <div id="header-right">
           <a href="./home.php">Home</a>
           <a href="./about.php">About</a>
