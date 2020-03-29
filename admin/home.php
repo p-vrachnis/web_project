@@ -214,15 +214,10 @@
               <div id="box-flex-btn">
                 <button type="submit" class="btn btn-success" id="show_btn" name="show" value="submit">SHOW TO MAP</button>
                 <div id="export_options" style="display: none">
-                  <label class="checkbox-inline">Choose type:
-                    <input type="checkbox" value="json" name="export" class="export"> JSON
-                  </label>
-                  <label class="checkbox-inline">
-                    <input type="checkbox" value="xml" name="export" class="export"> XML
-                  </label>
-                  <label class="checkbox-inline">
-                    <input type="checkbox" value="csv" name="export" class="export"> CSV
-                  </label>
+                  <label class="checkbox-inline">Choose type:</label>
+                  <input type="checkbox" value="json" class="export">JSON</input>
+                  <input type="checkbox" value="xml" class="export">XML</input>
+                  <input type="checkbox" value="csv" class="export">CSV</input>
                   <button class="btn btn-success" id="ok-export" type="submit" name="DELETE">OK</button>
                   <input type="button" value="CANCEL" id="cancel-export">
                 </div>
