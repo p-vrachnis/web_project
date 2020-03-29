@@ -12,7 +12,7 @@ let cfg = {
 let heatmapLayer = new HeatmapOverlay(cfg);
 
 let propertyHeatMap = new L.Map('heatmap', {
-    center: new L.LatLng(38.230462, 21.753150),
+   center: [38.246362,21.736515],
     zoom: 13.3,
     layers: [baseLayer, heatmapLayer]
 })
