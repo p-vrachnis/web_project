@@ -373,7 +373,6 @@ while($result = $query->fetch_assoc()){
         }
       }
     }
-    //$act[]=  $result['activity'];
   }
 }
 
@@ -391,12 +390,13 @@ function decimal($num){
   return $snum;
 }
 
+// Not Show heatmap when export
 $show=1;
 if ((isset($_POST['export'])))
 {  $show==0;}
 
 
-if ($c1 != 0 && $show==0 ){
+if ($c1 != 0 && $show==1 ){
   $lat[0] = decimal($lat[0]);
   $lng[0] = decimal($lng[0]);
 
@@ -428,12 +428,13 @@ if (isset($_POST['delete'])){
   //  $sql= mysqli_query($conn, $sql);
   }
 
- if (isset($_POST['csv'])){
- if ($c1!=0) {
+// EXPORTS
+ if (isset($_POST['csv']) && isset($_POST['export'])){
+ if ($c1!=0 ) {
   //$filename = "export";
   $file = fopen('export.csv',"w");
-  $fields = array('longitude', 'latitude', 'activity', 'accuracy', 'altitude', 'velocity', 'act_timestampMs', 'act_confidence',
-                  'heading', 'verticalAccuracy', 'timestampMs', 'userID');
+  $fields = array('longitude ', 'latitude ', 'activity ', 'accuracy ', 'altitude ', 'velocity ', 'activity_timestampMs ', 'activity_confidence ',
+                  'heading ', 'verticalAccuracy ', 'timestampMs ', 'userID ');
   fputcsv($file, $fields);
   for ($i=0; $i <$c1; $i++){
   $data = array($lng[$i],$lat[$i],$act[$i],$acc[$i],$alt[$i],$vel[$i],$a_time[$i],$a_conf[$i],$head[$i],$vert_acc[$i],$timest[$i],$usid[$i]);
@@ -442,40 +443,30 @@ if (isset($_POST['delete'])){
   //}
   fclose($file);
      header("Content-Type: text/csv");
-     header("Content-Disposition: attachment; filename=/export.csv;");
+     header("Content-Disposition: attachment; filename=export.csv;");
      readfile("export.csv");
+    // $export=0;
   }
  }
 
- if (isset($_POST['json'])){
+ if (isset($_POST['json']) && isset($_POST['export'])){
   if ($c1!=0) {
-    $json_data=array(); //create the array  
-    
+    $json_data=array(); //create the array
+
     for($i=0; $i<$c1; $i++){
-      $lng = $lng[$i];
-      $lat = $lat[$i];
-      $act = $act[$i];
-      $acc = $acc[$i];
-      $alt1 = $alt[$i];
-      $vel1 = $vel[$i];
-      $a_time = $a_time[$i];
-      $a_conf = $a_conf[$i];
-      $head1 = $head[$i];
-      $vert_acc1 = $vert_acc[$i];
-      $timest = $timest[$i];
-      $us = $us[$i];
-
-      $json_data[] = array('longitude'=> $lng, 'latitude'=> $lat, 'activity'=> $act,
-                            'accuracy'=> $acc, 'altitude'=> $alt1, 'velocity'=> $vel1,
-                            'act_timestampMs'=> $a_time, 'act_confidence'=> $a_conf,
-                            'heading'=> $head1, 'verticalAccuracy'=> $vert_acc1, 
-                            'timestampMs'=> $timest, 'userID'=> $us);
+      $json_data[] = array('longitude'=> $lng[$i], 'latitude'=> $lat[$i], 'activity'=> $act[$i],
+                            'accuracy'=> $acc[$i], 'altitude'=> $alt[$i], 'velocity'=> $vel[$i],
+                            'activity_timestampMs'=> $a_time[$i], 'activity_confidence'=> $a_conf[$i],
+                            'heading'=> $head[$i], 'verticalAccuracy'=> $vert_acc[$i],
+                            'timestampMs'=> $timest[$i], 'userID'=> $usid[$i]);
     }
-
     $fp = fopen("export.json", 'w');
     $data = json_encode($json_data);
     fwrite($fp, $data);
-    fclose($fp); 
+    fclose($fp);
+    header("Content-Type: text/csv");
+    header("Content-Disposition: attachment; filename=export.json;");
+    readfile("export.json");
   }
 }
 ?>

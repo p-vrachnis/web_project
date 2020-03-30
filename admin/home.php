@@ -217,13 +217,13 @@
                   <label class="checkbox-inline">Choose type:</label>
                   <input type="checkbox" id="json" value="json" name="json" class="export">JSON</input>
                   <input type="checkbox" id="xml" value="xml" name="xml" class="export">XML</input>
-                  <input type="checkbox" id="export" value="csv" name="csv"  class="export">CSV</input>
+                  <input type="checkbox" id="csv" value="csv" name="csv"  class="export">CSV</input>
                   <button class="btn btn-success" id="ok-export" type="submit" name="export">OK</button>
                   <input type="button" value="CANCEL" id="cancel-export">
                 </div>
               </div>
             </form>
-            <button class="btn btn-info" id="export_btn">EXPORT DATA</button>
+            <button class="btn btn-info" name="export_btn" id="export_btn">EXPORT DATA</button>
           </div>
         </div>
         <div class="data_load">
