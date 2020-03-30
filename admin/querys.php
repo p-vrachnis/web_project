@@ -432,7 +432,8 @@ if (isset($_POST['delete'])){
  if ($c1!=0) {
   //$filename = "export";
   $file = fopen('export.csv',"w");
-  $fields = array('langitude', 'longitude', 'Email', 'Phone', 'Created', 'Status');
+  $fields = array('longitude', 'latitude', 'activity', 'accuracy', 'altitude', 'velocity', 'act_timestampMs', 'act_confidence',
+                  'heading', 'verticalAccuracy', 'timestampMs', 'userID');
   fputcsv($file, $fields);
   for ($i=0; $i <$c1; $i++){
   $data = array($lng[$i],$lat[$i],$act[$i],$acc[$i],$alt[$i],$vel[$i],$a_time[$i],$a_conf[$i],$head[$i],$vert_acc[$i],$timest[$i],$usid[$i]);
@@ -446,7 +447,35 @@ if (isset($_POST['delete'])){
   }
  }
 
+ if (isset($_POST['json'])){
+  if ($c1!=0) {
+    $json_data=array(); //create the array  
+    
+    for($i=0; $i<$c1; $i++){
+      $lng = $lng[$i];
+      $lat = $lat[$i];
+      $act = $act[$i];
+      $acc = $acc[$i];
+      $alt1 = $alt[$i];
+      $vel1 = $vel[$i];
+      $a_time = $a_time[$i];
+      $a_conf = $a_conf[$i];
+      $head1 = $head[$i];
+      $vert_acc1 = $vert_acc[$i];
+      $timest = $timest[$i];
+      $us = $us[$i];
 
+      $json_data[] = array('longitude'=> $lng, 'latitude'=> $lat, 'activity'=> $act,
+                            'accuracy'=> $acc, 'altitude'=> $alt1, 'velocity'=> $vel1,
+                            'act_timestampMs'=> $a_time, 'act_confidence'=> $a_conf,
+                            'heading'=> $head1, 'verticalAccuracy'=> $vert_acc1, 
+                            'timestampMs'=> $timest, 'userID'=> $us);
+    }
 
-
+    $fp = fopen("export.json", 'w');
+    $data = json_encode($json_data);
+    fwrite($fp, $data);
+    fclose($fp); 
+  }
+}
 ?>
