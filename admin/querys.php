@@ -211,7 +211,7 @@ $query= mysqli_query($conn, $query);
 
 $emptyshow=0;
 
-if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['show'])) {
+if($_SERVER['REQUEST_METHOD'] == "POST" && (isset($_POST['show'])) || (isset($_POST['export'])) ){
   if(empty($_POST['f_year']) || empty($_POST['u_year'])){
     $min_y=0;
     $max_y=2021;
@@ -367,8 +367,8 @@ while($result = $query->fetch_assoc()){
           $a_time[] = $result['act_timestampMs'];
           $a_conf[] = $result['act_confidence'];
           $head[] = $result['heading'];
-          $vert_acc[]= $result['verticalAccuracy'];
-          $timest[]=  $result['timestampMs'];
+          $vert_acc[] = $result['verticalAccuracy'];
+          $timest[] =  $result['timestampMs'];
           $us[]= $result['username'];
         }
       }
@@ -381,7 +381,8 @@ if ($c1 != 0 ){
 for( $i = 0 ; $i < $c1; $i++ ){
  $query ="SELECT userID,username FROM users WHERE username = '$us[$i]' ";
  $query= mysqli_query($conn, $query);
- $usid[$i] =  $result['userID']; } }
+ while($result = $query->fetch_assoc()){
+ $usid[$i] =  $result['userID']; } } }
 
 
 function decimal($num){
@@ -390,7 +391,12 @@ function decimal($num){
   return $snum;
 }
 
-if ($c1 != 0 ){
+$show=1;
+if ((isset($_POST['export'])))
+{  $show==0;}
+
+
+if ($c1 != 0 && $show==0 ){
   $lat[0] = decimal($lat[0]);
   $lng[0] = decimal($lng[0]);
 
@@ -422,13 +428,25 @@ if (isset($_POST['delete'])){
   //  $sql= mysqli_query($conn, $sql);
   }
 
- // if (isset($_POST['"ok-export"'])){
- //  $result = mysqli_query($con, 'SELECT * FROM user_data');
- //  $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
- //  $fp = fopen('file.csv', 'w');
- //  foreach ($row as $val) {
- //    fputcsv($fp, $val);
- //  }
- //  fclose($fp);
- //  }
+ if (isset($_POST['csv'])){
+ if ($c1!=0) {
+  //$filename = "export";
+  $file = fopen('export.csv',"w");
+  $fields = array('langitude', 'longitude', 'Email', 'Phone', 'Created', 'Status');
+  fputcsv($file, $fields);
+  for ($i=0; $i <$c1; $i++){
+  $data = array($lng[$i],$lat[$i],$act[$i],$acc[$i],$alt[$i],$vel[$i],$a_time[$i],$a_conf[$i],$head[$i],$vert_acc[$i],$timest[$i],$usid[$i]);
+//foreach ($data as $line) {
+    fputcsv($file, $data); }
+  //}
+  fclose($file);
+     header("Content-Type: text/csv");
+     header("Content-Disposition: attachment; filename=/export.csv;");
+     readfile("export.csv");
+  }
+ }
+
+
+
+
 ?>

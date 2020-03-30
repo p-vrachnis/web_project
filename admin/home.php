@@ -215,10 +215,10 @@
                 <button type="submit" class="btn btn-success" id="show_btn" name="show" value="submit">SHOW TO MAP</button>
                 <div id="export_options" style="display: none">
                   <label class="checkbox-inline">Choose type:</label>
-                  <input type="checkbox" id="json" value="json" class="export">JSON</input>
-                  <input type="checkbox" id="xml" value="xml" class="export">XML</input>
-                  <input type="checkbox" id="export" value="csv" class="export">CSV</input>
-                  <button class="btn btn-success" id="ok-export" type="submit" name="DELETE">OK</button>
+                  <input type="checkbox" id="json" value="json" name="json" class="export">JSON</input>
+                  <input type="checkbox" id="xml" value="xml" name="xml" class="export">XML</input>
+                  <input type="checkbox" id="export" value="csv" name="csv"  class="export">CSV</input>
+                  <button class="btn btn-success" id="ok-export" type="submit" name="export">OK</button>
                   <input type="button" value="CANCEL" id="cancel-export">
                 </div>
               </div>
