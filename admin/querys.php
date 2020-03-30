@@ -469,4 +469,69 @@ if (isset($_POST['delete'])){
     readfile("export.json");
   }
 }
+
+/* EXPORT XML */
+if (isset($_POST['xml'])){
+  if ($c1!=0) {
+    $dom = new DOMDocument();
+
+		$dom->encoding = 'utf-8';
+
+		$dom->xmlVersion = '1.0';
+
+    $dom->formatOutput = true;
+    
+    $xml_file_name = 'export.xml';
+
+      $root = $dom->createElement('AllData');
+      $data_node = $dom->createElement('data');
+
+    for($i=0; $i<$c1; $i++){
+      $dlng = new DOMAttr('location', "'$i'");
+      $data_node->setAttributeNode($dlng);
+
+    $child_node_longitude = $dom->createElement('longitude', $lng[$i]);
+      $data_node->appendChild($child_node_longitude);
+     
+    $child_node_latitude = $dom->createElement('latitude', $lat[$i]);
+      $data_node->appendChild($child_node_latitude);
+
+    $child_node_activity = $dom->createElement('activity', $act[$i]);
+      $data_node->appendChild($child_node_activity);
+    
+    $child_node_accuracy = $dom->createElement('accuracy', $acc[$i]);
+      $data_node->appendChild($child_node_accuracy);
+    
+    $child_node_altitude = $dom->createElement('altitude', $alt[$i]);
+      $data_node->appendChild($child_node_altitude);
+    
+    $child_node_velocity = $dom->createElement('velocity', $vel[$i]);
+      $data_node->appendChild($child_node_velocity);
+    
+    $child_node_act_timestampMs = $dom->createElement('act_timestampMs', $a_time[$i]);
+      $data_node->appendChild($child_node_act_timestampMs);
+
+    $child_node_act_confidence = $dom->createElement('act_confidence', $a_conf[$i]);
+      $data_node->appendChild($child_node_act_confidence);
+
+    $child_node_heading = $dom->createElement('heading', $head[$i]);
+      $data_node->appendChild($child_node_heading);
+
+    $child_node_act_verticalAccuracy = $dom->createElement('averticalAccuracy', $vert_acc[$i]);
+      $data_node->appendChild($child_node_act_verticalAccuracy);
+
+    $child_node_act_timestampMs = $dom->createElement('timestampMs', $timest[$i]);
+      $data_node->appendChild($child_node_act_timestampMs);
+
+    $child_node_act_username = $dom->createElement('username', $us[$i]);
+      $data_node->appendChild($child_node_act_username);
+    }
+      $root->appendChild($data_node);
+      $dom->appendChild($root);
+    
+    $dom->save($xml_file_name);
+
+  } 
+}
+
 ?>
