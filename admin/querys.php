@@ -534,6 +534,9 @@ if (isset($_POST['xml']) && isset($_POST['export'])){
 
     $dom->save($xml_file_name);
 
+    $filename=basename("../admin/export.xml");
+    $_SESSION["filename"] = $filename;
+    header("Location: ../admin/download.php");
   }
 }
 
