@@ -464,9 +464,9 @@ if (isset($_POST['delete'])){
     $data = json_encode($json_data);
     fwrite($fp, $data);
     fclose($fp);
-    header("Content-Type: text/csv");
-    header("Content-Disposition: attachment; filename=export.json;");
-    readfile("export.json");
+    $filename=basename("../admin/export.json");
+    $_SESSION["filename"] = $filename;
+    header("Location: ../admin/download.php");
   }
 }
 
@@ -480,7 +480,7 @@ if (isset($_POST['xml'])){
 		$dom->xmlVersion = '1.0';
 
     $dom->formatOutput = true;
-    
+
     $xml_file_name = 'export.xml';
 
       $root = $dom->createElement('AllData');
@@ -492,22 +492,22 @@ if (isset($_POST['xml'])){
 
     $child_node_longitude = $dom->createElement('longitude', $lng[$i]);
       $data_node->appendChild($child_node_longitude);
-     
+
     $child_node_latitude = $dom->createElement('latitude', $lat[$i]);
       $data_node->appendChild($child_node_latitude);
 
     $child_node_activity = $dom->createElement('activity', $act[$i]);
       $data_node->appendChild($child_node_activity);
-    
+
     $child_node_accuracy = $dom->createElement('accuracy', $acc[$i]);
       $data_node->appendChild($child_node_accuracy);
-    
+
     $child_node_altitude = $dom->createElement('altitude', $alt[$i]);
       $data_node->appendChild($child_node_altitude);
-    
+
     $child_node_velocity = $dom->createElement('velocity', $vel[$i]);
       $data_node->appendChild($child_node_velocity);
-    
+
     $child_node_act_timestampMs = $dom->createElement('act_timestampMs', $a_time[$i]);
       $data_node->appendChild($child_node_act_timestampMs);
 
@@ -528,10 +528,10 @@ if (isset($_POST['xml'])){
     }
       $root->appendChild($data_node);
       $dom->appendChild($root);
-    
+
     $dom->save($xml_file_name);
 
-  } 
+  }
 }
 
 ?>

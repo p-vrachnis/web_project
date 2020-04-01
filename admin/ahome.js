@@ -84,8 +84,6 @@ $(document).ready(function(){
 /* POST METHOD SHOW FORM */
 
 
-
-
 /*********************************************************** */
 
 // $(document).ready(function($){
@@ -102,7 +100,7 @@ $(document).ready(function(){
 //         var u_day = $("#until-day").val();
 //         var f_hour = $("#from-hour").val();
 //         var u_hour = $("#until-hour").val();
-        
+
 //         pass_data.push(f_month, f_year, u_month, u_year, f_day, u_day, f_hour, u_hour);
 
 
@@ -122,15 +120,15 @@ $(document).ready(function(){
 //             var activity3 = $("#running").val();
 //             pass_data.push(activity3);
 //         }
-//         if(document.getElementById("on_bicycle").checked ==true){    
+//         if(document.getElementById("on_bicycle").checked ==true){
 //             var activity4 = $("#on_bicycle").val();
-//             pass_data.push(activity4); 
+//             pass_data.push(activity4);
 //         }
 //         if(document.getElementById("in_vehicle").checked ==true){
 //             var activity5 = $("#in_vehicle").val();
 //             pass_data.push(activity5);
 //         }
-//         if(document.getElementById("in_vehicle").checked ==true){    
+//         if(document.getElementById("in_vehicle").checked ==true){
 //             var activity6 = $("#in_rail_vehicle").val();
 //             pass_data.push(activity6);
 //         }
@@ -161,7 +159,7 @@ $(document).ready(function(){
 //             location.reload()
 //             // Δεν γίνεται να κάνω load με αυτην την εντολή!!
 //             //$('../map/aheatmap.php #map').load('../map/aheatmap.php #map');
-            
+
 //         });
 //     });
 // });
