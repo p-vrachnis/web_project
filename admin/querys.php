@@ -442,10 +442,13 @@ if (isset($_POST['delete'])){
     fputcsv($file, $data); }
   //}
   fclose($file);
-     header("Content-Type: text/csv");
-     header("Content-Disposition: attachment; filename=export.csv;");
-     readfile("export.csv");
+     // header("Content-Type: text/csv");
+     // header("Content-Disposition: attachment; filename=export.csv;");
+     // readfile("export.csv");
     // $export=0;
+    $filename=basename("../admin/export.csv");
+    $_SESSION["filename"] = $filename;
+    header("Location: ../admin/download.php");
   }
  }
 
@@ -471,7 +474,7 @@ if (isset($_POST['delete'])){
 }
 
 /* EXPORT XML */
-if (isset($_POST['xml'])){
+if (isset($_POST['xml']) && isset($_POST['export'])){
   if ($c1!=0) {
     $dom = new DOMDocument();
 
@@ -523,7 +526,7 @@ if (isset($_POST['xml'])){
     $child_node_act_timestampMs = $dom->createElement('timestampMs', $timest[$i]);
       $data_node->appendChild($child_node_act_timestampMs);
 
-    $child_node_act_username = $dom->createElement('username', $us[$i]);
+    $child_node_act_username = $dom->createElement('userID', $usid[$i]);
       $data_node->appendChild($child_node_act_username);
     }
       $root->appendChild($data_node);
