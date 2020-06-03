@@ -24,7 +24,6 @@
     <div class="design">
       <div class="main_content">
         <div class="user_info">
-          <p> DASHBOARD </p>
           <div id="flex-container1">
             <div><canvas id="year_activity_chart"></canvas></div>
             <div><canvas id="month_activity_chart"></canvas></div>
@@ -38,7 +37,6 @@
           </div>
         </div>
         <div class="user_analyse">
-          <p style="text-align: center">Απεικόνιση κατάστασης ΒΔ (dashboard)</p>
           <div id="flex-container0">
             <canvas id="admin_activity_chart"></canvas>
             <form id="admin-data-analysis"  method="POST" action= "">
