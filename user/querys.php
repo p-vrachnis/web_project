@@ -10,8 +10,15 @@ $timezone= new DateTime("now", new DateTimeZone('Europe/Athens') );
 $upload_date = 0;
 $query = "SELECT upload_date FROM upload WHERE username = '$username' ";
 $result = mysqli_query($conn, $query);
-$result = mysqli_fetch_row($result);
-$upload_date = $result[0];
+// $result = mysqli_fetch_row($result);
+$count = mysqli_num_rows($result);
+if($count > 0) {
+  $result = mysqli_fetch_row($result);
+  $upload_date = $result[0]; } 
+else {
+    //echo "No uploaded date.\n ";
+}
+// $upload_date = $result[0];
 
 // GET FIRST AND LAST REGISTER
 $min = 0;
