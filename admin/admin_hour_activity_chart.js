@@ -6,7 +6,9 @@ new Chart(document.getElementById("hour_activity_chart"), {
       datasets: [
         {
           label: "Records Per Hour %",
-          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f", "#ffffff", "ff0000", "#ffa500", "#bdb76b", "#556b2f", "#008b8b", 
+                            "#191970", "#ff00ff", "#696969", "#f8f8ff", "#7fff00", "#bdb76b", "#808080", "#bc8f8f", "#d2b48c",
+                            "#c71585", "#87cefa", "#00ff00", "#b22222", "#a52a2a", "#f5f5dc"],
           data: reghours
         }
       ]

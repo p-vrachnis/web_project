@@ -6,7 +6,8 @@ new Chart(document.getElementById("month_activity_chart"), {
       datasets: [
         {
           label: "Records Per Month %",
-          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+          backgroundColor: ["#191970", "#ff00ff", "#696969", "#f8f8ff", "#7fff00", "#bdb76b", "#808080", "#bc8f8f", "#d2b48c",
+                            "#3e95cd", "#8e5ea2","#3cba9f"],
           data: regmonths
         }
       ]

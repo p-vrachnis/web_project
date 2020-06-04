@@ -5,7 +5,7 @@ new Chart(document.getElementById("year_activity_chart"), {
       datasets: [
         {
           label: "Records Per Year %",
-          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850", "#e6dc15", "#80e800", "#ed7321", "#c6d1ce", "#97fcff", "#242321"],
           data: regyears //[1,2,3,4,5,6,7,8,9,10,11]
         }
       ]

@@ -5,7 +5,7 @@ new Chart(document.getElementById("week_activity_chart"), {
       datasets: [
         {
           label: "Records Per Week %",
-          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#d19ea4","#e6402e", "#e8c500", "#4eeb1a"],
           data: regdays
         }
       ]
