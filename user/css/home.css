@@ -299,6 +299,10 @@ border-collapse: collapse;
   font-size: 16px;
 }
 
+#myrank
+{
+  font-weight: bold;
+}
 /* Maps */
 #map1{
   height: 45%;

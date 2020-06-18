@@ -71,18 +71,24 @@ $count = mysqli_num_rows($result);
     $query = "SELECT score AS score FROM user_score WHERE username = '$username' and score_date = '$current_date' ";
     #$uscore = mysqli_query($conn, $query);
     $query= mysqli_query($conn, $query);
+    $uscore=-1;
     while($result = $query->fetch_assoc()){
         $uscore = $result['score']; }
 
+  $rank=0;
+
   $query = "SELECT score  AS score  FROM user_score WHERE score_date = '$current_date' and username != '$username' " ;
   $query= mysqli_query($conn, $query);
-  $tdate = Array();
+  $c1=1;
   while($result = $query->fetch_assoc()){
+    $c1=0;
     $tscore[] = $result['score']; }
     #$tuser[]  = $result['user']; }
-    sort($tscore);
+    if ($c1==0){
+    sort($tscore); }
     $temp=1;
     $rank=0;
+    if ($c1==0) {
     for ($i=sizeof($tscore); $i>0; $i--){
       #$temp=$temp+1;
       if( $tscore[$i-1] < $uscore )
@@ -94,7 +100,9 @@ $count = mysqli_num_rows($result);
 
      if ($rank==0)
      {$rank=$temp; }
-
+   }
+   if ($uscore!=-1){
+       $rank=1; }
 
 
     // for j in range(len(list)-1,0, -1):
