@@ -27,7 +27,7 @@
                 <a>Score οικολογικης κίνησης </a>
                 <div id="eco-value">
                   <?php
-                  if ( $month_score != 0 ){
+                  if ( $month_score != -1 ){
                   echo "Montlhy score $month_score%"; }
                   else {
                     echo "Monthly score  - ";
@@ -112,8 +112,8 @@
                       </td>
                       </tr>
                       <tr>
-                        <td id="myrank">#myrank</td>
-                        <th scope="row"><?php echo $username ?></th>
+                        <td id="myrank">#myrank <?php if ($rank!=0){ echo $rank; }?></td>
+                        <th scope="row"><?php echo $username; ?></th>
                         <td>
                           <?php
                         if ($check ==1){

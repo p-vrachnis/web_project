@@ -14,7 +14,7 @@ $result = mysqli_query($conn, $query);
 $count = mysqli_num_rows($result);
 if($count > 0) {
   $result = mysqli_fetch_row($result);
-  $upload_date = $result[0]; } 
+  $upload_date = $result[0]; }
 else {
     //echo "No uploaded date.\n ";
 }
@@ -24,6 +24,7 @@ else {
 $min = 0;
 $max = 0;
 $query = "SELECT MIN(score_date) AS min , MAX(score_date) AS max FROM user_score WHERE username = '$username' ";
+// $query = "SELECT MIN(timestampMs) AS min , MAX(timestampMs) AS max FROM user_d WHERE username = '$username' ";
 $result = mysqli_query($conn, $query);
 $result = mysqli_fetch_row($result);
 $min = $result[0]; // first register date
@@ -31,7 +32,7 @@ $max = $result[1]; // last register date
 
 //GET MONTHLY SCORE
 $current_date= $timezone->format('Y-m-01'); // current date
-$month_score = 0;
+$month_score = -1;
 $query = "SELECT score AS month_score FROM user_score WHERE score_date = '$current_date' and username = '$username'   ";
 $result = mysqli_query($conn,$query);
 $count = mysqli_num_rows($result);
@@ -65,6 +66,39 @@ $count = mysqli_num_rows($result);
       array_push($months_score, 0);
       $size_month_score++;
     }
+
+
+    $query = "SELECT score AS score FROM user_score WHERE username = '$username' and score_date = '$current_date' ";
+    #$uscore = mysqli_query($conn, $query);
+    $query= mysqli_query($conn, $query);
+    while($result = $query->fetch_assoc()){
+        $uscore = $result['score']; }
+
+  $query = "SELECT score  AS score  FROM user_score WHERE score_date = '$current_date' and username != '$username' " ;
+  $query= mysqli_query($conn, $query);
+  $tdate = Array();
+  while($result = $query->fetch_assoc()){
+    $tscore[] = $result['score']; }
+    #$tuser[]  = $result['user']; }
+    sort($tscore);
+    $temp=1;
+    $rank=0;
+    for ($i=sizeof($tscore); $i>0; $i--){
+      #$temp=$temp+1;
+      if( $tscore[$i-1] < $uscore )
+      {
+        $rank=$temp;
+      break; }
+      $temp=$temp+1;
+      }
+
+     if ($rank==0)
+     {$rank=$temp; }
+
+
+
+    // for j in range(len(list)-1,0, -1):
+
 
     // Create array of the last 12 months
     $year_months = array(
