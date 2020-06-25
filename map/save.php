@@ -6,7 +6,7 @@
   // SQL Insert Query of the data.
   include_once '../external/connect_db.php';
   // GET ALL JSON DATA TO DATABASE
-  $sql = "REPLACE INTO user_data (username, timestampMs, latitudeE7, longitudeE7, accuracy, altitude, velocity, verticalAccuracy, heading, activity, act_timestampMs, act_confidence) values";
+  $sql = "REPLACE INTO user_data (username, timestampMs, latitudeE7, longitudeE7, accuracy, altitude, velocity, verticalAccuracy, heading, activity, act_timestampMs, act_confidence) values"  ;
   for( $index = 0; $index < sizeof($data) ; $index++ ){
     $timestampMs = $data[$index][0];
     $latitudeE7 = $data[$index][1];
@@ -64,7 +64,9 @@ if (mysqli_query($conn, $sql)) {
     if ($countf==0 && $countv==0) {
     $score = 0 ;   }
     else {
-    $score=($countf/($countf+ $countv))*100; }
+    $score=($countf/($countf+ $countv))*100;
+    $score=round($score,1);
+  }
     $sql = $sql."('$username','$score','$dt'),";
    }
      $sql = substr($sql, 0, -1);

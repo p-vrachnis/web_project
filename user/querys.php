@@ -38,7 +38,9 @@ $result = mysqli_query($conn,$query);
 $count = mysqli_num_rows($result);
   if($count == 1) {
     $result = mysqli_fetch_row($result);
-    $month_score = $result[0]; } // monthly score
+    $month_score = $result[0];
+    $month_score=round($month_score,1); } // monthly score
+
  else {
     //echo "No monthly score has been registered\n ";
   }
@@ -84,6 +86,7 @@ $count = mysqli_num_rows($result);
     $c1=0;
     $tscore[] = $result['score']; }
     #$tuser[]  = $result['user']; }
+    $temp=1;
     if ($c1==0){
     sort($tscore); }
     $temp=1;
@@ -101,8 +104,12 @@ $count = mysqli_num_rows($result);
      if ($rank==0)
      {$rank=$temp; }
    }
-   if ($uscore!=-1){
-       $rank=1; }
+
+   if ($uscore==-1){
+       $rank=0; }
+   if (($uscore!=-1) &&($rank==0)) {
+     $rank=$temp;
+   }
 
 
     // for j in range(len(list)-1,0, -1):
