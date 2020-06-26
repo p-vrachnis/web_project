@@ -28,7 +28,7 @@
                 <div id="eco-value">
                   <?php
                   if ( $month_score != -1 ){
-                  echo "Montlhy score $month_score%"; }
+                  echo "Monthly score $month_score%"; }
                   else {
                     echo "Monthly score  - ";
                   }
