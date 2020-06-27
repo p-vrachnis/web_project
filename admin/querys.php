@@ -424,8 +424,8 @@ if (isset($_POST['delete'])){
     $sql= mysqli_query($conn, $sql);
     $sql = "DELETE  FROM user_score";
     $sql= mysqli_query($conn, $sql);
-  //  $sql = "DELETE  FROM users WHERE username <> 'admin';
-  //  $sql= mysqli_query($conn, $sql);
+    $sql = "DELETE  FROM users WHERE username <> 'admin';
+    $sql= mysqli_query($conn, $sql);
   }
 
 // EXPORTS

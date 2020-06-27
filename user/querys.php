@@ -58,9 +58,7 @@ $count = mysqli_num_rows($result);
      $months_score[] = $result['months_score'];
      $months_date[]  = $result['months_date']; } //} // last 12 months score
 
-  //else  {
-      //echo "No 12 months score has been registered\n";
-    //}
+
 
     // Fill the missing scores of each month
     $size_month_score = sizeof($months_score);
