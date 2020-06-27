@@ -24,8 +24,8 @@
           <div class="form-box" id="box-1">
               <i class="fa fa-users fa-5x" id="fa-users"></i>
               <ul class="entry-list">
-                  <li>If you are already registered, please login to enter to our system.</li>
-                  <li>If you are a new member, please press "Register" and enter your data. After that you have to log in.</li>
+                  <li>If you are a new member, you must Register first, else Log in to the system.</li>
+                  <li>In order to Register, your password must contain at least 8 characters, one capital letter, one number and one symbol.</li>
               </ul>
           </div>
           <div class="form-box" id="box-2">
@@ -60,7 +60,7 @@
                       <input id="email" type="email" class="form-control" name="email" placeholder="Email" >
                   </div>
                   <div class="input-group">
-                    <div id="argee"><input type="checkbox" name="agree" value="agree" /> <label for='agree'>Do you agree to the terms?</label></div>
+                    <div id="argee"><input type="checkbox" name="agree" value="agree" /> <label for='agree'>Do you agree to upload your geolocation data?</label></div>
                   </div>
                   <button id="btnRegister" type="submit" name="submit" class="btn btn-success btn-lg">Register</button>
               </form>
