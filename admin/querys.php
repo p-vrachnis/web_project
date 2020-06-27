@@ -66,7 +66,7 @@ $hours_1 =  Array(
  $reghours=array_fill(0, 24, 0);
  $regdays=array_fill(0, 7, 0);
  $regmonths=array_fill(0, 12, 0);
- $regyears=array_fill(0, 10, 0); //2010 to 2020
+ $regyears=array_fill(0, 11, 0); //2010 to 2020
  if ($totalcount!=0){
   for( $i = 0 ; $i < sizeof($timestampMs); $i++ ) {
     $seconds = $timestampMs[$i] / 1000;
@@ -87,7 +87,7 @@ $hours_1 =  Array(
       if ($day==$j+1){ $regdays[$j]++;} }
     for( $j = 0 ; $j <= 11; $j++ ){
       if ($month==$j+1){ $regmonths[$j]++;} }
-    for( $j = 0 ; $j <= 9; $j++ ){
+    for( $j = 0 ; $j <= 10; $j++ ){
       if ($tyear==($j+10)){ $regyears[$j]++;} }
     }
 
