@@ -42,11 +42,16 @@ if (mysqli_query($conn, $sql)) {
   while($result = $query->fetch_assoc()){
     $timestampMs[] = $result['timestampMs']; // timestampMs from DB
   }
+
+
    $countf= 0;
    $countv= 0;
+
+   #UPDATE USER SCORE
    $sql = "REPLACE INTO user_score (username,score,score_date) values";
    //$timestampMs = $data[0][0];
    $seconds = $timestampMs[0]/ 1000;
+   # deafault timh gia score tou mhna exoume 01 ws mera apla gt den mas niazei h mera
    $tmp= date("Y-m-01", $seconds);
    for( $i = 0 ; $i < sizeof($timestampMs); $i++ ){
     //$activity = $data[$i][3];
@@ -68,6 +73,7 @@ if (mysqli_query($conn, $sql)) {
     $score=round($score,1);
   }
     $sql = $sql."('$username','$score','$dt'),";
+
    }
      $sql = substr($sql, 0, -1);
      $sql = $sql.";";
@@ -75,8 +81,9 @@ if (mysqli_query($conn, $sql)) {
       echo "Score updated successfully\n";
      } else {
       echo "Error: " . mysqli_error($conn);
-     }
-     //GET USERS LAST UPLOAD DATE
+    }
+
+     //USERS LAST UPLOAD DATE TO DB
      $timezone= new DateTime("now", new DateTimeZone('Europe/Bucharest') ); //timezone
      $upload_date = $timezone->format('Y-m-d'); // last upload
      $sql = "REPLACE INTO upload (username,upload_date) values";

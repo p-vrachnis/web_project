@@ -110,8 +110,6 @@ $count = mysqli_num_rows($result);
    }
 
 
-    // for j in range(len(list)-1,0, -1):
-
 
     // Create array of the last 12 months
     $year_months = array(
@@ -188,6 +186,7 @@ $count = mysqli_num_rows($result);
       "December" => 12
     );
     // GRAPHS AND PINAKAS
+    #check if user has ticked show
     if($_SERVER['REQUEST_METHOD'] == "GET") {
       if(empty($_GET['f_month']) || empty($_GET['f_year']) || empty($_GET['u_month']) || empty($_GET['u_year'])){
         $min_time=0;
@@ -263,7 +262,7 @@ $count = mysqli_num_rows($result);
       $counter++;
     }
 
-    // Longtude query
+    // Longitude query
     $query ="SELECT longitudeE7 FROM user_data WHERE timestampMs > '$min_time' and timestampMs < '$max_time' ";
     $query= mysqli_query($conn, $query);
     $lng = Array();
@@ -278,7 +277,7 @@ $count = mysqli_num_rows($result);
     $temp_heatmap = array();
     $data_heatmap = array(array("lat"=>$lat[0], "lng"=>$lng[0]));
 
-    // For each value of coordinates, we create an array (dictionary) to include lat,lon for the HeatMap
+    // For each value of coordinates, we create an array (dictionary) (key =value) to include lat,lon for the HeatMap
     for($iter=1; $iter<sizeof($lat); $iter++){
       $lat[$iter] = decimal($lat[$iter]);
       $lng[$iter] = decimal($lng[$iter]);
@@ -287,7 +286,7 @@ $count = mysqli_num_rows($result);
       array_push($data_heatmap, $temp_heatmap);
     }
 
-    // Array convert into JSON, in order to send them to Javascript file.
+    // Array convert into JSON, in order to send data to Javascript file.
     $data_heatmap = json_encode($data_heatmap); }
 
      //activities
@@ -297,7 +296,7 @@ $count = mysqli_num_rows($result);
      while($result = $query->fetch_assoc()){
        $activity[] = $result['activity']; //activity from DB
      }
-     // eggrafes ana eidos pososta
+     // eggrafes ana eidos, pososta
      $i=0;
      $on_foot=0;
      $walking=0;
@@ -359,6 +358,7 @@ $count = mysqli_num_rows($result);
         $hour[$hours][8]++;
         $day[$days][8]++;
       }
+      #paradoxh oti to keno einai uknown gia na gemizoun ta pososta
       elseif ($activity[$i] == 'UNKNOWN' || $activity[$i] == '' ) {
         $unknown++;
         $hour[$hours][9]++;

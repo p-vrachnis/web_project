@@ -25,6 +25,7 @@
               <p>Σαραντάκης Δημήτριος AM:5641</p>
               <p>Γεωργόπουλος Ζαχαρίας AM:235735</p>
               <p>Βραχνής Παύλος AM:236010</p>
+              <p><a href="github.com/apr0vleptos/web_project"> Github link </a> </p>
            </div>
           </div>
         </div>

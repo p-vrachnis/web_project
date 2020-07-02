@@ -268,7 +268,7 @@
       </div>
     </div>
 
-
+  <!-- show the last 12 months auto  -->
   <script>
     var m1 = "<?php echo strval(date("F", strtotime("0 months"))); ?>";
     var m2 = "<?php echo strval(date("F", strtotime("-1 months"))); ?>";

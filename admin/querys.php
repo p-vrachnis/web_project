@@ -6,6 +6,7 @@ include_once '../external/connect_db.php';
 $timezone= new DateTime("now", new DateTimeZone('Europe/Bucharest') );
 $current_date= $timezone->format('Y-m-01'); // current date
 $week_days = array('Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun');
+#not needed hours_1
 $hours_1 =  Array(
 '12:00 am',
 '1:00 am',
@@ -33,7 +34,7 @@ $hours_1 =  Array(
 '11:00 pm'
 ) ;
 
-    //USERS
+    //get usernames
     $query ="SELECT username FROM users ";
     $query= mysqli_query($conn, $query);
     $user = Array();
@@ -41,7 +42,7 @@ $hours_1 =  Array(
       $user[] = $result['username']; //activity from DB
     }
 
-   //Registers count for user
+   // get Registers count for user
    $regcount = Array();
   for( $i = 0 ; $i < sizeof($user); $i++ ){
    $regcount[$i] = 0;
@@ -71,7 +72,7 @@ $hours_1 =  Array(
   for( $i = 0 ; $i < sizeof($timestampMs); $i++ ) {
     $seconds = $timestampMs[$i] / 1000;
     //$tmp= date("Y-m-d", $seconds);
-    $hour = date("H",$seconds) + 4; // swsta!!! // se 06 h wra
+    $hour = date("H",$seconds) + 4; // swsth metatroph!!! // se 06 h wra
     $day  = date('N',$seconds); // se noumero h mera ths evdomadas
     $year = date("Y", $seconds); // year
     $month = date("m", $seconds);
@@ -100,7 +101,7 @@ $hours_1 =  Array(
     for( $j = 1 ; $j <= 10; $j++ ){
       $regyears[$j-1] = (($regyears[$j-1])/sizeof($timestampMs))*100;}
 
-    //Register pr activities
+    //Register per activities
     $query ="SELECT activity FROM user_data ";
     $query= mysqli_query($conn, $query);
     $activity = Array();
@@ -322,6 +323,9 @@ if ($emptyshow==4 && $acount==0 ) {
   $max_h=0;
 }
 
+
+
+# get show results from db for exports
 $i=0;
 $c1=0;
 while($result = $query->fetch_assoc()){
@@ -376,6 +380,7 @@ while($result = $query->fetch_assoc()){
   }
 }
 
+# get usid
 if ($c1 != 0 ){
 for( $i = 0 ; $i < $c1; $i++ ){
  $query ="SELECT userID,username FROM users WHERE username = '$us[$i]' ";
@@ -487,11 +492,16 @@ if (isset($_POST['xml']) && isset($_POST['export'])){
     $xml_file_name = 'export.xml';
 
       $root = $dom->createElement('AllData');
-      $data_node = $dom->createElement('data');
+      #$data_node = $dom->createElement('data');
 
     for($i=0; $i<$c1; $i++){
+      if ($i!=0)   {  $root->appendChild($data_node);}
+      $data_node = $dom->createElement('data');
       $dlng = new DOMAttr('location', "'$i'");
       $data_node->setAttributeNode($dlng);
+
+
+        // $data_node->appendChild($child_node_longitude);
 
     $child_node_longitude = $dom->createElement('longitude', $lng[$i]);
       $data_node->appendChild($child_node_longitude);
@@ -528,6 +538,8 @@ if (isset($_POST['xml']) && isset($_POST['export'])){
 
     $child_node_act_username = $dom->createElement('userID', $usid[$i]);
       $data_node->appendChild($child_node_act_username);
+
+
     }
       $root->appendChild($data_node);
       $dom->appendChild($root);
